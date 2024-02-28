@@ -28,5 +28,7 @@ export default function RootLayout({ children }) {
       </BootstrapProvider>
       </body>
     </html>
+
+    
   );
 }
