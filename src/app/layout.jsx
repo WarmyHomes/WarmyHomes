@@ -8,7 +8,6 @@ import Footer from "@/components/common/footer";
 const inter = Inter({ subsets: ["latin"],
 variable:"--font-inter",
  });
-
 export const metadata = {
 	title: {
 		template: `%s | ${config.project.name}`,
