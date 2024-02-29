@@ -8,20 +8,20 @@ const ContactMenu = (props) => {
 
 <li className="nav-item">
               <a
-					className="nav-link"
+					className="nav-link mb-3"
 					href={config.contact.mapURL}
 					target="_blank"
 				>
 					<TfiMap /> {config.contact.address}
 				</a>
 			</li>
-			<li className="nav-item">
+			<li className="nav-item mb-3">
 				<a className="nav-link" href={`tel:${config.contact.phone1}`}>
 					<TfiHeadphone /> {config.contact.phone1}
 				</a>
 			</li>
 
-			<li className="nav-item">
+			<li className="nav-item mb-3">
 				<a className="nav-link" href={`mailto:${config.contact.email}`}>
 					<TfiEmail /> {config.contact.email}
 				</a>
