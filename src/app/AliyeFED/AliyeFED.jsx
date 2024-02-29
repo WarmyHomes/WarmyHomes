@@ -1,9 +1,9 @@
 import React from 'react'
 
-const AliyeFED = () => {
+const aliyeFed = () => {
   return (
-    <div>AliyeFED</div>
+    <div>aliyeFed</div>
   )
 }
 
-export default AliyeFED
+export default aliyeFed
