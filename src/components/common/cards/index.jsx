@@ -1,21 +1,15 @@
 import React from 'react'
-import Menubar from './menubar'
 import Spacer from '../spacer'
 import PropertiesSection from '@/components/home/properties'
 
 
-const Header = () => {
+const Cards = () => {
   return (
     <>
     
-      <Menubar/>
-      <Spacer/>
-      
-      <Spacer/>
-      <PropertiesSection/>
       
     </>
   )
 }
 
-export default Header
+export default Cards
