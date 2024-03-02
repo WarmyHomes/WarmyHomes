@@ -1,8 +1,9 @@
 import Image from "next/image";
 import "./Header.scss";
 import Link from "next/link";
+// import Arrow from "../../../assets/icons/arrow.svg";
 
-export default  function Header() {
+export default function Header() {
   return (
     <header className="header-main-container">
       <div className="header-left-container">
@@ -41,6 +42,7 @@ export default  function Header() {
           <Link href={"/"}>
             Add Property
             <i className="bi bi-arrow-right"></i>
+            <img src={Arrow} alt="arrow" />
           </Link>
         </button>
       </div>

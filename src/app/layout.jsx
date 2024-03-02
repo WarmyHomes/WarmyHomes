@@ -2,8 +2,8 @@ import { Inter } from "next/font/google";
 import BootstrapProvider from "@/helpers/providers/bootstrap-provider";
 import { config } from "@/helpers/config";
 import "@/styles/index.scss";
-import Header from "@/components/common/header";
 import Footer from "@/components/common/footer";
+import Header from "@/components/common/header";
 
 const inter = Inter({ subsets: ["latin"],
 variable:"--font-inter",
