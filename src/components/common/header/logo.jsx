@@ -10,7 +10,7 @@ const Logo = () => {
         href="/"
         title={config.project.name}>
 			<Image
-				src={`/images/logo/logo-white2.png`}
+				src={`/images/logo/logo-white.png`}
 				width={208}
 				height={48}
 				alt={config.project.name}
@@ -20,4 +20,3 @@ const Logo = () => {
 };
 
 export default Logo;
- 

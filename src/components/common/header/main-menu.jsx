@@ -4,15 +4,15 @@ import Link from "next/link";
 
 const MainMenu = (props) => {
 	return (
-		<ul style={{ listStyleType: 'none' }}>
+		<ul >
 			{menuItems.map((item) => (
 				<li
-					className="nav-item mb-3"
+					className="nav-item"
 					key={item.title}
 					data-bs-dismiss="offcanvas"
 				>
 					<Link
-						className="nav-link mb-3"
+						className="nav-link"
 						aria-current="page"
 						href={item.link}
 					>
