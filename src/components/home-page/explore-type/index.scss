@@ -14,6 +14,11 @@
     margin-top: 30px;
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 560px) {
+      flex-direction: column;
+    }
+
     .single-property-type-card {
       background-color: #f7f7f8;
       height: 230px;
@@ -23,6 +28,12 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+
+      @media (max-width: 560px) {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
       .icon-container {
         width: 60px;
         height: 60px;
