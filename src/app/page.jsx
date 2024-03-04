@@ -10,6 +10,11 @@ export const metadata = {
 };
 export default function Home(){
   return(
+    <div>
+      <div></div>
+      </div>
+
+     
     <>
    <Menubar/>
    <Spacer/>
@@ -19,6 +24,7 @@ export default function Home(){
    <Spacer/>
   
       </>
+
     
   );
 }
