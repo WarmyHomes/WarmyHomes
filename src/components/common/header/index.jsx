@@ -1,30 +1,9 @@
-<<<<<<< HEAD
-import React from 'react'
-import Menubar from './menubar'
-import Spacer from '../spacer'
-import PropertiesSection from '@/components/home/properties'
-
-=======
 import Image from "next/image";
 import "./Header.scss";
 import Link from "next/link";
-// import Arrow from "../../../assets/icons/arrow.svg";
->>>>>>> main
 
 export default function Header() {
   return (
-<<<<<<< HEAD
-    <>
-    
-      <Menubar/>
-      <Spacer/>
-      
-      <Spacer/>
-      <PropertiesSection/>
-      
-    </>
-  )
-=======
     <header className="header-main-container">
       <div className="header-left-container">
         <Link href={"/"}>
@@ -60,13 +39,10 @@ export default function Header() {
         </div>
         <button className="add-property-button">
           <Link href={"/"}>
-            Add Property
-            <i className="bi bi-arrow-right"></i>
-            <img src={Arrow} alt="arrow" />
+            Add Property <img width={35} height={35} src="/icons/arrow.svg" />
           </Link>
         </button>
       </div>
     </header>
   );
->>>>>>> main
 }
