@@ -10,7 +10,7 @@ const Logo = () => {
         href="/"
         title={config.project.name}>
 			<Image
-				src={`/images/logo/logo-white.png`}
+				src={`/images/logo/logo-white2.png`}
 				width={208}
 				height={48}
 				alt={config.project.name}
