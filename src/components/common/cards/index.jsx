@@ -1,6 +1,6 @@
 import React from 'react'
 import Spacer from '../spacer'
-import PropertiesSection from '@/components/home/properties'
+import PropertiesSection from '@/components/home-page/properties'
 
 
 const Cards = () => {

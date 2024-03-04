@@ -4,12 +4,13 @@ import Link from "next/link";
 
 const MainMenu = (props) => {
 	return (
-		<ul >
+		<ul className="list-unstyled">
 			{menuItems.map((item) => (
 				<li
 					className="nav-item"
 					key={item.title}
 					data-bs-dismiss="offcanvas"
+					
 				>
 					<Link
 						className="nav-link"
