@@ -5,26 +5,24 @@ import "@/styles/index.scss";
 import Footer from "@/components/common/footer";
 import Header from "@/components/common/header";
 
-const inter = Inter({ subsets: ["latin"],
-variable:"--font-inter",
- });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata = {
-	title: {
-		template: `%s | ${config.project.name}`,
-		default: config.project.name, // a default is required when creating a template
-	},
-	description: config.project.description,
+  title: {
+    template: `%s | ${config.project.name}`,
+    default: config.project.name, // a default is required when creating a template
+  },
+  description: config.project.description,
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body >
-      <BootstrapProvider>
-      <Header />
-      {children}
-      <Footer/>
-      </BootstrapProvider>
+      <body>
+        <BootstrapProvider>
+          <Header />
+          {children}
+          <Footer />
+        </BootstrapProvider>
       </body>
     </html>
   );
