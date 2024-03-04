@@ -1,0 +1,58 @@
+@use "/src/styles/variables" as v;
+.contact-us-container {
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 15px;
+  background-color: v.$color9;
+  padding: 40px !important;
+  @media screen and (max-width: 1400px) {
+    flex-direction: column; 
+    align-items: center; 
+    padding: 10px !important; 
+    .contactus-left-side {
+      text-align: center; 
+      margin-bottom: 20px; 
+    }
+    .contact-us-right-side {
+      margin-right: 25rem ; 
+      margin-top: 1.5rem;
+      text-align: center; 
+
+      .contact-button {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  
+  .contact-us-right-side {
+    margin-left: 23rem;
+    margin-top: 1.5rem;
+    .contact-button {
+      background-color:v.$color9;
+      color: v.$color8;
+      padding: 10px 40px;
+      border-radius: 50px;
+      border: 1px solid v.$color7 !important;
+      &:hover {
+        background-color: v.$color6;
+        color: v.$color7;
+      }
+      &:active {
+        background-color:v.$color6;
+        color:v.$color7;
+      }
+    }
+  }
+
+
+  
+      }
+    
+  
+
+
+
+
+
+
+

@@ -1,3 +1,8 @@
+import Footer from "@/components/common/footer";
+import Menubar from "@/components/common/header/menubar";
+import Spacer from "@/components/common/spacer";
+import ContactUs from "@/components/home-page/contact-us";
+import RegisterNow from "@/components/home-page/register-now";
 import { config } from "@/helpers/config";
 
 export const metadata = {
@@ -5,9 +10,15 @@ export const metadata = {
 };
 export default function Home(){
   return(
-    <div>
-      <div></div>
-      </div>
+    <>
+   <Menubar/>
+   <Spacer/>
+   <RegisterNow/>
+   <Spacer/>
+   <ContactUs/>
+   <Spacer/>
+  
+      </>
     
   );
 }
