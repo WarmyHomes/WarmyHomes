@@ -1,0 +1,31 @@
+@import "../../styles/variables";
+
+.contact-us-page-main-container {
+  padding: 40px;
+  position: relative;
+
+  .contact-us-form-wrapper-in-page {
+    padding: 30px;
+    border-radius: 30px;
+    border: 1px solid grey;
+    position: absolute;
+    top: 280px;
+    left: 130px;
+    background-color: white;
+    width: 30%;
+  }
+
+  .content-right-to-form {
+    width: 280px;
+    text-align: left;
+    margin-inline: auto;
+    margin-top: 40px;
+    padding-left: 40px;
+    h2 {
+      font-size: 24px;
+    }
+    p {
+      font-size: 12px;
+    }
+  }
+}
