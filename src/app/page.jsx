@@ -5,6 +5,7 @@ import ContactUs from "@/components/home-page/contact-us";
 import ExploreByCities from "@/components/home-page/explore-cities";
 import ExploreByTypes from "@/components/home-page/explore-type";
 import RegisterNow from "@/components/home-page/register-now";
+import Slider from "@/components/home-page/slider";
 import { config } from "@/helpers/config";
 
 export const metadata = {
@@ -15,6 +16,8 @@ export default function Home() {
     <>
       <Menubar />
       <Spacer />
+      <Slider />
+      <Spacer />
       <ExploreByTypes />
       <Spacer />
       <ExploreByCities />
@@ -23,6 +26,9 @@ export default function Home() {
       <Spacer />
       <ContactUs />
       <Spacer />
+     
+
+
      
     </>
   );
