@@ -28,4 +28,48 @@
       font-size: 12px;
     }
   }
+
+  .visit-our-offices-container {
+    .visit-our-offices-top {
+      text-align: center;
+    }
+    .all-cities-info-container {
+      margin-top: 60px;
+      display: flex;
+      justify-content: space-around;
+      .single-city-container {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .city-icon-container {
+          height: 130px;
+          width: 130px;
+          background-color: #ccc;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          img {
+            height: 80px;
+            width: auto;
+          }
+        }
+        .info-container {
+          text-align: center;
+          margin-top: 30px;
+
+          p,
+          h5 {
+            margin: 0;
+          }
+
+          h5 {
+            font-size: 26px;
+            margin-bottom: 5px;
+          }
+        }
+      }
+    }
+  }
 }

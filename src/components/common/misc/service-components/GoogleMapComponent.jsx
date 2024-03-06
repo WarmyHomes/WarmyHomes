@@ -6,15 +6,14 @@ import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 const GoogleMapComponent = ({
   styleOptions,
   center = {
-    lat: 48.1121925, // Example latitude
-    lng: 17.0935551, // Example longitude
+    lat: 39.9119, // Example latitude
+    lng: 41.2635165, // Example longitude
   },
 }) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyA07lD6jhIN2OwvpX1cXsj5NAiN3T5pDjk",
   });
 
-  const mapContainerStyle = styleOptions;
   if (loadError) {
     return <div>Error loading Google Maps</div>;
   }
@@ -25,12 +24,12 @@ const GoogleMapComponent = ({
 
   return (
     <GoogleMap
-      mapContainerStyle={mapContainerStyle}
+      mapContainerStyle={styleOptions}
       center={center}
       zoom={12}
       options={{
         disableDefaultUI: true, // Disable default controls
-        // zoomControl: true,
+        zoomControl: true,
       }}
     >
       <Marker position={center} />
