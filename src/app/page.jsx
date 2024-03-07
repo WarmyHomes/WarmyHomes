@@ -6,6 +6,7 @@ import ExploreByCities from "@/components/home-page/explore-cities";
 import ExploreByTypes from "@/components/home-page/explore-type";
 import RegisterNow from "@/components/home-page/register-now";
 import Slider from "@/components/home-page/slider";
+import SellingOption from "@/components/home-page/selling-option";
 import { config } from "@/helpers/config";
 
 export const metadata = {
@@ -24,6 +25,8 @@ export default function Home() {
       <Spacer />
       <RegisterNow />
       <Spacer />
+      <SellingOption/>
+      <Spacer/>
       <ContactUs />
       <Spacer />
      
