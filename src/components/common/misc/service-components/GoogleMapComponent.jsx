@@ -14,12 +14,20 @@ const GoogleMapComponent = ({
     googleMapsApiKey: "AIzaSyA07lD6jhIN2OwvpX1cXsj5NAiN3T5pDjk",
   });
 
+  const placeHodlerStyles = {
+    ...styleOptions,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#ccc",
+  };
+
   if (loadError) {
-    return <div>Error loading Google Maps</div>;
+    return <div style={placeHodlerStyles}>Error loading Google Maps</div>;
   }
 
   if (!isLoaded) {
-    return <div>Loading Google Maps...</div>;
+    return <div style={placeHodlerStyles}>Loading Google Maps...</div>;
   }
 
   return (
