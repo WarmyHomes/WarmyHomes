@@ -1,0 +1,36 @@
+@import "../../../styles/variables";
+
+.sidebar-menu-main-container {
+  width: 300px;
+  max-width: 300px;
+  max-height: 100vh;
+  overflow-y: auto;
+  background: $color4;
+  padding: 50px 40px;
+
+  .sidebar-logo {
+    width: 100%;
+    height: auto;
+  }
+
+  .sidebar-menu-container {
+    margin-top: 40px;
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      list-style: none;
+      li {
+        a {
+          text-decoration: none;
+          font-size: 18px;
+          color: $color6;
+        }
+
+        .active {
+          background-color: red;
+        }
+      }
+    }
+  }
+}
