@@ -6,7 +6,7 @@ import { GiKeyCard,GiGreenhouse } from "react-icons/gi";
 import "./selling-option.scss";
 const SellingOption = () => {
   return (
-    <div className='selling-option-container '>
+    <div className='selling-option-container p-3  '>
       <div className='row '>
       <div className='col selling-option-left-side order-lg-1 order-2 ' lg={6}>
           <div className="row left-side-description">
