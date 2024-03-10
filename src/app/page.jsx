@@ -1,4 +1,4 @@
-import Footer from "@/components/common/footer";
+
 import Menubar from "@/components/common/header/menubar";
 import Spacer from "@/components/common/misc/spacer";
 import ContactUs from "@/components/home-page/contact-us";
