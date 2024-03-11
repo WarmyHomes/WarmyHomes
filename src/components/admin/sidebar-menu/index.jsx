@@ -3,7 +3,7 @@
 import React from "react";
 import "./index.scss";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const menuItems = [
   {
@@ -52,9 +52,8 @@ const menuItems = [
   },
 ];
 const SidebarMenu = () => {
-  // const router = useRouter();
-
-  // const isActive = (href) => router.pathname === href;
+  const router = useRouter();
+  const isActive = (href) => router.pathname === href;
 
   return (
     <div className="sidebar-menu-main-container">
@@ -69,7 +68,7 @@ const SidebarMenu = () => {
           {menuItems.map((el) => (
             <li key={el?.title}>
               <Link
-                // className={isActive(`/admin${el?.route}`) ? "active" : ""}
+                className={isActive(`/admin${el?.route}`) ? "active" : ""}
                 href={`/admin${el?.route}`}
               >
                 {el?.title}

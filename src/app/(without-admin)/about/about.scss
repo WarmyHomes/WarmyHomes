@@ -1,0 +1,58 @@
+@use "../../../styles/variables" as v;
+.about-container {
+  padding: 20px;
+  background-color: v.$color9;
+  border-radius: 10px;
+  overflow: hidden;
+  .about-wrapper {
+    padding: 40px;
+    .about-left-side {
+      padding: 0;
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+    }
+    .about-right-side {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      p {
+        text-align: justify;
+      }
+      .text {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 10px;
+        .icons {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          .circle {
+            background-color: v.$color2;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            font-size: 48px;
+            display: flex;
+            flex-shrink: 0;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            &.home {
+              color: v.$color7;
+            }
+            &.tree {
+              color: v.$color7;
+            }
+          }
+        }
+      }
+    }
+  }
+}
