@@ -1,6 +1,7 @@
 import SidebarMenu from "@/components/admin/sidebar-menu";
 import React from "react";
 import "./index.scss";
+import "@/styles/index.scss";
 
 const AdminLayout = ({ children }) => {
   return (
