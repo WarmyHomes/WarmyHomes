@@ -5,9 +5,14 @@ import ContactUs from "@/components/home-page/contact-us";
 import ExploreByCities from "@/components/home-page/explore-cities";
 import ExploreByTypes from "@/components/home-page/explore-type";
 import RegisterNow from "@/components/home-page/register-now";
+<<<<<<< HEAD:src/app/page.jsx
+import Slider from "@/components/home-page/hero-section";
+=======
 import Slider from "@/components/home-page/slider";
 import SellingOption from "@/components/home-page/selling-option";
+>>>>>>> main:src/app/(without-admin)/page.jsx
 import { config } from "@/helpers/config";
+import HeroSection from "@/components/home-page/hero-section";
 
 export const metadata = {
   title: config.project.slogan,
@@ -17,7 +22,7 @@ export default function Home() {
     <>
       <Menubar />
       <Spacer />
-      <Slider />
+      <HeroSection/>
       <Spacer />
       <ExploreByTypes />
       <Spacer />
