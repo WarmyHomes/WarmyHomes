@@ -5,7 +5,7 @@ import "./style.scss";
 
 const RegisterNow = () => {
   return (
-   <div className='register-now-container'>
+   <div className='register-now-container 'style={{ maxWidth:'95%'}}>
 <div className='col  register-left-side'>
 <h2>Get your dream house</h2>
 <h6>Turn your aspirations into reality with 'Get Your Dream House' – where your perfect home becomes a possibility.</h6>

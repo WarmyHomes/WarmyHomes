@@ -20,4 +20,18 @@ export const config = {
 			youtube: "https://youtube.com",
 		},
 	},
+	selling: {
+		title:"Let’s Find The Right ",
+		desc:"Selling Option For You",
+	    description:{
+			techTitle:"Tech-Driven Marketing",
+			techDesc:"Real estate is embracing technology with virtual tours, 3D models, and blockchain transactions.",
+			sustainabilityTitle:"Sustainability Matters",
+			sustainabilityDesc:"Green building practices and eco-friendly features are gaining popularity for environmentally conscious buyers.",
+			remoteTitle:"Remote Work Impact",
+			remoteDesc:"Changing work patterns are reshaping housing preferences, favoring suburban and urban mixed- use developments.",
+		},
+    
+	},
+
    };

@@ -1,0 +1,81 @@
+@use "../../../styles/variables" as v;
+.selling-option-container{
+  max-width: 95%;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: v.$color1;
+  font-size: 15px;
+  .selling-option-left-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    color: v.$color7;
+    .left-side-description {
+      margin-bottom: 20px;
+      margin-left: 5rem;
+      font-size:5rem;
+     
+    }
+    .selling-option {
+      display: flex;
+      gap: 10px;
+      margin: 0.8rem;
+      margin-left:4rem;
+      .circle {
+        background-color: v.$color3;
+        border-radius: 50%;
+        width: 90px;
+        height: 90px;
+        font-size: 48px;
+        flex-shrink: 0;
+        justify-content: center !important;
+        align-items: flex-start !important;
+        text-align: center;
+      }
+    }
+    .selling-option-right-side{
+      padding: 0%;
+    
+    }
+    @media screen and (max-width: 1061px){
+      padding: 16px;
+      .selling-option-left-side{
+        font-size: 24px;
+      }
+      .selling-option-right-side {
+        padding-right: 0% !important;
+        .selling-option-img {
+          max-width: 100%;
+          height: auto;
+          display: block;
+          border-radius: 8px 8px 0 0;
+          //object-fit: cover;
+        }
+      }
+      .selling-option .option-text .circle {
+        width: 50px;
+          height: 50px;
+          font-size: 36px;
+        }
+        .selling-option .option-text h5{
+          font-size: 16px;
+        }
+        .selling-option .option-text span{
+          font-size: 14px;
+        }
+    }
+    @media screen and (max-width: 740px){
+      padding: 16px;
+      .selling-option-right-side {
+      padding-right: 0% !important;
+      margin-bottom: 0% !important;
+        .selling-option-img {
+          max-width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+ 
+}
