@@ -5,5 +5,9 @@
 
   .admin-layout-right-container {
     width: calc(100% - 300px);
+
+    .admin-page-container {
+      max-height: calc(100vh - 60px);
+    }
   }
 }

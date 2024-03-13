@@ -51,35 +51,39 @@ const menuItems = [
     route: "/logout",
   },
 ];
-const SidebarMenu = () => {
+const SidebarMenu = ({ isFullMenu }) => {
   // const router = useRouter();
   // const isActive = (href) => router.pathname === href;
 
-  console.log(router.pathname, "hello");
-
   return (
-    <div className="sidebar-menu-main-container">
-      <img
-        className="sidebar-logo"
-        src="/images/logo/logo-white.png"
-        alt="Warmy Homes Logo"
-      />
+    isFullMenu && (
+      <div
+        className={`sidebar-menu-main-container ${
+          isFullMenu ? "" : "hide-full-menu"
+        }`}
+      >
+        <img
+          className="sidebar-logo"
+          src="/images/logo/logo-white.png"
+          alt="Warmy Homes Logo"
+        />
 
-      <div className="sidebar-menu-container">
-        <ul>
-          {menuItems.map((el) => (
-            <li key={el?.title}>
-              <Link
-                // className={isActive(`/admin${el?.route}`) ? "active" : ""}
-                href={`/admin${el?.route}`}
-              >
-                {el?.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div className="sidebar-menu-container">
+          <ul>
+            {menuItems.map((el) => (
+              <li key={el?.title}>
+                <Link
+                  // className={isActive(`/admin${el?.route}`) ? "active" : ""}
+                  href={`/admin${el?.route}`}
+                >
+                  {el?.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
+    )
   );
 };
 
