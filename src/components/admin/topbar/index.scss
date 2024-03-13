@@ -1,0 +1,31 @@
+@import "../../../styles/variables";
+
+.admin-top-bar-container {
+  padding-inline: 20px;
+  height: 60px;
+  width: 100%;
+  background-color: rgb(188, 188, 188);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  .hamburger-icon-container {
+    height: 35px;
+    width: 35px;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    .icon {
+      width: 25px;
+      height: 25px;
+      color: $color4;
+    }
+  }
+  .dashboard-topbar-heading {
+    font-weight: 500;
+    margin: 0;
+  }
+}
