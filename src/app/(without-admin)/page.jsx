@@ -1,4 +1,3 @@
-
 import Menubar from "@/components/common/header/menubar";
 import Spacer from "@/components/common/misc/spacer";
 import ContactUs from "@/components/home-page/contact-us";
@@ -16,8 +15,7 @@ export default function Home() {
   return (
     <>
       <Menubar />
-      <Spacer />
-      <HeroSection/>
+      <HeroSection />
       <Spacer />
       <ExploreByTypes />
       <Spacer />
@@ -25,14 +23,10 @@ export default function Home() {
       <Spacer />
       <RegisterNow />
       <Spacer />
-      <SellingOption/>
-      <Spacer/>
+      <SellingOption />
+      <Spacer />
       <ContactUs />
       <Spacer />
-     
-
-
-     
     </>
   );
 }
