@@ -19,7 +19,7 @@ const LoginForm = () => {
 									<input
 										type="text"
 										className="form-control"
-										id="username"
+										id="email"
 										name="email"
 										
 										
