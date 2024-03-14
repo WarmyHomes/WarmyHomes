@@ -11,6 +11,7 @@ const ProfilePage= () => {
       <Spacer/>
       <ProfileForm/>
       <Spacer/>
+      <Spacer/>
     </>
   )
 }
