@@ -1,0 +1,31 @@
+@use "../../styles/variables" as v;
+.login-form{
+
+    .card{
+    box-shadow: 0 4px 8px v.$color7;
+
+        h6{
+            margin-bottom: 20px;
+            margin-top: 20px;
+            color: v.$color7;
+            margin-left: 22rem ;
+            font-size: 1.1rem;
+
+        }
+
+        button{
+            color:v.$color1;
+        font-size: 1.7rem;
+        background-color: v.$color3;
+        width: 50%;
+         margin: 0 auto; 
+         display: block; 
+         margin-top: 2rem; 
+          border: none;
+          border-radius: 5px;
+          margin-bottom: 2rem;
+          padding-top: 10px;
+          padding-bottom:10px;
+        }
+    }
+}
