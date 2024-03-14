@@ -1,28 +1,19 @@
 @use "../../styles/variables" as v;
-.login-form{
-
+.profile-form{
+   
     .card{
     box-shadow: 0 4px 8px v.$color7;
-    .card-body{
-        margin-top: 20px;
-
-        h6{
-            margin-bottom: 20px;
-            margin-top: 20px;
-            color: v.$color7;
-            margin-left: 23rem ;
-            font-size: 1.1rem;
-
-        }
+   .card-body{
+    margin-top: 20px;
 
         button{
         color:v.$color1;
         font-size: 1.7rem;
         background-color: v.$color3;
         width: 50%;
-         margin: 0 auto; 
-         display: block; 
-         margin-top: 2rem; 
+        margin: 0 auto; 
+        display: block; 
+        margin-top: 2rem; 
           border: none;
           border-radius: 5px;
           margin-bottom: 2rem;
