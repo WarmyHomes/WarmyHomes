@@ -1,7 +1,6 @@
 import Spacer from '@/components/common/misc/spacer'
 import PageHeader from '@/components/common/page-header'
 import LoginForm from '@/components/login/login-form'
-import { Space_Mono } from 'next/font/google'
 import React from 'react'
 
 const LoginPage= () => {

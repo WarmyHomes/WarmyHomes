@@ -1,5 +1,5 @@
 @use "../../styles/variables" as v;
-.profile-form{
+.register-form{
    
     .card{
     box-shadow: 0 4px 8px v.$color7;
@@ -19,6 +19,9 @@
           margin-bottom: 2rem;
           padding-top: 10px;
           padding-bottom:10px;
+        }
+        h6 {
+            text-align: center;
         }
         a {
           color: v.$color2;

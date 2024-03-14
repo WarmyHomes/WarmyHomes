@@ -1,14 +1,14 @@
 "use client";
 import Link from "next/link";
-import "./profile-form.scss";
+import "./register-form.scss";
 
 
-const ProfileForm = () => {
+const RegisterForm = () => {
 
 
 
 	return (
-		<div className="container profile-form">
+		<div className="container register-form">
 			<div className="row justify-content-center ">
 				<div className="col-md-8 col-lg-6">
 					<div className="card">
@@ -46,23 +46,7 @@ const ProfileForm = () => {
 									</label>
 									
 								</div>
-                                <div
-									className={`form-floating mb-3 `}
-								>
-									<input
-										type="text"
-										className="form-control"
-										id="email"
-										name="email"
-										
-										
-									/>
-									<label htmlFor="email">
-                                    Email
-									</label>
-									
-								</div>
-                                
+
 
 								<div
 									className={`form-floating mb-3`}
@@ -79,9 +63,61 @@ const ProfileForm = () => {
 									</label>
 									
 								</div>
+                                <div
+									className={`form-floating mb-3 `}
+								>
+									<input
+										type="text"
+										className="form-control"
+										id="email"
+										name="email"
+										
+										
+									/>
+									<label htmlFor="email">
+                                    Email
+									</label>
+									
+								</div>
+
+                                <div
+									className={`form-floating mb-3 `}
+								>
+									<input
+										type="number"
+										className="form-control"
+										id="Password"
+										name="Password"
+										
+										
+									/>
+									<label htmlFor="Password">
+                                    Password
+									</label>
+									
+								</div>
+
+                                <div
+									className={`form-floating mb-3 `}
+								>
+									<input
+										type="number"
+										className="form-control"
+										id="Confirm Password"
+										name="Confirm Password"
+										
+										
+									/>
+									<label htmlFor="Confirm Password">
+                                    Confirm Password
+									</label>
+									
+								</div>
+                                
+
                               
-								<button className="button">Update</button>
-								<h6>If you want to delete your account <Link href="/delete-account">click here!</Link> If you delete your account, all related records with this account will also be deleted permanently.</h6>
+								<button className="button">Register</button>
+								<h6>If you already have an account. <Link href="/delete-account">Login now!</Link> </h6>
 							</form>
 						</div>
 					</div>
@@ -91,4 +127,4 @@ const ProfileForm = () => {
 	);
 };
 
-export default ProfileForm;
+export default RegisterForm;

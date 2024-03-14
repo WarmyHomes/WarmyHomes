@@ -1,9 +1,18 @@
+import Spacer from '@/components/common/misc/spacer'
+import PageHeader from '@/components/common/page-header'
+import RegisterForm from '@/components/register-form/register-form'
+
 import React from 'react'
 
-const RegisterPage = () => {
+const RegisterPage= () => {
   return (
-    <div>RegisterPage</div>
+    <>
+      <PageHeader title={"REGISTER"}/> 
+      <Spacer/>
+      <RegisterForm/>
+      <Spacer/>
+    </>
   )
 }
 
-export default RegisterPage
+export default RegisterPage;
