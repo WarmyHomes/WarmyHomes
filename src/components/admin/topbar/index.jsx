@@ -6,7 +6,10 @@ import { RxHamburgerMenu } from "react-icons/rx";
 
 const AdminTopbar = ({ setIsFullMenu }) => {
   return (
-    <div className="admin-top-bar-container">
+    <div
+      className="admin-top-bar-container"
+      onClick={() => console.log("Hello")}
+    >
       <div
         className="hamburger-icon-container"
         onClick={() => setIsFullMenu((prev) => !prev)}

@@ -12,7 +12,11 @@ const AdminLayout = ({ children }) => {
   return (
     <div className="admin-layout-container">
       <SidebarMenu isFullMenu={isFullMenu} />
-      <div className="admin-layout-right-container">
+      <div
+        className={`admin-layout-right-container ${
+          isFullMenu ? "" : "full-admin-layout"
+        }`}
+      >
         <AdminTopbar setIsFullMenu={setIsFullMenu} />
         <div className="admin-page-container">{children}</div>
       </div>
