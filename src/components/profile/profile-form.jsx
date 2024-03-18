@@ -5,8 +5,6 @@ import "./profile-form.scss";
 
 const ProfileForm = () => {
 
-
-
 	return (
 		<div className="container profile-form">
 			<div className="row justify-content-center ">
