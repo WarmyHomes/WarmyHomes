@@ -1,11 +1,8 @@
-import { Inter } from "next/font/google";
-import BootstrapProvider from "@/helpers/providers/bootstrap-provider";
 import { config } from "@/helpers/config";
 import "@/styles/index.scss";
 import Footer from "@/components/common/footer";
 import Header from "@/components/common/header";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata = {
   title: {
     template: `%s | ${config.project.name}`,
@@ -14,16 +11,12 @@ export const metadata = {
   description: config.project.description,
 };
 
-export default function RootLayout({ children }) {
+export default function UserLayout({ children }) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body>
-        <BootstrapProvider>
-          <Header />
-          {children}
-          <Footer />
-        </BootstrapProvider>
-      </body>
-    </html>
+    <>
+      <Header />
+      {children}
+      <Footer />
+    </>
   );
 }
