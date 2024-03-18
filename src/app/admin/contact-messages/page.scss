@@ -6,6 +6,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-bottom: 20px;
     .search-input-container {
       padding: 10px;
       width: 70%;
@@ -45,7 +46,21 @@
 
     .type-selector-conatiner {
       width: 20%;
+      background-color: rgb(238, 238, 238);
+      border-radius: 10px;
+      padding: 5px 20px 5px 20px;
+      p {
+        margin: 0;
+        font-size: 13px;
+      }
       .type-dropdown {
+        button {
+          background-color: transparent;
+          border: none;
+          padding: 0;
+          width: 100%;
+          text-align: start;
+        }
       }
     }
   }
