@@ -64,4 +64,13 @@
       }
     }
   }
+  .table-actions-container {
+    display: flex;
+    gap: 10px;
+    .action-icon-color {
+      color: $color4;
+      height: 30px;
+      width: 30px;
+    }
+  }
 }
