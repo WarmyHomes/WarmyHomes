@@ -5,6 +5,7 @@ import "./page.scss";
 import { RiSearch2Line } from "react-icons/ri";
 import { Dropdown } from "react-bootstrap";
 import DataTable, { Column } from "@/components/common/table";
+import { AiOutlineDelete } from "react-icons/ai";
 
 const ContactMessagePage = () => {
   const [selected, setSelected] = useState("1");
@@ -16,8 +17,12 @@ const ContactMessagePage = () => {
       content.push({
         id: i,
         name: `Name ${i}`,
-        surname: `Surname ${i}`,
-        username: `username${i}`,
+        email: `hello${i}@gmail.com`,
+        actions: (
+          <div className="table-actions-container">
+            <AiOutlineDelete className="action-icon-color" />
+          </div>
+        ),
       });
     }
 
@@ -70,9 +75,9 @@ const ContactMessagePage = () => {
         pageSize={10}
       >
         <Column index={true} title="#" />
-        <Column title="First Name" field="name" />
-        <Column title="Last Name" field="surname" />
-        <Column title="Username" field="username" />
+        <Column title="Name" field="name" />
+        <Column title="Email" field="email" />
+        <Column title="Actions" field="actions" />
       </DataTable>
     </div>
   );
