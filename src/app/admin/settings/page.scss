@@ -1,0 +1,27 @@
+@import "../../../styles/variables";
+
+.admin-settings-page-container {
+  padding: 60px;
+  .reset-database-container {
+    padding: 30px;
+    background-color: #ffe0e0;
+    display: flex;
+    flex-direction: column;
+
+    p {
+      font-size: 20px;
+    }
+
+    .reset-database-button {
+      height: 45px;
+      width: fit-content;
+      padding-inline: 30px;
+      border: none;
+      background-color: rgb(85, 84, 84);
+      color: white;
+      margin-left: auto;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  }
+}

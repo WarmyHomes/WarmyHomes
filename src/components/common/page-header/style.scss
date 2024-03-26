@@ -1,7 +1,11 @@
 @use "../../../styles/variables" as v;
 
 .page-header {
-  background-image: linear-gradient(90deg, v.$color1, v.$color3);
+  background-image: linear-gradient(
+    90deg,
+    rgb(243, 220, 242),
+    rgb(225, 156, 213)
+  );
   padding: 40px 0;
   text-transform: uppercase;
   border-radius: 25px;
@@ -10,7 +14,7 @@
   padding-inline: 40px;
 
   h1 {
-    font-weight: 300;
+    font-weight: 400;
     color: black;
     margin: 0;
   }
