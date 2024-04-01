@@ -1,0 +1,35 @@
+// page.module.scss
+
+#advertTypeForm {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    margin: 0 auto;
+    margin: 100px auto 0; /* 50 piksel üst boşluk ekleyerek kaydır */
+  }
+  
+  label {
+    margin-bottom: 0.5rem;
+    font-weight: bold; /* Title'ı kalın yap */
+  }
+  
+  input {
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding-inline: 10px;
+    width: 100%;
+    background: transparent;
+  }
+  
+  button {
+    width: 94px;
+    height: 40px;
+    align-self: flex-end; /* Button'u sağ alt köşeye hizala */
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  

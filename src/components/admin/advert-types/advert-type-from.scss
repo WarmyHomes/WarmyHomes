@@ -1,0 +1,39 @@
+// advert-type-from.scss
+@use "../../../styles/variables" as v;
+
+#advertTypeForm {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    margin-left: 100px; /* title sola hizalanacak */
+    margin-right: 50px; /* title sağa 50px boşluk */
+    margin-top: 50px; /* Tüm formu 50 piksel aşağı kaydır */
+    position: relative; /* Konumlandırma için ana formu göreli olarak ayarlayın */
+
+    .form-control {
+        width: calc(100% - 150px); /* inputun genişliği, kenarlarda 7.5px boşluk bırakacak */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 15px; /* inputlar arası boşluk */
+        background-color: #cdd2d669;
+    }
+
+    .button {
+        position: absolute;
+        bottom: -100px;
+        /*inputalanınınaltında*/right:  150px;
+        /*inputalanınınortasınagelecekşekilde*/background-color: v.$color4;
+        color: #fff;
+        border: none;
+        padding: 15px 50px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+
+        &:hover {
+            background-color: v.$color5; /* hover olduğunda renk değişimi */
+        }
+    }
+}
