@@ -20,6 +20,11 @@ export const config = {
 			youtube: "https://youtube.com",
 		},
 	},
+
+	api: {
+		baseUrl: "https://mycampusmates.com/app",
+	},
+	
 	selling: {
 		title:"Let’s Find The Right ",
 		desc:"Selling Option For You",
@@ -33,5 +38,6 @@ export const config = {
 		},
     
 	},
+
 
    };
