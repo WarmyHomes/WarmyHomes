@@ -1,40 +1,39 @@
-"use client"
-import React, { useState } from 'react';
-import "./advert-type-from.scss"
+"use client";
+import React, { useState, useRef } from 'react';
+import "./advert-type-from.scss";
 
+import { initialResponse } from "@/helpers/form-validation";
 
+import { swalAlert } from "@/helpers/swal";
+
+import { useFormState } from "react";
 
 const AdvertTypeFrom = () => {
-  const [state, setState] = useState({
-    errors: {} // İlgili hata durumları burada tutulabilir
-  });
+
+
+ 
+
+
 
   return (
- 
-      <form id="advertTypeForm">
-        <label htmlFor="title">Title:</label>
-
-       
-          <div>
-            <div
-              className={`form-floating  ${
-                state.errors?.name ? 'is-invalid' : ''
-              }`}
-            >
-              <input
-                type="text"
-                className="form-control"
-                id="name"
-                name="title"
-                placeholder="title"
-              />
-            </div>
-            <div className="invalid-feedback">{state.errors?.name}</div>
-          </div>
+    <form
+      id="advertTypeForm">
+      <label htmlFor="title">Title:</label>
+      <div>
+        <div
+        >
+          <input
+            type="text"
+            className="form-control"
+            id="name"
+            name="title"
+            placeholder="title"
+          />
+        </div>
       
-        <button type="submit" className='button'>Create</button>
-      </form>
-    
+      </div>
+      <button type="submit" className='button'>Create</button>
+    </form>
   );
 };
 
