@@ -58,4 +58,58 @@
       }
     }
   }
+
+  .advert-detail-page-main {
+    margin-top: 30px;
+    display: flex;
+    gap: 30px;
+    .advert-detail-page-main-left {
+      width: 65%;
+      .image-schowcase-container {
+        padding: 20px;
+        background-color: rgb(234, 234, 234);
+        border: 1px solid rgb(205, 205, 205);
+        border-radius: 20px;
+        .main-image {
+          width: 100%;
+          height: 440px;
+          object-fit: cover;
+          border-radius: 30px;
+        }
+        .images-container {
+          margin-top: 30px;
+          display: flex;
+          gap: 20px;
+          overflow-x: auto;
+          padding: 10px;
+
+          img {
+            width: 170px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid rgb(180, 180, 180);
+            cursor: pointer;
+            &:hover {
+              box-shadow: 0px 0px 5px 5px rgb(136, 136, 136);
+            }
+          }
+        }
+      }
+
+      .description-container {
+        h5 {
+          margin-bottom: 10px;
+        }
+        margin-top: 30px;
+        padding: 20px;
+        background-color: rgb(234, 234, 234);
+        border: 1px solid rgb(205, 205, 205);
+        border-radius: 20px;
+      }
+    }
+    .advert-detail-page-main-right {
+      width: 34%;
+    }
+  }
 }
