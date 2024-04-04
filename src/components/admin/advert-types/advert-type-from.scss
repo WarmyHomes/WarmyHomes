@@ -8,8 +8,7 @@
     margin-left: 100px; /* title sola hizalanacak */
     margin-right: 50px; /* title sağa 50px boşluk */
     margin-top: 50px; /* Tüm formu 50 piksel aşağı kaydır */
-    position: relative; /* Konumlandırma için ana formu göreli olarak ayarlayın */
-
+  
     .form-control {
         width: calc(100% - 150px); /* inputun genişliği, kenarlarda 7.5px boşluk bırakacak */
         padding: 10px;
@@ -21,9 +20,9 @@
 
     .button {
         position: absolute;
-        bottom: -100px;
-        /*inputalanınınaltında*/right:  150px;
-        /*inputalanınınortasınagelecekşekilde*/background-color: v.$color4;
+        margin-top: 10%;
+       right:  200px;
+        background-color: v.$color4;
         color: #fff;
         border: none;
         padding: 15px 50px;
