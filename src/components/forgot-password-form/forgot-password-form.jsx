@@ -1,9 +1,14 @@
 "use client";
 import "./forgot-password-form.scss";
-
+import { forgotPasswordAction } from "@/actions/user-actions";
+import { useFormState } from "react-dom";
+import SubmitButton from "../common/form-fields/submit-button";
 
 const ForgotPasswordForm = () => {
-
+	const [state, dispatch] = useFormState(
+		forgotPasswordAction,
+		initialResponse
+	);
 
 
 	return (
@@ -12,7 +17,9 @@ const ForgotPasswordForm = () => {
 				<div className="col-md-8 col-lg-6">
 					<div className="card">
 						<div className="card-body">
-							<form>
+
+							<form action={dispatch} noValidate>
+							
 								<div
 									className={`form-floating mb-3 `}
 								>
@@ -24,14 +31,14 @@ const ForgotPasswordForm = () => {
 										
 										
 									/>
-									<label htmlFor="username">
+									<label htmlFor="email">
                                     Email
 									</label>
 									
 								</div>
 
 							
-								<button className="button">Send Reset Code</button>
+								<SubmitButton title="Send Reset Code" />
 							</form>
 						</div>
 					</div>
