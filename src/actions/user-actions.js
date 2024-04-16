@@ -5,7 +5,7 @@ import {
 	getYupErrors,
 	response,
 } from "@/helpers/form-validation";
-import { forgotPassword, register, updateUser } from "@/services/user-service";
+import { changePassword, forgotPassword, register, resetPassword, updateUser } from "@/services/user-service";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import * as Yup from "yup";
@@ -102,3 +102,50 @@ export const forgotPasswordAction = async (prevState, formData) => {
 	redirect(`/forgot-password?msg=${encodeURI("User was updated")}`);
 };
 	
+export const resetPasswordAction = async (prevState, formData) => {
+	try {
+		const fields = convertFormDataToJson(formData);
+
+		FormSchema.validateSync(fields, { abortEarly: false });
+
+		const res = await resetPassword(fields);
+		const data = await res.json();
+
+		if (!res.ok) {
+			return response(false, data?.message, data?.validations);
+		}
+	} catch (err) {
+		if (err instanceof Yup.ValidationError) {
+			return getYupErrors(err.inner);
+		}
+
+		throw err;
+	}
+
+	revalidatePath("/profile");
+	redirect(`/reset-password?msg=${encodeURI("Password was updated")}`);
+};
+
+export const changePasswordAction = async (prevState, formData) => {
+	try {
+		const fields = convertFormDataToJson(formData);
+
+		FormSchema.validateSync(fields, { abortEarly: false });
+
+		const res = await changePassword(fields);
+		const data = await res.json();
+
+		if (!res.ok) {
+			return response(false, data?.message, data?.validations);
+		}
+	} catch (err) {
+		if (err instanceof Yup.ValidationError) {
+			return getYupErrors(err.inner);
+		}
+
+		throw err;
+	}
+
+	revalidatePath("/profile");
+	redirect(`/users/auth?msg=${encodeURI("Password was updated")}`);
+};
