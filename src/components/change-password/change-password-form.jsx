@@ -1,9 +1,14 @@
 "use client";
+import { changePasswordAction } from "@/actions/user-actions";
 import "./change-password-form.scss";
-
+import { useFormState } from "react-dom";
+import SubmitButton from "../common/form-fields/submit-button";
 
 const ChangePasswordForm= () => {
-
+	const [state, dispatch] = useFormState(
+		changePasswordAction,
+		initialResponse
+	);
 
 
 	return (
@@ -63,7 +68,7 @@ const ChangePasswordForm= () => {
 									
 								</div>
                               
-								<button className="button">Update</button>
+								<SubmitButton title="Update" />
 							</form>
 						</div>
 					</div>

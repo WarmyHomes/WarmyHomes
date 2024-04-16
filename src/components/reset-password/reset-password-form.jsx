@@ -1,10 +1,15 @@
 "use client";
+import { resetPasswordAction } from "@/actions/user-actions";
 import "./reset-password.scss";
-
+import { useFormState } from "react-dom";
+import SubmitButton from "../common/form-fields/submit-button";
 
 const ResetPasswordForm= () => {
 
-
+	const [state, dispatch] = useFormState(
+		resetPasswordAction,
+		initialResponse
+	);
 
 	return (
 		<div className="container reset-password-form">
@@ -63,7 +68,7 @@ const ResetPasswordForm= () => {
 									
 								</div>
                               
-								<button className="button">RESET PASSWORD</button>
+								<SubmitButton title="RESET PASSWORD" />
 							</form>
 						</div>
 					</div>

@@ -26,3 +26,18 @@ export const register = async (payload) => {
 			body: JSON.stringify(payload)
 		});
 		 };
+
+		 export const resetPassword = async (payload) => {
+			return fetch(`${API_URL}/reset-password`, {
+				method: "post",
+				headers: await getAuthHeader(),
+				body: JSON.stringify(payload)
+			});
+			 };
+			 export const changePassword = async (payload) => {
+				return fetch(`${API_URL}/users/auth`, {
+					method: "post",
+					headers: await getAuthHeader(),
+					body: JSON.stringify(payload)
+				});
+				 };
