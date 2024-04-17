@@ -6,6 +6,7 @@ import { MdOutlineLocationOn } from "react-icons/md";
 import { CgTag } from "react-icons/cg";
 import { FaRegClock } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa6";
+import GoogleMapComponent from "@/components/common/misc/service-components/GoogleMapComponent";
 
 const AdvertsDetailsPage = () => {
   const images = [
@@ -79,8 +80,88 @@ const AdvertsDetailsPage = () => {
               Lorem Ipsum
             </p>
           </div>
+          <div className="details-container">
+            <h5>Details</h5>
+            <div className="side-by-side-main">
+              <div className="details-left-container">
+                <div className="single-detail-item">
+                  <h6>Size</h6>
+                  <p>120m2</p>
+                </div>
+                <div className="single-detail-item">
+                  <h6>Bathrooms</h6>
+                  <p>2</p>
+                </div>
+                <div className="single-detail-item">
+                  <h6>Bedrooms</h6>
+                  <p>4</p>
+                </div>
+                <div className="single-detail-item">
+                  <h6>Garage</h6>
+                  <p>1</p>
+                </div>
+              </div>
+              <div className="details-right-container">
+                <div className="single-detail-item">
+                  <h6>Year of built</h6>
+                  <p>2022</p>
+                </div>
+                <div className="single-detail-item">
+                  <h6>Furniture</h6>
+                  <p>Yes</p>
+                </div>
+                <div className="single-detail-item">
+                  <h6>Maintenance fee</h6>
+                  <p>$80</p>
+                </div>
+                <div className="single-detail-item">
+                  <h6>Terrace</h6>
+                  <p>2</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="location-details-container">
+            <h5>Location</h5>
+            <div className="location-details">
+              <p>Country: Turkey</p>
+              <p>City: Istanbul</p>
+              <p>District: Eyup</p>
+            </div>
+            <GoogleMapComponent
+              styleOptions={{
+                width: "100%",
+                height: "50vh",
+                padding: "10px",
+                borderRadius: "10px",
+                marginTop: "40px",
+              }}
+            />
+          </div>
         </div>
-        <div className="advert-detail-page-main-right"></div>
+        <div className="advert-detail-page-main-right">
+          <div className="schedule-form-container">
+            <h4>Schedule a tour</h4>
+            <p>Choose your preferred day</p>
+
+            <form>
+              <input
+                type="date"
+                placeholder="Tour date"
+                name="date"
+                id="date"
+              />
+              <input
+                type="time"
+                placeholder="Tour time"
+                name="time"
+                id="time"
+              />
+              <button>Submit a tour request</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   );

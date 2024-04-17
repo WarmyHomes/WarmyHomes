@@ -62,7 +62,7 @@
   .advert-detail-page-main {
     margin-top: 30px;
     display: flex;
-    gap: 30px;
+    justify-content: space-between;
     .advert-detail-page-main-left {
       width: 65%;
       .image-schowcase-container {
@@ -107,9 +107,93 @@
         border: 1px solid rgb(205, 205, 205);
         border-radius: 20px;
       }
+
+      .details-container {
+        margin-top: 30px;
+        padding: 20px;
+        background-color: rgb(234, 234, 234);
+        border: 1px solid rgb(205, 205, 205);
+        border-radius: 20px;
+        .side-by-side-main {
+          margin-top: 30px;
+          display: flex;
+          width: 90%;
+          align-items: center;
+          justify-content: space-between;
+
+          .single-detail-item {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+          }
+
+          .details-left-container {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+          }
+
+          .details-right-container {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+          }
+        }
+      }
+
+      .location-details-container {
+        margin-top: 30px;
+        padding: 20px;
+        background-color: rgb(234, 234, 234);
+        border: 1px solid rgb(205, 205, 205);
+        border-radius: 20px;
+        .location-details {
+          margin-top: 20px;
+          display: flex;
+          gap: 10%;
+          align-items: center;
+        }
+      }
     }
     .advert-detail-page-main-right {
-      width: 34%;
+      width: 30%;
+      .schedule-form-container {
+        padding: 20px;
+        background-color: rgb(234, 234, 234);
+        border: 1px solid rgb(205, 205, 205);
+        border-radius: 20px;
+
+        form {
+          margin-top: 30px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          input {
+            height: 40px;
+            border-radius: 5px;
+            width: 100%;
+            border: 1px solid rgb(233, 233, 233);
+            padding-inline: 10px;
+          }
+          button {
+            height: 40px;
+            border-radius: 5px;
+            width: 100%;
+            border: 2px solid transparent;
+            background-color: $color4;
+            color: white;
+            transition: all 0.3s;
+
+            &:hover {
+              border: 2px solid $color4;
+              background-color: transparent;
+              color: $color4;
+            }
+          }
+        }
+      }
     }
   }
 }
