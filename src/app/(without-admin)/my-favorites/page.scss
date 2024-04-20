@@ -9,6 +9,12 @@
       display: flex;
       justify-content: space-between;
       padding-inline: 60px;
+
+      @media (max-width: 900px) {
+        display: none;
+        visibility: hidden;
+      }
+
       h5 {
         width: 15%;
         text-align: center;

@@ -2,6 +2,11 @@
 
 .contact-messages-list-page-container {
   padding: 60px;
+
+  @media (max-width: 900px) {
+    padding: 30px 10px;
+  }
+
   .list-filters-main-container {
     display: flex;
     align-items: center;
@@ -45,13 +50,14 @@
     }
 
     .type-selector-conatiner {
-      width: 20%;
+      width: 24%;
       background-color: rgb(238, 238, 238);
       border-radius: 10px;
       padding: 5px 20px 5px 20px;
       p {
         margin: 0;
         font-size: 13px;
+        white-space: nowrap;
       }
       .type-dropdown {
         button {

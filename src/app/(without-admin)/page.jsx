@@ -1,4 +1,3 @@
-import Menubar from "@/components/common/header/menubar";
 import Spacer from "@/components/common/misc/spacer";
 import ContactUs from "@/components/home-page/contact-us";
 import ExploreByCities from "@/components/home-page/explore-cities";
@@ -14,7 +13,6 @@ export const metadata = {
 export default function Home() {
   return (
     <>
-      <Menubar />
       <HeroSection />
       <Spacer />
       <ExploreByTypes />

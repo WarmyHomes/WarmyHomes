@@ -7,12 +7,23 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 900px) {
+    padding: 20px;
+    flex-direction: column;
+  }
+
   .column {
     width: 15%;
     text-align: center;
     display: flex;
     justify-content: center;
     font-size: 18px;
+
+    @media (max-width: 900px) {
+      width: 100%;
+    }
+
     .delete-icon {
       color: $color4;
       height: 60px;
@@ -25,6 +36,12 @@
     display: flex;
     align-items: center;
     gap: 20px;
+
+    @media (max-width: 900px) {
+      width: 100%;
+      flex-direction: column;
+    }
+
     .left {
       width: 160px;
       height: 130px;
@@ -36,6 +53,9 @@
       }
     }
     .right {
+      @media (max-width: 900px) {
+        text-align: center;
+      }
       p,
       h5 {
         margin-bottom: 5px;
