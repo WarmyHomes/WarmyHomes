@@ -10,32 +10,58 @@
     display: flex;
     align-items: center;
     gap: 20%;
-    .header-nav {
-      ul {
-        list-style: none;
-        display: flex;
-        align-items: center;
-        gap: 30px;
-        margin: 0;
-        li {
-          a {
-            color: black;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration:none ;
-          }
+  }
+}
+
+.header-nav {
+  @media (max-width: 900px) {
+    margin-block: 30px;
+  }
+  ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin: 0;
+
+    @media (max-width: 900px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    li {
+      a {
+        color: black;
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
+        @media (max-width: 900px) {
+          color: white;
         }
+      }
     }
   }
-  }
+}
+
+.mobile-menu-background {
+  background-color: #474848;
+}
+
 .header-right-container {
   display: flex;
   align-items: center;
   gap: 40px;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+
   .login-signup-buttons {
     display: flex;
     align-items: center;
     gap: 5px;
+
     i {
       font-size: 18px;
     }
@@ -48,32 +74,50 @@
         color: black;
         font-size: 16px;
         font-weight: 600;
-        text-decoration:none ;
-      }
-    }
-  }
-  .add-property-button {
-      background-color: transparent;
-      cursor: pointer;
-      border: none;
-
-      a {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        height: 40px;
-        border: 1px solid purple;
-        padding-inline: 30px 10px;
-        border-radius: 30px;
-        color: black;
-        font-size: 16px;
-        font-weight: 600;
-        text-decoration:none ;
-        i {
-          font-size: 18px;
+        text-decoration: none;
+        @media (max-width: 900px) {
+          color: white;
         }
       }
     }
   }
+  .add-property-button {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      height: 40px;
+      border: 1px solid purple;
+      padding-inline: 30px 10px;
+      border-radius: 30px;
+      color: black;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      @media (max-width: 900px) {
+        color: white;
+      }
+      i {
+        font-size: 18px;
+      }
+    }
   }
 
+  .burger-icon-container {
+    cursor: pointer;
+
+    @media (min-width: 900px) {
+      display: none;
+      visibility: hidden;
+    }
+
+    .burger-menu-icon {
+      height: 30px;
+      width: 30px;
+    }
+  }
+}
