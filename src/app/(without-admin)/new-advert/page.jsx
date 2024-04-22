@@ -9,7 +9,7 @@ const page = () => {
       <PageHeader title={"New Advert"}/>
       <Spacer></Spacer>
       <AddNewAdvert></AddNewAdvert>
-      <Spacer></Spacer>
+      <Spacer height={450}></Spacer>
     </>
   )
 }

@@ -1,11 +1,98 @@
 @use "../../styles/variables" as v;
+.create-advert-form {
+  .add-advert-row {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    flex-wrap: wrap;
+    color: v.$color8;
+    background-color: v.$color9;
 
-
-.add-advert-row{
-    h2{
-        font-size: 25px;
-        color: brown;
-        align-items: center;
-        text-align: center;
+    .form-control {
+      background-color: rgb(227, 228, 227);
     }
+    .form-select {
+      background-color: rgb(227, 228, 227);
+    }
+
+    .form-control:focus + .form-label {
+    }
+
+    .header {
+      text-align: center;
+      h2 {
+        position: relative;
+        right: 17%;
+      }
+    }
+
+    button {
+      color: v.$color9;
+      background-color: v.$color4;
+      margin-left: 10px;
+      border: none;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: flex-end;
+      margin-left: 10px;
+      button {
+        background-color: v.$color6;
+        color: v.$color8;
+      }
+    }
+
+    .create-button {
+      padding: 10px 70px;
+      display: flex;
+      float: right;
+      margin-right: 20px;
+      margin-bottom: 5px;
+
+      button {
+        padding: 10px 80px;
+        &:hover {
+          background-color: v.$color3;
+          color: v.$color1;
+        }
+      }
+    }
+
+    .image-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      ul {
+        display: flex;
+        list-style: none;
+        padding: 0;
+
+        li {
+          flex: 1;
+
+          img {
+            width: 95%;
+          }
+        }
+      }
+
+      .card:last-child {
+        margin-right: 0; /* Son görüntüye sağ kenarda boşluk bırakmayı durdur */
+      }
+    }
+
+    .is-invalid{
+      .form-control{
+        border-bottom: 1px solid rgba(255,0,0,0.356);
+      }
+
+      label,
+      .input-group-text{
+        color: rgba(255,0,0,0.356);
+      }
+    }
+
+  }
 }
