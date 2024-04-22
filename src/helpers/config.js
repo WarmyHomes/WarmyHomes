@@ -22,7 +22,7 @@ export const config = {
 	},
 
 	api: {
-		baseUrl: "https://mycampusmates.com/app",
+		baseUrl: "http://localhost:3001"
 	},
 	
 	selling: {
