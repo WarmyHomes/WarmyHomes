@@ -1,21 +1,12 @@
-// Page.jsx
+import AdvertTypeList from '@/components/admin/advert-types/advert-type-list'
+import React from 'react'
 
-import AdvertTypeList from '@/components/admin/advert-types/advert-type-list';
-import { getAllAdvertType } from '@/services/advertType-servise';
-import React from 'react';
-
-
-const AdvertType = async ({ searchParams }) => {
-	const { page } = searchParams;
-
-	const res = await getAllAdvertType(page);
-	const data = await res.json();
-	if (!res.ok) throw new Error(data.message);
+const page = () => {
   return (
-          <>
-          <AdvertTypeList data={data}/>
-          </>
-  );
-};
+    <>
+      <AdvertTypeList/>
+    </>
+  )
+}
 
-export default AdvertType;
+export default page

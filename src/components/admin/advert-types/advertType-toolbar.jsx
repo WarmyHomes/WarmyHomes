@@ -1,5 +1,5 @@
 "use client";
-import { deleteManagerAction } from "@/actions/manager-actions";
+import { deleteManagerAction } from "@/actions/advert-type-action";
 import { swalAlert, swalConfirm } from "@/helpers/swal";
 import Link from "next/link";
 import React from "react";

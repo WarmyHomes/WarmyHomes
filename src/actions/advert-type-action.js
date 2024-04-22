@@ -16,30 +16,7 @@ import { redirect } from "next/navigation";
 import * as Yup from "yup";
 
 const FormSchema = Yup.object({
-	name: Yup.string().required("Required"),
-	surname: Yup.string().required("Required"),
-	gender: Yup.string()
-		.oneOf(getGenderValues(), "Invalid gender")
-		.required("Required"),
-	birthPlace: Yup.string().required("Required"),
-	birthDay: Yup.date().max(new Date(), 'Invalid birthdate').required("Required"),
-	phoneNumber: Yup.string()
-		.matches(/\d{3}-\d{3}-\d{4}/, "Invalid phone number")
-		.required("Required"),
-	ssn: Yup.string()
-		.matches(/\d{3}-\d{2}-\d{4}/, "Invalid ssn")
-		.required("Required"),
-	username: Yup.string().required("Required"),
-	password: Yup.string()
-		.min(8, "Must be at least 8 chars")
-		.matches(/[a-z]+/, "At least one lowercase")
-		.matches(/[A-Z]+/, "At least one uppercase")
-		.matches(/\d+/, "At least one number")
-		.required("Required"),
-	confirmPassword: Yup.string().oneOf(
-		[Yup.ref("password")],
-		"Password fields don't match"
-	),
+	title: Yup.string().required("Required")
 });
 
 export const createAdvertTypeAction = async (prevState, formData) => {
