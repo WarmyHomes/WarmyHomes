@@ -68,7 +68,7 @@ export const updateAdvertTypeAction = async (prevState, formData) => {
 };
 
 export const deleteAdvertTypeAction = async (id) => {
-	if (!id) throw new Error("id is missing");
+	if (!id) throw new Error("id is enes");
 
 	const res = await deleteAdvertType(id);
 	const data = await res.json();
