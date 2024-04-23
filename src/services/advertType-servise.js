@@ -8,7 +8,7 @@ export const getAllAdvertType = async (payload) => {
 	return fetch(`${API_URL}/advert-types`, {
 		method: "get",
 		headers: await getAuthHeader(),
-		body: JSON.stringify(payload)
+	
 	});
 
       };

@@ -39,8 +39,8 @@ export const createAdvertTypeAction = async (prevState, formData) => {
 		throw err;
 	}
 
-	revalidatePath("/dashboard/advert-types");
-	redirect(`/dashboard/advert-types?msg=${encodeURI("advert-types was created")}`);
+	revalidatePath("/admin/advert-types");
+	redirect(`/admin/advert-types?msg=${encodeURI("advert-types was created")}`);
 };
 
 export const updateAdvertTypeAction = async (prevState, formData) => {
@@ -63,8 +63,8 @@ export const updateAdvertTypeAction = async (prevState, formData) => {
 		throw err;
 	}
 
-	revalidatePath("/dashboard/advert-types");
-	redirect(`/dashboard/advert-types?msg=${encodeURI("advert-types was updated")}`);
+	revalidatePath("/admin/advert-types");
+	redirect(`/admin/advert-types?msg=${encodeURI("advert-types was updated")}`);
 };
 
 export const deleteAdvertTypeAction = async (id) => {
@@ -77,6 +77,6 @@ export const deleteAdvertTypeAction = async (id) => {
 		throw new Error(data.message);
 	}
 
-	revalidatePath("/dashboard/advert-types");
-	redirect(`/dashboard/advert-types?msg=${encodeURI("advert-types was deleted")}`);
+	revalidatePath("/admin/advert-types");
+	redirect(`/admin/advert-types?msg=${encodeURI("advert-types was deleted")}`);
 };

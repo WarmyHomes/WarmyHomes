@@ -3,7 +3,12 @@ import React from 'react';
 import Link from "next/link";
 import DataTable, { Column } from '@/components/common/form-fields/data-table';
 
-const AdvertTypeList = () => {
+const AdvertTypeList = ({ data }) => {
+
+  const { title } = data;
+  console.log(data)
+  console.log(title)
+
   return (
     <>
       <div className="container">
@@ -16,7 +21,7 @@ const AdvertTypeList = () => {
 			</Link>
       <DataTable 
       title="Custom Table" 
-      dataSource={[]} 
+      dataSource={data} 
       dataKey="id"
        pagination={false}>
         
