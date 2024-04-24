@@ -13,11 +13,12 @@ export const getAllAdvertType = async (payload) => {
 
       };
 
-	  export const getAdvertTypeById = async (payload) => {
+	  export const getAdvertTypeById = async (id) => {
+		console.log(id)
 		return fetch(`${API_URL}/advert-types/${id}`, {
-			method: "get",
+		
 			headers: await getAuthHeader(),
-			body: JSON.stringify(payload)
+			
 		});
 	};
 
