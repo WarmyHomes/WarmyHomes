@@ -63,6 +63,9 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      background-color: rgb(227, 228, 227);
+      height: 100%;
+      margin: 3px;
 
       ul {
         display: flex;
@@ -74,6 +77,13 @@
 
           img {
             width: 95%;
+            margin: 10px;
+            &:first-child{
+              padding-left: 15px;
+            }
+            &:last-child{
+              padding-right: 15px;
+            }
           }
         }
       }
