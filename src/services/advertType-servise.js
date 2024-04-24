@@ -30,11 +30,11 @@ export const getAllAdvertType = async (payload) => {
 
 
 		 };
-		 export const deleteAdvertType = async (payload) => {
-			const { id } = payload; // payload içinden id değerini al
+		 export const deleteAdvertType = async (id) => {
+			
 			return fetch(`${API_URL}/advert-types/${id}`, {
 			  method: "delete",
-			  headers: await getAuthHeader(),
+			  headers: await getAuthHeader()
 			
 			});
 		  };
