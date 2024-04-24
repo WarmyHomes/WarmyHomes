@@ -2,8 +2,15 @@
 import React from 'react';
 import Link from "next/link";
 import DataTable, { Column } from '@/components/common/form-fields/data-table';
+import AdvertTypeToolbar from './advertType-toolbar';
 
-const AdvertTypeList = () => {
+const AdvertTypeList = ({ data }) => {
+
+  const handleToolbar = (row) => {
+		return <AdvertTypeToolbar row={row} />;
+	};
+ 
+
   return (
     <>
       <div className="container">
@@ -16,12 +23,13 @@ const AdvertTypeList = () => {
 			</Link>
       <DataTable 
       title="Custom Table" 
-      dataSource={[]} 
+      dataSource={data} 
       dataKey="id"
        pagination={false}>
         
       <Column index={true} title="#" />
       <Column title="Title" field="title" />
+      <Column title="Tools" template={handleToolbar} />
     </DataTable>
       </div>
     </>

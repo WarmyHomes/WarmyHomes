@@ -8,7 +8,7 @@ export const getAllAdvertType = async (payload) => {
 	return fetch(`${API_URL}/advert-types`, {
 		method: "get",
 		headers: await getAuthHeader(),
-		body: JSON.stringify(payload)
+	
 	});
 
       };
@@ -27,15 +27,18 @@ export const getAllAdvertType = async (payload) => {
 			headers: await getAuthHeader(),
 			body: JSON.stringify(payload)
 		});
-		 };
 
-  export const deleteAdvertType = async (payload) => {
-        return fetch(`${API_URL}/advert-types/${id}`, {
-           method: "delete",
-          headers: await getAuthHeader(),
-          body: JSON.stringify(payload)
-     });
-   };
+
+		 };
+		 export const deleteAdvertType = async (id) => {
+			
+			return fetch(`${API_URL}/advert-types/${id}`, {
+			  method: "delete",
+			  headers: await getAuthHeader()
+			
+			});
+		  };
+		  
 
    export const updateAdvertType = async (payload) => {
     return fetch(`${API_URL}/advert-types/${payload.userId}`, {

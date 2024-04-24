@@ -22,7 +22,7 @@ export const config = {
 	},
 
 	api: {
-		baseUrl: "https://66278205b625bf088c0897dc.mockapi.io"
+		baseUrl: "http://localhost:3001"
 	},
 	
 	selling: {
