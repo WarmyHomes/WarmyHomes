@@ -7,13 +7,18 @@ import MobileHeader from "./MobileHeader";
 import { useState } from "react";
 import Menu from "./Menu";
 import { useMediaQuery } from "react-responsive";
+import UserMenu from "../user-menu";
+
+const isLoggedIn = true;
 
 export default function Header() {
   const isMobile = useMediaQuery({ query: "(max-width: 900px)" });
 
   const [show, setShow] = useState(false);
-
   const toggle = () => setShow(!show);
+
+  const [showUserMenu, setShowUserMenu] = useState(false);
+  const toggleUserMenu = () => setShowUserMenu(!showUserMenu);
 
   return (
     <header className="header-main-container">
@@ -25,15 +30,26 @@ export default function Header() {
       </div>
       <div className="header-right-container">
         {!isMobile && (
-          <div className="login-signup-buttons">
+          <div
+            className={`login-signup-buttons ${
+              isLoggedIn ? "cursor-pointer" : ""
+            }`}
+            onClick={isLoggedIn ? toggleUserMenu : () => {}}
+          >
             <i className="bi bi-person"></i>
-            <button>
-              <Link href={"/"}>Login</Link>
-            </button>
-            <span>/</span>
-            <button>
-              <Link href={"/"}>Register</Link>
-            </button>
+            {isLoggedIn ? (
+              <p>Hello, Ali Gel 👋</p>
+            ) : (
+              <>
+                <button>
+                  <Link href={"/"}>Login</Link>
+                </button>
+                <span>/</span>
+                <button>
+                  <Link href={"/"}>Register</Link>
+                </button>
+              </>
+            )}
           </div>
         )}
         {!isMobile && (
@@ -48,21 +64,7 @@ export default function Header() {
         </div>
       </div>
       {isMobile && <MobileHeader show={show} toggle={toggle} />}
+      <UserMenu show={showUserMenu} toggle={toggleUserMenu} />
     </header>
   );
-  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
