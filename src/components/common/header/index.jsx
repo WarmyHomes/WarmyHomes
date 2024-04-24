@@ -25,7 +25,6 @@ export default function Header() {
         {!isMobile && <Menu />}
       </div>
       <div className="header-right-container">
-<<<<<<< Updated upstream
         {!isMobile && (
           <div className="login-signup-buttons">
             <i className="bi bi-person"></i>
@@ -43,16 +42,6 @@ export default function Header() {
             <Link href={"/"}>
               Add Property <img width={35} height={35} src="/icons/arrow.svg" />
             </Link>
-=======
-        <div className="login-signup-buttons">
-          <i className="bi bi-person"></i>
-          <button>
-            <Link href={"/login"}>Login</Link>
-          </button>
-          <span>/</span>
-          <button>
-            <Link href={"/register"}>Register</Link>
->>>>>>> Stashed changes
           </button>
         )}
         <div className="burger-icon-container">
@@ -63,3 +52,17 @@ export default function Header() {
     </header>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
