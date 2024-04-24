@@ -41,3 +41,19 @@ export const register = async (payload) => {
 					body: JSON.stringify(payload)
 				});
 				 };
+				 export const deleteUser = async (payload) => {
+					return fetch(`${API_URL}/users/${id}/admin`, {
+						method: "delete",
+						headers: await getAuthHeader(),
+						body: JSON.stringify(payload)
+					});
+					 };
+
+					 export const getAllUsers = async (payload) => {
+						return fetch(`${API_URL}/users/admin`, {
+							method: "get",
+							headers: await getAuthHeader(),
+							body: JSON.stringify(payload)
+						});
+					
+						  };

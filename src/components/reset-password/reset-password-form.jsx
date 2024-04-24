@@ -3,7 +3,7 @@ import { resetPasswordAction } from "@/actions/user-actions";
 import "./reset-password.scss";
 import { useFormState } from "react-dom";
 import SubmitButton from "../common/form-fields/submit-button";
-
+import { initialResponse} from "@/helpers/form-validation";
 const ResetPasswordForm= () => {
 
 	const [state, dispatch] = useFormState(

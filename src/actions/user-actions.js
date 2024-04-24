@@ -5,7 +5,7 @@ import {
 	getYupErrors,
 	response,
 } from "@/helpers/form-validation";
-import { changePassword, forgotPassword, register, resetPassword, updateUser } from "@/services/user-service";
+import { changePassword, deleteUser, forgotPassword, register, resetPassword, updateUser } from "@/services/user-service";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import * as Yup from "yup";
@@ -148,4 +148,18 @@ export const changePasswordAction = async (prevState, formData) => {
 
 	revalidatePath("/profile");
 	redirect(`/users/auth?msg=${encodeURI("Password was updated")}`);
+};
+
+export const deleteUserAction = async (id) => {
+	if (!id) throw new Error("id is missing");
+
+	const res = await deleteUser(id);
+	const data = await res.json();
+
+	if (!res.ok) {
+		throw new Error(data.message);
+	}
+
+	revalidatePath("/dashboard/advert-types");
+	redirect(`/dashboard/advert-types?msg=${encodeURI("advert-types was deleted")}`);
 };

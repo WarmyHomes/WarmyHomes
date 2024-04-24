@@ -3,6 +3,7 @@ import { changePasswordAction } from "@/actions/user-actions";
 import "./change-password-form.scss";
 import { useFormState } from "react-dom";
 import SubmitButton from "../common/form-fields/submit-button";
+import { initialResponse} from "@/helpers/form-validation";
 
 const ChangePasswordForm= () => {
 	const [state, dispatch] = useFormState(
