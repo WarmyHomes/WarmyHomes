@@ -78,5 +78,5 @@ export const deleteAdvertTypeAction = async (id) => {
 	}
 
 	revalidatePath("/admin/advert-types");
-	redirect(`/admin/advert-types?msg=${encodeURI("advert-types was deleted")}`);
+	redirect(`/admin/advert-types?msg=${encodeURI("advert-types was ")}`);
 };
