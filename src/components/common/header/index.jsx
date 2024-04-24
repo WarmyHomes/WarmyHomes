@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import "./Header.scss";
 import Link from "next/link";
@@ -51,6 +50,7 @@ export default function Header() {
       {isMobile && <MobileHeader show={show} toggle={toggle} />}
     </header>
   );
+  
 }
 
 
