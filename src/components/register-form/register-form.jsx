@@ -1,14 +1,14 @@
 "use client";
-import { createAdminAction } from "@/actions/admin-actions";
+
 import Link from "next/link";
 import "./register-form.scss";
 import { initialResponse} from "@/helpers/form-validation";
 import { useFormState } from "react-dom";
 import SubmitButton from "../common/form-fields/submit-button";
-import InputMask from "react-input-mask-next";
+import { createRegisterAction } from "@/actions/user-actions";
 
 const RegisterForm = () => {
-	const [state, dispatch] = useFormState(createAdminAction, initialResponse);
+	const [state, dispatch] = useFormState(createRegisterAction, initialResponse);
 
 
 	return (
@@ -51,22 +51,24 @@ const RegisterForm = () => {
 									
 								</div>
 
-
 								<div
-									className={`form-floating mb-3`}
+									className={`form-floating mb-3 `}
 								>
-									<InputMask
-										
+									<input
+										type="text"
+										className="form-control"
 										id="phone"
 										name="phone"
-										placeholder="Phone"
-										mask="999-999-9999"
+										
+										
 									/>
-									<label htmlFor="phone">	
+									<label htmlFor="phone">
                                     Phone
 									</label>
 									
 								</div>
+
+								
                                 <div
 									className={`form-floating mb-3 `}
 								>
