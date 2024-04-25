@@ -13,7 +13,7 @@ const page = async ({ params }) => {
 
   return (
     <div>
-		<AdvertTypeEdit data={data.object}/>
+		<AdvertTypeEdit data={data}/>
 	</div>
   )
 }

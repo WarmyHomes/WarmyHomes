@@ -41,8 +41,9 @@ export const getAllAdvertType = async (payload) => {
 		  };
 		  
 
-   export const updateAdvertType = async (payload) => {
-    return fetch(`${API_URL}/advert-types/${payload.userId}`, {
+   export const updateAdvertType = async (id) => {
+	console.log(id)
+    return fetch(`${API_URL}/advert-types/${id}`, {
        method: "put",
       headers: await getAuthHeader(),
       body: JSON.stringify(payload)
