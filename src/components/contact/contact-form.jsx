@@ -1,8 +1,28 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "./contact-form.scss";
 import ReCAPTCHA from "react-google-recaptcha";
+import { useFormState } from "react-dom";
+import { initialResponse } from "@/helpers/form-validation";
+import { createContactUsQueryAction } from "@/actions/contact-us-queries-actions";
+import { swalAlert } from "@/helpers/swal";
 
 const ContactForm = () => {
+  const [state, dispatch] = useFormState(
+    createContactUsQueryAction,
+    initialResponse
+  );
+  const formRef = useRef(null);
+
+  console.log(state, "state");
+
+  if (state?.message) {
+    if (state?.success) {
+      formRef?.current?.reset();
+      swalAlert(state?.message, "success");
+    } else {
+      swalAlert(state?.message, "error");
+    }
+  }
   const handleRecaptchaChange = (value) => {
     console.log("reCAPTCHA value:", value);
   };
@@ -10,7 +30,12 @@ const ContactForm = () => {
   return (
     <div className="contact-us-form-main-container">
       <h3>Have a question? Get in touch!</h3>
-      <form className="contact-us-form">
+      <form
+        className="contact-us-form"
+        action={dispatch}
+        noValidate
+        ref={formRef}
+      >
         <div className="form-input-container">
           <label>First Name</label>
           <input
@@ -20,6 +45,7 @@ const ContactForm = () => {
             placeholder="First Name"
             required
           />
+          <div className="invalid-feedback">{state?.errors?.firstName}</div>
         </div>
         <div className="form-input-container">
           <label>Last Name</label>
@@ -30,6 +56,7 @@ const ContactForm = () => {
             placeholder="Last Name"
             required
           />
+          <div className="invalid-feedback">{state?.errors?.lastName}</div>
         </div>
         <div className="form-input-container">
           <label>Email</label>
@@ -40,6 +67,7 @@ const ContactForm = () => {
             placeholder="Email"
             required
           />
+          <div className="invalid-feedback">{state?.errors?.email}</div>
         </div>
         <div className="form-input-container">
           <label>Message</label>
@@ -49,6 +77,7 @@ const ContactForm = () => {
             placeholder="Message here..."
             required
           />
+          <div className="invalid-feedback">{state?.errors?.message}</div>
         </div>
 
         <div className="form-recaptcha-container">
