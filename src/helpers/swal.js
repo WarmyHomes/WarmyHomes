@@ -42,4 +42,5 @@ export const swalToast = (title, icon = "success") => {
 		icon,
 		title,
 	});
+
 };
