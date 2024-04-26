@@ -90,7 +90,7 @@ const RegisterForm = () => {
 									className={`form-floating mb-3 `}
 								>
 									<input
-										type="number"
+										type="text"
 										className="form-control"
 										id="Password"
 										name="Password"
@@ -107,7 +107,7 @@ const RegisterForm = () => {
 									className={`form-floating mb-3 `}
 								>
 									<input
-										type="number"
+										type="text"
 										className="form-control"
 										id="Confirm Password"
 										name="Confirm Password"

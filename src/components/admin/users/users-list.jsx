@@ -5,8 +5,8 @@ import DataTable, { Column } from "@/components/common/form-fields/data-table";
 
 const UsersList = ({data}) => {
 
-const {title} = 
-data;
+ const { content, totalPages, number, size } = data;
+
 const handleToolbar = (row) => {
     return <UsersToolbar row={row} />;
   };
@@ -16,11 +16,15 @@ const handleToolbar = (row) => {
     <h2>Users List</h2>
     
     <DataTable
-      title="id"
-      dataSource={[]} 
-      dataKey="id" 
-      pagination={false} 
+      title="user List"
+				dataSource={content}
+				dataKey="id"
+				pagination={true}
+				totalPages={totalPages}
+				pageNumber={number}
+				pageSize={size}
     >
+    
       {/* Sütunlar */}
       
       <Column title="Name" field="name" /> {/* Başlık sütunu */}
