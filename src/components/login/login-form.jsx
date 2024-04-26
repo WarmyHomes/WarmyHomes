@@ -17,7 +17,7 @@ const [state,dispatch]= useFormState(loginAction,initialResponse)
 					<div className="card">
 						<div className="card-body">
 							<form action={dispatch} noValidate >
-							
+								
 							<div
 									className={`form-floating mb-3 ${
 										state?.errors?.email
@@ -31,6 +31,7 @@ const [state,dispatch]= useFormState(loginAction,initialResponse)
 										id="email"
 										name="email"
 										placeholder="Enter your email"
+										
 										
 									/>
 									<label htmlFor="email">
