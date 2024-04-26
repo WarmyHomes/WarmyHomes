@@ -10,6 +10,8 @@ const config = {
 				const res = await login(credentials);
 				const data = await res.json();
 
+				console.log("Data",data)
+console.log("first")
 				if (!res.ok) return null;
 
 				// Backend den gelen data object i daha anlasilir hale geitirildi
@@ -25,9 +27,11 @@ const config = {
 	callbacks: {
 		// middleware in kapsama alanina giren sayfalara yapilan isteklerden hemen once calisir
 		authorized({ auth, request: { nextUrl } }) {
+
+			console.log("aUTH",auth)
 			const isLoggedIn = !!auth?.user;
 			const isOnLoginPage = nextUrl.pathname.startsWith("/login");
-			const isOnDashboardPage = nextUrl.pathname.startsWith("/dashboard");
+			const isOnDashboardPage = nextUrl.pathname.startsWith("/admin");
 
 			//console.log(`isLoggedIn:`, isLoggedIn)
 			//console.log(`isOnLoginPage:`, isOnLoginPage)
@@ -44,7 +48,7 @@ const config = {
 
 
 				} else if (isOnLoginPage) {
-					return Response.redirect(new URL("/dashboard", nextUrl));
+					return Response.redirect(new URL("/admin", nextUrl));
 				}
 			} else if (isOnDashboardPage) {
 				// return false kullniciyi login sayfasina gonderir
