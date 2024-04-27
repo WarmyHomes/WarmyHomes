@@ -43,6 +43,8 @@ console.log("first")
 						nextUrl.pathname
 					);
 
+						console.log(isAuth)
+
 					if(isAuth) return true;
 					return Response.redirect(new URL("/unauthorized", nextUrl));
 
