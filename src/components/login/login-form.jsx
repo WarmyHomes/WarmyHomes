@@ -3,6 +3,7 @@ import { loginAction } from "@/actions/auth-actions";
 import "./login-form.scss";
 import { useFormState } from "react-dom";
 import { initialResponse } from "@/helpers/form-validation";
+import SubmitButton from "../common/form-fields/submit-button";
 
 const LoginForm = () => {
 
@@ -16,7 +17,7 @@ const [state,dispatch]= useFormState(loginAction,initialResponse)
 					<div className="card">
 						<div className="card-body">
 							<form action={dispatch} noValidate >
-							
+								
 							<div
 									className={`form-floating mb-3 ${
 										state?.errors?.email
@@ -30,6 +31,7 @@ const [state,dispatch]= useFormState(loginAction,initialResponse)
 										id="email"
 										name="email"
 										placeholder="Enter your email"
+										
 										
 									/>
 									<label htmlFor="email">
@@ -64,7 +66,7 @@ const [state,dispatch]= useFormState(loginAction,initialResponse)
 								</div>
 								
                                 <h6>Forgot password?</h6>
-								<button className="button">Login</button>
+								<SubmitButton className="button">Login</SubmitButton>
 							</form>
 						</div>
 					</div>

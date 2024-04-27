@@ -4,51 +4,65 @@ import CancelButton from "@/components/common/form-fields/cancel-button";
 import SubmitButton from "@/components/common/form-fields/submit-button";
 import { initialResponse, isInvalid } from "@/helpers/form-validation";
 import InputMask from "react-input-mask-next";
+import { useFormState } from "react-dom";
+import { updateAdvertType } from '@/services/advertType-servise';
 
 const AdvertTypeEdit = ({ data }) => {
-	const [state, setState] = useState({
-		errors: {} // Hata durumlarını tutmak için kullanılabilir
-	});
+	
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		// Form submit işlemleri burada yapılacak
-	};
+    // Form durumunu ve işlemlerini yönetmek için useFormState kancını kullanıyoruz
+    const [state, dispatch] = useFormState(
+        updateAdvertType, // form gönderme işlemlerini yapan eylem (action)
+        initialResponse // form durumunun başlangıç değeri
+    );
 
-	return (
-		<div className="container">
-			<div className="card">
-				<div className="card-body">
-					<div className="card-title">Edit</div>
-					<form onSubmit={handleSubmit}>
-						<div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
-							<div className="col">
-								<label htmlFor="name">Title:</label>
-								<div className="form-floating mb-3">
-									<input
-										type="text"
-										className={`form-control ${isInvalid(
-											state.errors?.name
-										)}`}
-										id="name"
-										name="title"
-										placeholder="Title"
-									/>
-									<label htmlFor="name">Title</label>
-									<div className="invalid-feedback">{state.errors?.title}</div>
-								</div>
-							</div>
-							{/* Diğer input alanlarını buraya ekleyebilirsiniz */}
-						</div>
-						<div className="d-flex align-items-center justify-content-center gap-3">
-							<CancelButton />
-							<SubmitButton title="Create" />
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	);
+
+
+    return (
+        <div className="container">
+            <div className="card">
+                <div className="card-body">
+                    <div className="card-title">Edit</div>
+
+                    {state?.message ? (
+                        <div className="alert alert-danger">
+                            {state.message}
+                        </div>
+                    ) : null}
+
+                    <form action={dispatch} noValidate>
+                        <input type="hidden" name="userId" value={data.id} />
+                        <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
+                            <div className="col">
+                                <div className="form-floating mb-3">
+                                    <input
+                                        type="text"
+                                        className={`form-control ${isInvalid(
+                                            state.errors?.name
+                                        )}`}
+                                        id="title"
+                                        name="title"
+                                        placeholder="title"
+                                        defaultValue={data.title}
+                                    />
+                                    <label htmlFor="title">First Name</label>
+                                    <div className="invalid-feedback">
+                                        {state.errors?.name}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="d-flex align-items-center justify-content-center gap-3">
+                            <CancelButton />
+                            <SubmitButton title="Update" />
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    );
 };
 
 export default AdvertTypeEdit;

@@ -10,24 +10,28 @@ const config = {
         const res = await login(credentials);
         const data = await res.json();
 
-        if (!res.ok) return null;
+				console.log("Data",data)
+console.log("first")
+				if (!res.ok) return null;
 
-        // Backend den gelen data object i daha anlasilir hale geitirildi
-        const payload = {
-          user: { ...data },
-          accessToken: data.token.split(" ")[1],
-        };
-        delete payload.user.token;
-        return payload;
-      },
-    }),
-  ],
-  callbacks: {
-    // middleware in kapsama alanina giren sayfalara yapilan isteklerden hemen once calisir
-    authorized({ auth, request: { nextUrl } }) {
-      const isLoggedIn = !!auth?.user;
-      const isOnLoginPage = nextUrl.pathname.startsWith("/login");
-      const isOnDashboardPage = nextUrl.pathname.startsWith("/dashboard");
+				// Backend den gelen data object i daha anlasilir hale geitirildi
+				const payload = {
+					user: { ...data },
+					accessToken: data.token.split(" ")[1],
+				};
+				delete payload.user.token;
+				return payload;
+			},
+		}),
+	],
+	callbacks: {
+		// middleware in kapsama alanina giren sayfalara yapilan isteklerden hemen once calisir
+		authorized({ auth, request: { nextUrl } }) {
+
+			console.log("aUTH",auth)
+			const isLoggedIn = !!auth?.user;
+			const isOnLoginPage = nextUrl.pathname.startsWith("/login");
+			const isOnDashboardPage = nextUrl.pathname.startsWith("/admin");
 
       //console.log(`isLoggedIn:`, isLoggedIn)
       //console.log(`isOnLoginPage:`, isOnLoginPage)
@@ -49,30 +53,35 @@ const config = {
       //console.log("AUTH",auth)
       //console.log(auth?.user ? "Login olmus" : "login olmamis")
       return true;
-    },
+    }
 
-    //JWT datasina ihtiyac duyan her route icin bu callback cagrilir
-    async jwt({ token, user }) {
-      return { ...user, ...token };
-    },
-    //Session datasina ihtiyac duyan her route icin bu callback cagrilir
-    async session({ session, token }) {
-      session.accessToken = token.accessToken;
-      session.user = token.user;
-      return session;
-    },
-  },
-  pages: {
-    signIn: "/login",
-  },
+				} else if (isOnLoginPage) {
+					return Response.redirect(new URL("/admin", nextUrl));
+				}
+			} else if (isOnDashboardPage) {
+				// return false kullniciyi login sayfasina gonderir
+				return false;
+			}
+
+			//console.log("AUTH",auth)
+			//console.log(auth?.user ? "Login olmus" : "login olmamis")
+			return true;
+		},
+
+		//JWT datasina ihtiyac duyan her route icin bu callback cagrilir
+		async jwt({ token, user }) {
+			return { ...user, ...token };
+		},
+		//Session datasina ihtiyac duyan her route icin bu callback cagrilir
+		async session({ session, token }) {
+			session.accessToken = token.accessToken;
+			session.user = token.user;
+			return session;
+		},
+	},
+	pages: {
+		signIn: "/login",
+	},
 };
 
 export const { handlers, auth, signIn, signOut } = NextAuth(config);
-
-export const getAuthHeader = async () => {
-  const session = await auth.getSession();
-  return {
-    Authorization: `Bearer ${session?.accessToken}`,
-    "Content-Type": "application/json",
-  };
-};

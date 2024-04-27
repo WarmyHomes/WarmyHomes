@@ -10,7 +10,7 @@ const AdvertTypeToolbar = ({ row }) => {
 
 	const { id } = row;
 
-	console.log(id);
+	
 
 	const handleDelete = async () => {
 		const res = await swalConfirm("Are you sure to delete");
