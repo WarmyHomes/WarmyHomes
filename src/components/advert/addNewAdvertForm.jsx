@@ -30,16 +30,18 @@ const AddNewAdvertForm = () => {
   if (state && state.message) {
     if (state.success) {
       formRef.current?.reset();
-      swalAlert(state.message, "success");
+      swalAlert("Advert created successfully.", "success");
     } else {
-      swalAlert(state.message, "error");
+      swalAlert("Something went wrong please try again.", "error");
     }
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(formRef.current);
+    console.log(Object.fromEntries(formData.entries()));
     const result = await createNewAdvertAction(null, formData);
+    console.log(result);
     setState(result);
     if (result.success) {
       formRef.current.reset();
@@ -122,7 +124,7 @@ const AddNewAdvertForm = () => {
                 <label htmlFor="floatingSelectGrid">Advert Type</label>
               </div>
               <div className="invalid-feedback">
-                {state && state.errors?.advertType ? "is-invalid" : ""}
+                {state && state.errors?.adverttype ? "is-invalid" : ""}
               </div>
             </div>
           </div>
@@ -304,7 +306,7 @@ const AddNewAdvertForm = () => {
                 <label htmlFor="floatingSelectGrid">Year Of Build</label>
               </div>
               <div className="invalid-feedback">
-                {state && state.errors?.yearOfBuilt}
+                {state && state.errors?.yearofbuilt}
               </div>
             </div>
 
@@ -329,7 +331,13 @@ const AddNewAdvertForm = () => {
         <div className="header">
           <h2>Images</h2>
         </div>
-
+        <div className="col-lg-6 mt-3 image-container">
+          <AddNewAdvertImage
+            images={images}
+            setImages={setImages}
+            setFeaturedImage={setFeaturedImage}
+          ></AddNewAdvertImage>
+        </div>
        
         <div className="col-lg-6 col-sm-3 col-s-1 mt-3 button-container">
           <button className="btn btn-primary" onClick={handleSetFeatured}>

@@ -1,11 +1,13 @@
 "use server";
+
 import {
   getYupErrors,
   convertFormDataToJson,
   response,
 } from "@/helpers/form-validation";
 import { createNewAdvert } from "@/services/new-advert-service";
-
+import {config} from "@/helpers/config";
+import { getAuthHeader } from "@/auth";
 import * as Yup from "yup";
 
 const FormSchema = Yup.object({
@@ -28,24 +30,24 @@ const FormSchema = Yup.object({
 });
 
 export const createNewAdvertAction = async (prevState, formData) => {
+const API_URL = config.api.baseUrl;
   try {
-    await FormSchema.validate(formData, { abortEarly: false });
+    const response = await fetch(`${API_URL}/create-new-advert`, {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+        ...getAuthHeader(),
+        "Content-Type": "application/json"
+      },
+    });
 
-    console.log("form data to be sent to apı :", formData);
-
-    const res = await createNewAdvert(formData);
-    const data = await res.json();
-
-    if (!res.ok) {
-      return response(false, "", data?.validations);
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
     }
 
-    return response(true, "Your advert Created Successfully");
-  } catch (err) {
-    if (err instanceof Yup.ValidationError) {
-      return getYupErrors(err.inner);
-    }
-    console.error("There was a problem with your createNewAdvertAction:", err);
-    throw err;
+    return response.json();
+  } catch (error) {
+    console.error("There was a problem with your createNewAdvertAction:", error);
+    throw error;
   }
 };

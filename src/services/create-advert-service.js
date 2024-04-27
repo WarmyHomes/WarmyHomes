@@ -16,12 +16,21 @@ export const getAllMessagesByPage = async(
 	});
 };
 
-export const createAdvertMessage = (payload) => {
-    return fetch(`${API_URL}/adverts`,{
-        method:"post",
-        body:JSON.stringify(payload),
-        headers:{
-            "Content-Type":"application/json",
+export const createAdvertMessage = async (formData) => {
+    try {
+      const response = await fetch(`${API_URL}/adverts`, {
+        method: "POST",
+        body: formData,
+        headers: {
+          ...getAuthHeader(),
         },
-    });
-};
+      });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    } catch (error) {
+      console.error("There was a problem with your fetch operation:", error);
+      throw error;
+    }
+  };

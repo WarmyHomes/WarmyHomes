@@ -36,7 +36,12 @@ const AddNewAdvertImage = () => {
       <ul>
         {images.map((image, index) => (
           <li key={index}>
-            <img src={image} alt={`Advert Image ${index}`} />
+            <img
+              src={image.url}
+              alt={`Advert Image ${index}`}
+              className={image.selected ? "selected" : ""}
+              onClick={() => handleSelectImage(index)}
+            />
           </li>
         ))}
       </ul>
