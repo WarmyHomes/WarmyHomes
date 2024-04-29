@@ -11,6 +11,8 @@ const page = async ({ searchParams }) => {
 
 	const data = await res.json();
 
+  console.log("DATA", data)
+
 	if (!res.ok) throw new Error(data.message);
   return (
     <>
