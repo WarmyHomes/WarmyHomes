@@ -4,11 +4,11 @@ import { login } from "./services/auth-service";
 import { isUserAuthorized } from "./helpers/auth";
 
 const config = {
-  providers: [
-    Credentials({
-      async authorize(credentials) {
-        const res = await login(credentials);
-        const data = await res.json();
+	providers: [
+		Credentials({
+			async authorize(credentials) {
+				const res = await login(credentials);
+				const data = await res.json();
 
 				console.log("Data",data)
 console.log("first")
@@ -33,27 +33,19 @@ console.log("first")
 			const isOnLoginPage = nextUrl.pathname.startsWith("/login");
 			const isOnDashboardPage = nextUrl.pathname.startsWith("/admin");
 
-      //console.log(`isLoggedIn:`, isLoggedIn)
-      //console.log(`isOnLoginPage:`, isOnLoginPage)
+			//console.log(`isLoggedIn:`, isLoggedIn)
+			//console.log(`isOnLoginPage:`, isOnLoginPage)
 
-      if (isLoggedIn) {
-        if (isOnDashboardPage) {
-          const isAuth = isUserAuthorized(auth.user.role, nextUrl.pathname);
+			if (isLoggedIn) {
+				if (isOnDashboardPage) {
+					const isAuth = isUserAuthorized(
+						auth.user.role,
+						nextUrl.pathname
+					);
 
-          if (isAuth) return true;
-          return Response.redirect(new URL("/unauthorized", nextUrl));
-        } else if (isOnLoginPage) {
-          return Response.redirect(new URL("/dashboard", nextUrl));
-        }
-      } else if (isOnDashboardPage) {
-        // return false kullniciyi login sayfasina gonderir
-        return false;
-      }
+					if(isAuth) return true;
+					return Response.redirect(new URL("/unauthorized", nextUrl));
 
-      //console.log("AUTH",auth)
-      //console.log(auth?.user ? "Login olmus" : "login olmamis")
-      return true;
-    }
 
 				} else if (isOnLoginPage) {
 					return Response.redirect(new URL("/admin", nextUrl));
