@@ -16,6 +16,18 @@ const [state,dispatch]= useFormState(loginAction,initialResponse)
 				<div className="col-md-8 col-lg-6">
 					<div className="card">
 						<div className="card-body">
+
+
+						{!state.success && state.message ? (
+								<div className="alert alert-danger">
+									{state.message}
+								</div>
+							) : (
+								""
+							)}
+
+
+
 							<form action={dispatch} noValidate >
 								
 							<div
@@ -31,7 +43,7 @@ const [state,dispatch]= useFormState(loginAction,initialResponse)
 										id="email"
 										name="email"
 										placeholder="Enter your email"
-										
+										defaultValue="deneme@github.com"
 										
 									/>
 									<label htmlFor="email">
@@ -55,7 +67,7 @@ const [state,dispatch]= useFormState(loginAction,initialResponse)
 										id="password"
 										name="password"
 										placeholder="Enter your password"
-									
+										defaultValue="123456789"
 									/>
 									<label htmlFor="password">
 										Enter your password
