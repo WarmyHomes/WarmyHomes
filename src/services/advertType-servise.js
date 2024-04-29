@@ -4,7 +4,7 @@ import { config } from "@/helpers/config";
 const API_URL = config.api.baseUrl;
 
 
-export const getAllAdvertType = async (payload) => {
+export const getAllAdvertType = async () => {
 	return fetch(`${API_URL}/advert-types`, {
 		method: "get",
 		headers: await getAuthHeader(),
