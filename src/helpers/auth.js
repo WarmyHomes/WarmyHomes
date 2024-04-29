@@ -2,6 +2,7 @@ import { auth } from "@/auth";
 import { config } from "./config";
 
 export const getAuthHeader = async () => {
+	console.log("AuthH:",auth)
 	const session = await auth();
 
 	console.log("SESsion: ",session)
