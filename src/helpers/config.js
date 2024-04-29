@@ -23,8 +23,9 @@ export const config = {
 
 	api: {
 
-		//baseUrl: "https://localhost:8082",
-		baseUrl: "https://66278205b625bf088c0897dc.mockapi.io/",
+		baseUrl: "http://localhost:8082",
+		
+		//baseUrl: "https://66278205b625bf088c0897dc.mockapi.io/",
 	},
 	
 	selling: {
@@ -43,7 +44,7 @@ export const config = {
 
 
 	userRightsOnRoutes: [
-		{urlRegex: /\/admin$/, rights:["ADMIN", "MANAGER", "ASSISTANTMANAGER", "TEACHER", "STUDENT"]},
+		{urlRegex: /\/admin\/dashboard$/, rights:["ADMIN"]},
 		{urlRegex: /\/admin\/advert-types$/, rights:["ADMIN"]},
 		{urlRegex: /\/admin\/advert-types\/new$/, rights:["ADMIN"]},
 		{urlRegex: /\/dashboard\/manager$/, rights:["ADMIN"]},
