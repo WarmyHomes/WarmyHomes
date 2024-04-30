@@ -23,7 +23,7 @@ const AdvertTypeNew = () => {
         <div className="container">
             <div className="card">
                 <div className="card-body">
-                    <div className="card-title">Edit</div>
+                    <div className="card-title">Title</div>
 
                     {/* Hata mesajı varsa göster */}
                     {state?.message ? (
@@ -34,7 +34,7 @@ const AdvertTypeNew = () => {
 
                     <form action={dispatch} noValidate> {/* Form gönderildiğinde dispatch fonksiyonunu çağırır */}
                         <input type="hidden" name="userId"  /> {/* Kullanıcı kimliğini gizli bir şekilde gönderir */}
-                        <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3">
+                        <div className="row row-cols-1 row-cols-md-2 row-cols-xl-1">
                             <div className="col">
                                 <div className="form-floating mb-3">
                                     <input
@@ -57,7 +57,7 @@ const AdvertTypeNew = () => {
 
                         <div className="d-flex align-items-center justify-content-center gap-3">
                           
-                            <SubmitButton title="Create" />
+                            <SubmitButton  id="button" title="Create" />
                         </div>
                     </form>
 
