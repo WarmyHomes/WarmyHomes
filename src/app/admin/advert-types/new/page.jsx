@@ -1,10 +1,10 @@
-import AdvertTypeFrom from '@/components/admin/advert-types/advert-types-from'
+import AdvertTypeNew from '@/components/admin/advert-types/advert-types-new'
 import React from 'react'
 
 const page = () => {
   return (
     <div>
-        <AdvertTypeFrom/>
+        <AdvertTypeNew/>
     </div>
   )
 }
