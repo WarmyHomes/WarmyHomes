@@ -23,7 +23,7 @@ export const config = {
 
 	api: {
 
-		baseUrl: "http://localhost:8082",
+		baseUrl: "http://localhost:8080",
 		
 		//baseUrl: "https://66278205b625bf088c0897dc.mockapi.io/",
 	},
@@ -74,6 +74,7 @@ export const config = {
 		{urlRegex: /\/dashboard\/contact-message$/, rights:["ADMIN", "MANAGER", "ASSISTANTMANAGER"]},
 		{urlRegex: /\/dashboard\/choose-lesson$/, rights:["STUDENT"]},
 		{urlRegex: /\/dashboard\/grades-meets$/, rights:["STUDENT"]},
+		{urlRegex: /\/admin\/tour-requests$/, rights:["ADMIN"]},
 	],
 
    };
