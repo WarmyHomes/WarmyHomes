@@ -3,15 +3,18 @@
 import SubmitButton from "@/components/common/form-fields/submit-button";
 import { initialResponse, isInvalid } from "@/helpers/form-validation";
 
-import { updateAdvertType } from '@/services/advertType-servise';
+
 import CancelButton from "@/components/common/form-fields/cancel-button";
 import { useFormState } from "react-dom";
+import { updateAdvertTypeAction } from "@/actions/advert-type-action";
+
+
 const AdvertTypeEdit = ({ data }) => {
 	
 
     // Form durumunu ve işlemlerini yönetmek için useFormState kancını kullanıyoruz
     const [state, dispatch] = useFormState(
-        updateAdvertType, // form gönderme işlemlerini yapan eylem (action)
+        updateAdvertTypeAction, // form gönderme işlemlerini yapan eylem (action)
         initialResponse // form durumunun başlangıç değeri
     );
 
