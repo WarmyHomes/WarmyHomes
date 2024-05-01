@@ -7,6 +7,8 @@ const UsersList = ({data}) => {
 
  const { content, totalPages, number, size } = data;
 
+ console.log("USERDATA",size)
+
 const handleToolbar = (row) => {
     return <UsersToolbar row={row} />;
   };
@@ -27,10 +29,10 @@ const handleToolbar = (row) => {
     
       {/* Sütunlar */}
       
-      <Column title="Name" field="name" /> {/* Başlık sütunu */}
-      <Column title="Email" field="email" /> {/* Başlık sütunu */}
-      <Column title="Phone" field="phone" /> {/* Başlık sütunu */}
-      <Column title="Actions" template={handleToolbar} /> {/* Aracılar sütunu */}
+      <Column title="first_name" field="first_name" /> 
+      <Column title="email" field="email" /> 
+      <Column title="phone" field="phone" />
+      <Column title="Actions" template={handleToolbar} />
     </DataTable>
   </div>
   )

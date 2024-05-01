@@ -174,6 +174,8 @@ const DataTable = ({
 	// degisiklik yapabilmek icin kopyasini olusturduk
 	const columns = [...children];
 
+	console.log("Colums",columns)
+
 	if (!pageSize) pageSize = 0;
 	if (!pageNumber) pageNumber = 0;
 
@@ -213,6 +215,7 @@ const DataTable = ({
 						<table className="table table-striped ">
 							<thead>
 								<tr>
+									
 									{columns.map((item) => (
 										<Column
 											key={item.props.title}
@@ -227,7 +230,7 @@ const DataTable = ({
 								) : null}
 
 								{dataSource.map((row, indexRow) => {
-									//console.log(row);
+									console.log("Row",row);
 									const selected = selectedItems.includes(
 										row[dataKey].toString()
 									);
