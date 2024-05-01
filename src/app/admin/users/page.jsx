@@ -8,7 +8,8 @@ const UsersPage = async ({ searchParams }) => {
 
     const res = await getAllUsers(page);
 	const data = await res.json();
-	//if (!res.ok) throw new Error(data.message);
+  
+	if (!res.ok) throw new Error(data.message);
   return (
           <>
           <UsersList data={data}/>
