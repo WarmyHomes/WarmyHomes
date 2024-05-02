@@ -1,8 +1,24 @@
+
+import CategoriesList from '@/components/admin/categories/CategoriesList';
+import { getAllAdminsCategories } from '@/services/categories-servise';
 import React from 'react'
 
-const page = () => {
+const page = async ({ searchParams }) => {
+	const { page } = searchParams;
+  
+
+
+	const res = await getAllAdminsCategories(page);
+
+	const data = await res.json();
+
+  //console.log("Categories", data)
+
+	if (!res.ok) throw new Error(data.message);
   return (
-    <div>page</div>
+    <>
+      <CategoriesList data={data}/>
+    </>
   )
 }
 
