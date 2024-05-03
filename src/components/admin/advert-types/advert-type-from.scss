@@ -1,38 +1,77 @@
 // advert-type-from.scss
-@use "../../../styles/variables" as v;
 
-#advertTypeForm {
+// Değişkenleri içe aktar
+@use "../../../styles/variables" as v;  
+
+
+.container {
     display: flex;
-    flex-direction: column;
-    max-width: 100%;
-    margin-left: 100px; /* title sola hizalanacak */
-    margin-right: 50px; /* title sağa 50px boşluk */
-    margin-top: 50px; /* Tüm formu 50 piksel aşağı kaydır */
-  
-    .form-control {
-        width: calc(100% - 150px); /* inputun genişliği, kenarlarda 7.5px boşluk bırakacak */
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        margin-bottom: 15px; /* inputlar arası boşluk */
-        background-color: #cdd2d669;
-    }
+    justify-content: center; // İçeriği yatay olarak ortala
+    align-items: center; // İçeriği dikey olarak ortala
+    height: 50vh; // Sayfayı dikey yönde tam ekran yap
+}
 
-    .button {
-        position: absolute;
-        margin-top: 10%;
-       right:  200px;
-        background-color: v.$color4;
-        color: #fff;
-        border: none;
-        padding: 15px 50px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
+.card {
+    max-width: 80%; // Kartın maksimum genişliği
+    width: 100%; // Kartın tam genişlikte olması
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); // Kartın hafif bir gölgesi olsun
+}
 
+.card-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
 
-        &:hover {
-            background-color: v.$color5; /* hover olduğunda renk değişimi */
-        }
+.form-floating {
+    position: relative; // Giriş alanlarının içerikle uyumlu olmasını sağlar
+}
+
+.form-control {
+    width: 100%; // Input'un genişliği kartın içerisine sığsın
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px; // Inputlar arası boşluk
+    background-color: #cdd2d669; // Input arkaplan rengi
+}
+
+.invalid-feedback {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.align-items-center {
+    align-items: center; // Öğeleri dikey olarak ortala
+}
+
+.justify-content-center {
+    justify-content: center; // Öğeleri yatay olarak ortala
+}
+
+.gap-3 {
+    gap: 15px; // Öğeler arasındaki boşluk
+}
+
+.button {
+    // Değişken kullanarak renk tanımlaması
+    color: v.$color4; // Buton metin rengi
+    border: black; // Buton kenarlık rengi (kod hatası, doğru renk kodu veya değişken kullanılmalı)
+    padding: 15px 50px; // Buton dolgusu (üst ve alt: 15px, sol ve sağ: 50px)
+    border-radius: 5px; // Buton köşe yarıçapı
+    cursor: pointer; // Fare üzerine gelince imlecin şekli
+    transition: background-color 0.3s ease; // Geçiş efekti (arka plan rengi değişiminde)
+
+    &:hover {
+        background-color: v.$color5; // Hover olduğunda arka plan rengi değişimi (değişken kullanılmalı)
     }
 }
+

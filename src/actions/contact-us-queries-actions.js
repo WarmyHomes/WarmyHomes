@@ -18,8 +18,13 @@ const FormSchema = Yup.object({
 });
 
 export const createContactUsQueryAction = async (prevState, formData) => {
+  const required = ["firstName", "lastName", "email", "message"];
   try {
-    const fields = convertFormDataToJson(formData);
+    const form = new FormData();
+    required.forEach((key) => form.append(key, formData.get(key)));
+
+    const fields = convertFormDataToJson(form);
+    console.log(fields, "fileds");
 
     FormSchema.validateSync(fields, { abortEarly: false });
 
@@ -35,7 +40,6 @@ export const createContactUsQueryAction = async (prevState, formData) => {
     if (err instanceof Yup.ValidationError) {
       return getYupErrors(err.inner);
     }
-
-    throw err;
+    console.log(err, "erro");
   }
 };
