@@ -47,6 +47,7 @@ export const config = {
     { urlRegex: /\/admin\/dashboard$/, rights: ["ADMIN"] },
     { urlRegex: /\/admin\/advert-types$/, rights: ["ADMIN"] },
     { urlRegex: /\/admin\/advert-types\/new$/, rights: ["ADMIN"] },
+    { urlRegex: /\/admin\/users$/, rights: ["ADMIN"] },
     { urlRegex: /\/dashboard\/manager$/, rights: ["ADMIN"] },
     { urlRegex: /\/dashboard\/manager\/new$/, rights: ["ADMIN"] },
     { urlRegex: /\/dashboard\/manager\/[0-9]+$/, rights: ["ADMIN"] },

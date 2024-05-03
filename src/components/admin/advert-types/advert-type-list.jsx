@@ -22,12 +22,12 @@ const AdvertTypeList = ({ data }) => {
 				New
 			</Link>
       <DataTable 
-      title="Custom Table" 
+      title="" 
       dataSource={data} 
       dataKey="id"
        pagination={false}>
         
-      <Column index={true} title="#" />
+      
       <Column title="Title" field="title" />
       <Column title="Tools" template={handleToolbar} />
     </DataTable>
