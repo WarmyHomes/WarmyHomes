@@ -23,10 +23,9 @@ export const config = {
   },
 
   api: {
-     baseUrl: "http://localhost:8082",
+     baseUrl: "http://localhost:8080"}
+     ,
 
-    //baseUrl: "https://66278205b625bf088c0897dc.mockapi.io/",
-  },
 
   selling: {
     title: "Let’s Find The Right ",
@@ -52,6 +51,7 @@ export const config = {
     { urlRegex: /\/dashboard\/manager$/, rights: ["ADMIN"] },
     { urlRegex: /\/dashboard\/manager\/new$/, rights: ["ADMIN"] },
     { urlRegex: /\/dashboard\/manager\/[0-9]+$/, rights: ["ADMIN"] },
+    { urlRegex: /\/admin\/contact-messages$/, rights: ["ADMIN"] },
     {
       urlRegex: /\/dashboard\/assistant-manager$/,
       rights: ["ADMIN", "MANAGER"],

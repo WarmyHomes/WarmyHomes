@@ -5,7 +5,7 @@ import {
   getYupErrors,
   response,
 } from "@/helpers/form-validation";
-import { createNewContactUsQuery } from "@/services/contact-us-queries-service";
+import { createNewContactUsQuery, deleteContactMessage } from "@/services/contact-us-queries-service";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import * as Yup from "yup";
@@ -42,4 +42,18 @@ export const createContactUsQueryAction = async (prevState, formData) => {
     }
     console.log(err, "erro");
   }
+};
+
+export const deleteContactMessageAction = async (id) => {
+	if (!id) throw new Error("id is missing");
+
+	const res = await deleteContactMessage(id);
+	const data = await res.json();
+
+	if (!res.ok) {
+		throw new Error(data.message);
+	}
+
+	revalidatePath("/admin/contact-message");
+	redirect(`/admin/contact-messages?msg=${encodeURI("Message was deleted")}`);
 };
