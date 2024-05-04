@@ -2,17 +2,13 @@
 import React from 'react'
 import DataTable, { Column } from "@/components/common/form-fields/data-table";
 import CategorisToolbar from './categories-toolbar';
-
+import "./categories-list.scss"
 const CategoriesList = ({ data }) => {
 
-  console.log("CategoriesList: 1",data)
 
  const { content, totalPages, number, size } = data;
 
- console.log("content: 2",content)
- console.log("totalpage: 2",totalPages)
- console.log("number: 2",number)
- console.log("size: 2",size)
+ 
 
 const handleToolbar = (row) => {
     return <CategorisToolbar row={row} />;
@@ -20,10 +16,18 @@ const handleToolbar = (row) => {
   return (
 
     <div className="container">
-    <h2>Categoriest List</h2>
-    
+      
+ <div className="input-container">
+      <input type="text" className="input-field" />
+      <button className="search-button">
+        <i className="fas fa-search"></i>
+      </button>
+      <button className="add-new-button">Add New</button>
+    </div>
+
+
     <DataTable
-      title="user List"
+      title=""
 				dataSource={content}
 				dataKey="id"
 				pagination={true}
