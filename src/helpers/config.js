@@ -51,6 +51,7 @@ export const config = {
     { urlRegex: /\/dashboard\/manager$/, rights: ["ADMIN"] },
     { urlRegex: /\/dashboard\/manager\/new$/, rights: ["ADMIN"] },
     { urlRegex: /\/dashboard\/manager\/[0-9]+$/, rights: ["ADMIN"] },
+    { urlRegex: /\/admin\/contact-messages$/, rights: ["ADMIN"] },
     {
       urlRegex: /\/dashboard\/assistant-manager$/,
       rights: ["ADMIN", "MANAGER"],
