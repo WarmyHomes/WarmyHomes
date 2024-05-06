@@ -1,10 +1,12 @@
 import { getAuthHeader } from "@/helpers/auth";
 import { config } from "@/helpers/config";
+import { clearScreenDown } from "readline";
 
 const API_URL = config.api.baseUrl;
 
 
 export const register = async (payload) => {
+	console.log("payload",payload)
 	return fetch(`${API_URL}/register`, {
 		method: "post",
 		headers: await getAuthHeader(),
