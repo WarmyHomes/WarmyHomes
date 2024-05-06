@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Giriş alanı container'ı */
 .input-container {
   display: flex; /* Öğelerin yan yana görüntülenmesini sağlar */
@@ -10,10 +11,13 @@
 /* Giriş alanı inputu */
 .input-field {
   flex: 1;
-  /*Container'ıngerikalanboşluğunukaplar*/padding: 10px;
-  /*İçerikilekenarlıkarasındakiboşluk*/border: 1px solid #ccc;
-  /*Kenarlığınrengivekalınlığı*/border-radius: 5px;
-   /* Kenarlığın köşelerini yuvarlar */
+  /*Container'ıngerikalanboşluğunukaplar*/
+  padding: 10px;
+  /*İçerikilekenarlıkarasındakiboşluk*/
+  border: 1px solid #ccc;
+  /*Kenarlığınrengivekalınlığı*/
+  border-radius: 5px;
+  /* Kenarlığın köşelerini yuvarlar */
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
@@ -40,4 +44,4 @@
   border: none; /* Kenarlık yok */
   border-radius: 50px; /* Butonu yuvarlatır */
   cursor: pointer; /* İmleci bir el simgesi olarak değiştirir */
-}
+}/*# sourceMappingURL=categories-list.css.map */

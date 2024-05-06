@@ -6,7 +6,7 @@ import {
 	response,
 } from "@/helpers/form-validation";
 import { getGenderValues } from "@/helpers/misc";
-import { deleteCategories } from "@/services/categories-servise";
+import { createCategories, deleteCategories } from "@/services/categories-servise";
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -16,13 +16,13 @@ const FormSchema = Yup.object({
 	title: Yup.string().required("Required")
 });
 
-export const createCategoriesTypeAction = async (prevState, formData) => {
+export const createCategoriesAction = async (prevState, formData) => {
 	try {
 		const fields = convertFormDataToJson(formData);
 
 		FormSchema.validateSync(fields, { abortEarly: false });
 
-		const res = await createAdvertType(fields);
+		const res = await createCategories(fields);
 		const data = await res.json();
 
 		if (!res.ok) {
@@ -36,8 +36,8 @@ export const createCategoriesTypeAction = async (prevState, formData) => {
 		throw err;
 	}
 
-	revalidatePath("/admin/advert-types");
-	redirect(`/admin/advert-types?msg=${encodeURI("advert-types was created")}`);
+	revalidatePath("/admin/categories");
+	redirect(`/admin/categories?msg=${encodeURI("categories was created")}`);
 };
 
 export const updateAdvertTypeAction = async (prevState, formData) => {
