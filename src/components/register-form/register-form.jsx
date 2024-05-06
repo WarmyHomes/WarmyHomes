@@ -22,30 +22,30 @@ const RegisterForm = () => {
                                     <input
                                         type="text"
                                         className={`form-control ${isInvalid(
-											state.errors?.firstname
+											state.errors?.first_name
 										)}`}
-                                        id="firstname"
-                                        name="firstname"
-                                        placeholder="First Name"
+                                        id="first_name"
+                                        name="first_name"
+                                        placeholder="first_name"
                                     />
-                                    <label htmlFor="firstname">First Name</label>
+                                    <label htmlFor="first_name">First Name</label>
 									<div className="invalid-feedback">
-										{state.errors?.firstname}
+										{state.errors?.first_name}
 									</div>
                                 </div>
                                 <div className="form-floating mb-3">
                                     <input
                                         type="text"
                                         className={`form-control ${isInvalid(
-											state.errors?.lastname
+											state.errors?.last_name
 										)}`}
-                                        id="lastname"
-                                        name="lastname"
+                                        id="last_name"
+                                        name="last_name"
 										placeholder="Last Name"
                                     />
-                                    <label htmlFor="lastname">Last Name</label>
+                                    <label htmlFor="last_name">Last Name</label>
 									<div className="invalid-feedback">
-										{state.errors?.lastname}
+										{state.errors?.last_name}
 									</div>
                                 </div>
                                 <div className="form-floating mb-3">
@@ -55,8 +55,8 @@ const RegisterForm = () => {
 										)}`}
                                         id="phone"
                                         name="phone"
-										placeholder="Phone number"
-										mask="999-999-9999"
+										placeholder="phone"
+										mask="9999999999"
                                         
                                     />
                                     <label htmlFor="phone">Phone</label>
@@ -66,7 +66,7 @@ const RegisterForm = () => {
                                 </div>
                                 <div className="form-floating mb-3">
                                     <input
-                                        type="text"
+                                        type="email"
                                         className={`form-control ${isInvalid(
 											state.errors?.email
 										)}`}
@@ -83,32 +83,18 @@ const RegisterForm = () => {
                                     <input
                                         type="password"
                                         className={`form-control ${isInvalid(
-											state.errors?.password
+											state.errors?.password_hash
 										)}`}
-                                        id="password"
-                                        name="password"
-										placeholder="Password"
+                                        id="password_hash"
+                                        name="password_hash"
+										placeholder="password_hash"
                                     />
-                                    <label htmlFor="password">Password</label>
+                                    <label htmlFor="password_hash">Password</label>
 									<div className="invalid-feedback">
-										{state.errors?.password}
+										{state.errors?.password_hash}
 									</div>
                                 </div>
-                                <div className="form-floating mb-3">
-                                    <input
-                                        type="password"
-										className={`form-control ${isInvalid(
-											state.errors?.confirmPassword
-										)}`}
-                                        id="confirmPassword"
-                                        name="confirmPassword"
-                                        placeholder="Confirm password"
-                                    />
-                                    <label htmlFor="confirmPassword">Confirm Password</label>
-									<div className="invalid-feedback">
-										{state.errors?.confirmPassword}
-									</div>
-                                </div>
+                              
 								<div>
                                 <SubmitButton title="Register" />
                                 <h6>If you already have an account. <Link href="/login">Login now!</Link>{" "}</h6>
