@@ -30,11 +30,14 @@ const FormSchema = Yup.object({
 });
 
 export const createRegisterAction = async (prevState, formData) => {
-	console.log("form data" , formData)
+
+ 
 	try {
 		const fields = convertFormDataToJson(formData);
 
-		FormSchema.validateSync(fields, { abortEarly: false });
+		
+
+	
 
 		const res = await register(fields);
 		const data = await res.json();
