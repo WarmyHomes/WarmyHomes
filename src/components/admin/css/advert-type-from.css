@@ -1,0 +1,68 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.card {
+  max-width: 80%;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.form-floating {
+  position: relative;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  background-color: rgba(205, 210, 214, 0.4117647059);
+}
+
+.invalid-feedback {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.gap-3 {
+  gap: 15px;
+}
+
+.button {
+  color: rgb(161, 18, 127);
+  border: black;
+  padding: 15px 50px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.button:hover {
+  background-color: rgb(31, 37, 68);
+}/*# sourceMappingURL=advert-type-from.css.map */

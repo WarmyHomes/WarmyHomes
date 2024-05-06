@@ -1,0 +1,87 @@
+@charset "UTF-8";
+.create-advert-form .add-advert-row {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  flex-wrap: wrap;
+  color: rgb(15, 15, 15);
+  background-color: rgb(255, 255, 255);
+}
+.create-advert-form .add-advert-row .form-control {
+  background-color: rgb(227, 228, 227);
+}
+.create-advert-form .add-advert-row .form-select {
+  background-color: rgb(227, 228, 227);
+}
+.create-advert-form .add-advert-row .header {
+  text-align: center;
+}
+.create-advert-form .add-advert-row .header h2 {
+  position: relative;
+  right: 17%;
+}
+.create-advert-form .add-advert-row button {
+  color: rgb(255, 255, 255);
+  background-color: rgb(161, 18, 127);
+  margin-left: 10px;
+  border: none;
+}
+.create-advert-form .add-advert-row .button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 10px;
+}
+.create-advert-form .add-advert-row .button-container button {
+  background-color: rgb(169, 170, 170);
+  color: rgb(15, 15, 15);
+}
+.create-advert-form .add-advert-row .create-button {
+  padding: 10px 70px;
+  display: flex;
+  float: right;
+  margin-right: 20px;
+  margin-bottom: 5px;
+}
+.create-advert-form .add-advert-row .create-button button {
+  padding: 10px 80px;
+}
+.create-advert-form .add-advert-row .create-button button:hover {
+  background-color: rgb(182, 106, 168);
+  color: rgb(243, 220, 242);
+}
+.create-advert-form .add-advert-row .image-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: rgb(227, 228, 227);
+  height: 100%;
+  margin: 3px;
+}
+.create-advert-form .add-advert-row .image-container ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+.create-advert-form .add-advert-row .image-container ul li {
+  flex: 1;
+}
+.create-advert-form .add-advert-row .image-container ul li img {
+  width: 95%;
+  margin: 10px;
+}
+.create-advert-form .add-advert-row .image-container ul li img:first-child {
+  padding-left: 15px;
+}
+.create-advert-form .add-advert-row .image-container ul li img:last-child {
+  padding-right: 15px;
+}
+.create-advert-form .add-advert-row .image-container .card:last-child {
+  margin-right: 0; /* Son görüntüye sağ kenarda boşluk bırakmayı durdur */
+}
+.create-advert-form .add-advert-row .is-invalid .form-control {
+  border-bottom: 1px solid rgba(255, 0, 0, 0.356);
+}
+.create-advert-form .add-advert-row .is-invalid label,
+.create-advert-form .add-advert-row .is-invalid .input-group-text {
+  color: rgba(255, 0, 0, 0.356);
+}/*# sourceMappingURL=style.css.map */

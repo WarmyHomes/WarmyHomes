@@ -1,0 +1,126 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+.header-main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 40px;
+}
+.header-main-container .header-left-container {
+  display: flex;
+  align-items: center;
+  gap: 20%;
+}
+
+@media (max-width: 900px) {
+  .header-nav {
+    margin-block: 30px;
+  }
+}
+.header-nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .header-nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
+.header-nav ul li a {
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+@media (max-width: 900px) {
+  .header-nav ul li a {
+    color: white;
+  }
+}
+
+.mobile-menu-background {
+  background-color: #474848;
+}
+
+.header-right-container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+@media (max-width: 900px) {
+  .header-right-container {
+    flex-direction: column;
+  }
+}
+.header-right-container .login-signup-buttons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.header-right-container .login-signup-buttons p {
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+.header-right-container .login-signup-buttons i {
+  font-size: 18px;
+}
+.header-right-container .login-signup-buttons button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.header-right-container .login-signup-buttons button a {
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+@media (max-width: 900px) {
+  .header-right-container .login-signup-buttons button a {
+    color: white;
+  }
+}
+.header-right-container .add-property-button {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+}
+.header-right-container .add-property-button a {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 40px;
+  border: 1px solid purple;
+  padding-inline: 30px 10px;
+  border-radius: 30px;
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+@media (max-width: 900px) {
+  .header-right-container .add-property-button a {
+    color: white;
+  }
+}
+.header-right-container .add-property-button a i {
+  font-size: 18px;
+}
+.header-right-container .burger-icon-container {
+  cursor: pointer;
+}
+@media (min-width: 900px) {
+  .header-right-container .burger-icon-container {
+    display: none;
+    visibility: hidden;
+  }
+}
+.header-right-container .burger-icon-container .burger-menu-icon {
+  height: 30px;
+  width: 30px;
+}/*# sourceMappingURL=Header.css.map */

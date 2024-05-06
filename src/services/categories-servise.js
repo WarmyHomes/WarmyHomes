@@ -25,8 +25,8 @@ export const deleteCategories = async (id) => {
 	});
 };
 
-export const createAdmin = async (payload) => {
-	return fetch(`${API_URL}/admin/save`, {
+export const createCategories = async (payload) => {
+	return fetch(`${API_URL}/categories`, {
 		method: "post",
 		headers: await getAuthHeader(),
 		body: JSON.stringify(payload)
