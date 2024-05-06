@@ -30,7 +30,8 @@ const FormSchema = Yup.object({
 });
 
 export const createRegisterAction = async (prevState, formData) => {
-	//console.log("formData :>" , formData)
+
+ 
 	try {
 		const fields = convertFormDataToJson(formData);
 
