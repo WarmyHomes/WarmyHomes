@@ -19,7 +19,7 @@ export const getAllAdminsCategories = async (
 };
 
 export const deleteCategories = async (id) => {
-	return fetch(`${API_URL}/categories/delete/${id}`, {
+	return fetch(`${API_URL}/categories/${id}`, {
 		method: "delete",
 		headers: await getAuthHeader(),
 	});

@@ -17,6 +17,9 @@ const FormSchema = Yup.object({
 });
 
 export const createCategoriesAction = async (prevState, formData) => {
+
+	console.log("FormData: ", formData)
+
 	try {
 		const fields = convertFormDataToJson(formData);
 
