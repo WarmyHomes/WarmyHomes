@@ -25,6 +25,14 @@ const ContactMessageToolbar = ({row}) => {
   return (
     <div>
 
+<Link
+				type="button"
+				className="btn btn-link btn-dark"
+				href={`/admin/contact-messages/${id}`}
+			>
+				<TfiPencil />
+			</Link>
+
     <button
         type="button"
         className="btn btn-link"

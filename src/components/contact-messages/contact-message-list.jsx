@@ -26,11 +26,7 @@ const ContactMessageList = ({ data }) => {
         <Column title="Name" field="first_name" /> 
         <Column title="E-posta" field="email" /> 
         <Column title="Action" template={handleToolbar} />
-        <Column title="Details" template={(row) => (
-          <Link href={`/admin/contact-messages/${row.id}`}> {/* Şablon dizisi yanlış kullanılmış */}
-            Detaylar
-          </Link>
-        )} />
+     
       </DataTable>
     </div>
   );
