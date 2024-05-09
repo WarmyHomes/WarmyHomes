@@ -2,7 +2,7 @@ import React from "react";
 import "./message-details.scss";
 import SubmitButton from "@/components/common/form-fields/submit-button";
 
-const MessageDetail = () => {
+const MessageDetail = ({data}) => {
   return (
     <div className="message-detail-page-container">
       <div className="message-details-container">
