@@ -36,3 +36,13 @@ export const deleteContactMessage = async (id) => {
     body: JSON.stringify(id)
   });
    };
+
+   export const getIdContactMessage = async (id) => {
+  
+    return fetch(`${API_URL}/contact-messages/${id}`, {
+      method: "get",
+      headers: await getAuthHeader(),
+      body: JSON.stringify(id)
+    });
+     };
+  

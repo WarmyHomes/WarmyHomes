@@ -1,6 +1,6 @@
 "use client";
 import React from 'react'
-import { TfiPencil, TfiTrash } from 'react-icons/tfi';
+import { TfiAgenda, TfiAlert, TfiPencil, TfiTrash } from 'react-icons/tfi';
 import { swalAlert, swalConfirm } from "@/helpers/swal";
 import Link from "next/link";
 import { deleteContactMessageAction } from '@/actions/contact-us-queries-actions';
@@ -30,7 +30,7 @@ const ContactMessageToolbar = ({row}) => {
         className="btn btn-link"
         onClick={handleDelete}
     >
-        <TfiTrash />
+        <TfiAgenda />
     </button>
 </div>
   )
