@@ -4,9 +4,10 @@ import MessageDetail from "@/components/contact-messages/message-detail/message-
 
 const page = async ({ params }) => {
 
-	//console.log(params.id)
+
 	const res = await getIdContactMessage(params.id);
 	const data = await res.json();
+
 	if (!res.ok) {
 		throw new Error(data.message);
 	}

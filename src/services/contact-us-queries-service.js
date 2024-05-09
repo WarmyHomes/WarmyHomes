@@ -38,11 +38,11 @@ export const deleteContactMessage = async (id) => {
    };
 
    export const getIdContactMessage = async (id) => {
-  
+
     return fetch(`${API_URL}/contact-messages/${id}`, {
-      method: "get",
+      method: "GET",
       headers: await getAuthHeader(),
-      body: JSON.stringify(id)
+
     });
-     };
+  };
   
