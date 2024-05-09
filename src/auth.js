@@ -10,7 +10,7 @@ const config = {
 				const res = await login(credentials); // Kullanıcı kimlik bilgileriyle giriş yapılır
 				const data = await res.json(); // Gelen yanıt JSON formatına dönüştürülür
 
-				console.log("Dataaaa", data.token); // Gelen veriyi konsola yazdırır
+				
 
 				if (!res.ok) return null; // Yanıt başarısızsa null döndürülür
 
