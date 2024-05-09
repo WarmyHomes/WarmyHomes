@@ -46,7 +46,7 @@ export const config = {
   },
 
   userRightsOnRoutes: [
-    { urlRegex: /\/admin\/dashboard$/, rights: ["ADMIN"] },
+    { urlRegex: /\/admin\/dashboard$/, rights: ["ADMIN","CUSTOMER"] },
     { urlRegex: /\/admin\/advert-types$/, rights: ["ADMIN"] },
     { urlRegex: /\/admin\/advert-types\/new$/, rights: ["ADMIN"] },
     { urlRegex: /\/admin\/users$/, rights: ["ADMIN"] },
@@ -54,6 +54,7 @@ export const config = {
     { urlRegex: /\/dashboard\/manager\/new$/, rights: ["ADMIN"] },
     { urlRegex: /\/dashboard\/manager\/[0-9]+$/, rights: ["ADMIN"] },
     { urlRegex: /\/admin\/contact-messages$/, rights: ["ADMIN"] },
+    { urlRegex: /\/change-password$/, rights: ["ADMIN","CUSTOMER"] },
     {
       urlRegex: /\/dashboard\/assistant-manager$/,
       rights: ["ADMIN", "MANAGER"],
