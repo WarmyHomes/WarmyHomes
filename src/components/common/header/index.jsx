@@ -9,7 +9,7 @@ import Menu from "./Menu";
 import { useMediaQuery } from "react-responsive";
 import UserMenu from "../user-menu";
 
-const isLoggedIn = true;
+const isLoggedIn = false;
 
 export default function Header() {
   const isMobile = useMediaQuery({ query: "(max-width: 900px)" });
