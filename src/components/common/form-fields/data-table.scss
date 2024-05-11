@@ -1,0 +1,41 @@
+.custom-table-main-container {
+  width: 100%;
+  padding-block: 20px;
+
+  h5 {
+    margin-bottom: 15px;
+    font-weight: 500;
+  }
+
+  .custom-table-wrapper {
+    border-radius: 10px;
+    overflow: hidden;
+
+    .custom-table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+      }
+
+      thead {
+        height: 60px;
+        th {
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+
+      tbody {
+        tr {
+          margin-bottom: 10px;
+          height: 40px;
+          background-color: rgb(238, 238, 238);
+        }
+      }
+    }
+  }
+}
