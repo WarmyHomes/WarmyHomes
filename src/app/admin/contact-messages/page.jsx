@@ -1,24 +1,22 @@
-import ContactMessageList from '@/components/contact-messages/contact-message-list';
-import { getAllMessagesByPage } from '@/services/contact-us-queries-service';
-import React from 'react'
+import ContactMessageList from "@/components/contact-messages/contact-message-list";
+import { getAllMessagesByPage } from "@/services/contact-us-queries-service";
+import React from "react";
 
 const page = async ({ searchParams }) => {
-	const { page } = searchParams;
-  
+  const { page } = searchParams;
 
+  const res = await getAllMessagesByPage(page);
 
-	const res = await getAllMessagesByPage(page);
+  const data = await res.json();
 
-	const data = await res.json();
+  console.log("DATA", data);
 
-  console.log("DATA", data)
-
-	if (!res.ok) throw new Error(data.message);
+  if (!res.ok) throw new Error(data.message);
   return (
     <>
-      <ContactMessageList data={data}/>
+      <ContactMessageList data={data} />
     </>
-  )
-}
+  );
+};
 
-export default page
+export default page;
