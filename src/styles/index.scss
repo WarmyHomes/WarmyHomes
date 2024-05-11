@@ -12,3 +12,15 @@ body {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.table-actions-container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  .action-icon-color {
+    color: $color4;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+  }
+}
