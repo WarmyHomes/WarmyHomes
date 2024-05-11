@@ -4,14 +4,16 @@ import { config } from "@/helpers/config";
 const API_URL = config.api.baseUrl;
 
 export const getAllAdminsCategories = async (
-	name="",
+	query = "", // searchTerm'i ekledik
+
 	page = 0,
 	size = 20,
 	sort = "id",
 	type = "asc"
 ) => {
-	const qs = `page=${page}&size=${size}&sort=${sort}&type=${type}`;
+	const qs = `query=${query}&page=${page}&size=${size}&sort=${sort}&type=${type}`; // searchTerm'i query parametresine ekliyoruz
 
+	console.log("GS:", qs)
 	return fetch(`${API_URL}/categories/admin?${qs}`, {
 		headers: await getAuthHeader(),
 		
