@@ -59,6 +59,7 @@ export const createRegisterAction = async (prevState, formData) => {
 };
 
 export const updateUserAction = async (prevState, formData) => {
+	console.log("DATA",formData)
 	try {
 		const fields = convertFormDataToJson(formData);
 
