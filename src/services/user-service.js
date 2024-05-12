@@ -15,6 +15,7 @@ export const register = async (payload) => {
 
       };
 	  export const updateUser = async (payload) => {
+		console.log("payload",payload)
 		return fetch(`${API_URL}/users/auth`, {
 			method: "put",
 			headers: await getAuthHeader(),
