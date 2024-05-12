@@ -5,9 +5,9 @@ import { getAuthHeader } from "@/helpers/auth";
 const API_URL = config.api.baseUrl;
 
 export const createNewContactUsQuery = async (payload) => {
-  console.log(payload, "payload");
-  return await fetch(`${API_URL}/contact-us-queries`, {
-    method: "post",
+  console.log("ContageM",payload );
+  return await fetch(`${API_URL}/contact-messages/save`, {
+   method: "post",
     body: JSON.stringify(payload),
     headers: {
       "Content-Type": "application/json",
