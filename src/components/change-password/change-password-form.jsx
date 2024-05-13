@@ -18,56 +18,24 @@ const ChangePasswordForm= () => {
 				<div className="col-md-8 col-lg-6">
 					<div className="card">
 						<div className="card-body">
-							<form>
+							 <form action={dispatch} noValidate>
 								<div
 									className={`form-floating mb-3 `}
 								>
 									<input
 										type="password"
 										className="form-control"
-										id="currentpassword"
-										name="currentpassword"
+										id="password_hash"
+										name="password_hash"
 										
 										
 									/>
-									<label htmlFor="currentpassword">
+									<label htmlFor="password_hash">
                                     Current Password
 									</label>
 									
 								</div>
-                                <div
-									className={`form-floating mb-3 `}
-								>
-									<input
-										type="password"
-										className="form-control"
-										id="newpassword"
-										name="newpassword"
-										
-										
-									/>
-									<label htmlFor="newpassword">
-                                    New Password
-									</label>
-									
-								</div>
-
-
-								<div
-									className={`form-floating mb-3`}
-								>
-									<input
-										type="password"
-										className="form-control"
-										id="retrynewpassword"
-										name="retrynewpassword"
-										
-									/>
-									<label htmlFor="retrynewpassword">	
-                                    Retry New Password
-									</label>
-									
-								</div>
+                               
                               
 								<SubmitButton title="Update" />
 								

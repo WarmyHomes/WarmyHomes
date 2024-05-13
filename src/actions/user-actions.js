@@ -132,10 +132,11 @@ export const resetPasswordAction = async (prevState, formData) => {
 };
 
 export const changePasswordAction = async (prevState, formData) => {
+	console.log("paralo",formData)
 	try {
 		const fields = convertFormDataToJson(formData);
 
-		FormSchema.validateSync(fields, { abortEarly: false });
+	//FormSchema.validateSync(fields, { abortEarly: false });
 
 		const res = await changePassword(fields);
 		const data = await res.json();
@@ -152,7 +153,7 @@ export const changePasswordAction = async (prevState, formData) => {
 	}
 
 	revalidatePath("/profile");
-	redirect(`/users/auth?msg=${encodeURI("Password was updated")}`);
+	redirect(`/?msg=${encodeURI("Password was updated")}`);
 };
 
 export const deleteUserAction = async (id) => {
