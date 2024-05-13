@@ -1,0 +1,14 @@
+.page-header {
+  background-image: linear-gradient(90deg, rgb(243, 220, 242), rgb(225, 156, 213));
+  padding: 40px 0;
+  text-transform: uppercase;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  padding-inline: 40px;
+}
+.page-header h1 {
+  font-weight: 400;
+  color: black;
+  margin: 0;
+}/*# sourceMappingURL=style.css.map */

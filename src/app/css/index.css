@@ -1,0 +1,15 @@
+.admin-layout-container {
+  display: flex;
+  height: 100vh;
+  max-width: 100vw;
+}
+.admin-layout-container .admin-layout-right-container {
+  width: calc(100% - 300px);
+}
+.admin-layout-container .admin-layout-right-container .admin-page-container {
+  max-height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+.admin-layout-container .full-admin-layout {
+  width: 100%;
+}/*# sourceMappingURL=index.css.map */

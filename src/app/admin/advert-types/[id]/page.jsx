@@ -3,7 +3,7 @@ import AdvertTypeEdit from '@/components/admin/advert-types/advert-type-edit';
 import React from 'react'
 
 const page = async ({ params }) => {
-	//console.log(params.id)
+	
 	const res = await getAdvertTypeById(params.id);
 	const data = await res.json();
 	if (!res.ok) {

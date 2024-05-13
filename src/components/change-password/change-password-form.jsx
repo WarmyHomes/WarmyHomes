@@ -23,7 +23,7 @@ const ChangePasswordForm= () => {
 									className={`form-floating mb-3 `}
 								>
 									<input
-										type="text"
+										type="password"
 										className="form-control"
 										id="currentpassword"
 										name="currentpassword"
@@ -39,7 +39,7 @@ const ChangePasswordForm= () => {
 									className={`form-floating mb-3 `}
 								>
 									<input
-										type="number"
+										type="password"
 										className="form-control"
 										id="newpassword"
 										name="newpassword"
@@ -57,19 +57,20 @@ const ChangePasswordForm= () => {
 									className={`form-floating mb-3`}
 								>
 									<input
-										type="number"
+										type="password"
 										className="form-control"
 										id="retrynewpassword"
 										name="retrynewpassword"
 										
 									/>
-									<label htmlFor="phone">	
+									<label htmlFor="retrynewpassword">	
                                     Retry New Password
 									</label>
 									
 								</div>
                               
 								<SubmitButton title="Update" />
+								
 							</form>
 						</div>
 					</div>

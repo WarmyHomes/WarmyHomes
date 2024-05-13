@@ -30,10 +30,14 @@ const FormSchema = Yup.object({
 });
 
 export const createRegisterAction = async (prevState, formData) => {
+
+ 
 	try {
 		const fields = convertFormDataToJson(formData);
 
-		FormSchema.validateSync(fields, { abortEarly: false });
+		
+
+	
 
 		const res = await register(fields);
 		const data = await res.json();
@@ -55,10 +59,11 @@ export const createRegisterAction = async (prevState, formData) => {
 };
 
 export const updateUserAction = async (prevState, formData) => {
+	console.log("DATA",formData)
 	try {
 		const fields = convertFormDataToJson(formData);
 
-		FormSchema.validateSync(fields, { abortEarly: false });
+
 
 		const res = await updateUser(fields);
 		const data = await res.json();
@@ -74,8 +79,8 @@ export const updateUserAction = async (prevState, formData) => {
 		throw err;
 	}
 
-	revalidatePath("/profile");
-	redirect(`/profile?msg=${encodeURI("User was updated")}`);
+	revalidatePath("/");
+	redirect(`/?msg=${encodeURI("User was updated")}`);
 };
 
 export const forgotPasswordAction = async (prevState, formData) => {

@@ -14,7 +14,7 @@ export const getAllAdvertType = async () => {
       };
 
 	  export const getAdvertTypeById = async (id) => {
-		console.log(id)
+
 		return fetch(`${API_URL}/advert-types/${id}`, {
 		
 			headers: await getAuthHeader(),

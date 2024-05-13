@@ -1,0 +1,144 @@
+.explore-properties-by-type-container {
+  padding-inline: 40px;
+}
+.explore-properties-by-type-container .heading {
+  font-size: 26px;
+  margin-bottom: 3px;
+}
+.explore-properties-by-type-container .tagline {
+  font-weight: 500;
+  color: rgb(237, 129, 0);
+}
+.explore-properties-by-type-container .properties-type-cards-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 560px) {
+  .explore-properties-by-type-container .properties-type-cards-container {
+    flex-direction: column;
+  }
+}
+.explore-properties-by-type-container .properties-type-cards-container .single-property-type-card {
+  background-color: #f7f7f8;
+  height: 230px;
+  width: 16.6666666667%;
+  border-radius: 25px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@media (max-width: 560px) {
+  .explore-properties-by-type-container .properties-type-cards-container .single-property-type-card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+.explore-properties-by-type-container .properties-type-cards-container .single-property-type-card .icon-container {
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.explore-properties-by-type-container .properties-type-cards-container .single-property-type-card .content-container {
+  margin-top: auto;
+}
+.explore-properties-by-type-container .properties-type-cards-container .single-property-type-card .content-container h5 {
+  font-size: 15px;
+  margin-bottom: 0px;
+}
+.explore-properties-by-type-container .properties-type-cards-container .single-property-type-card .content-container p {
+  font-size: 12px;
+}/*# sourceMappingURL=index.css.map */ 0px 20px 20px 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+@media (max-width: 900px) {
+  .hero-section-main-container .hero-section-left-side .hero-section-search-container .search-input-container {
+    width: 100%;
+  }
+}
+.hero-section-main-container .hero-section-left-side .hero-section-search-container .search-input-container input {
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: rgb(238, 238, 238);
+  padding-inline: 10px;
+  width: 100%;
+}
+.hero-section-main-container .hero-section-left-side .hero-section-search-container .search-input-container .search-icon-container {
+  width: 45px;
+  height: 40px;
+  background-color: rgb(161, 18, 127);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.hero-section-main-container .hero-section-left-side .hero-section-search-container .search-input-container .search-icon-container .icon {
+  height: 70%;
+  width: 70%;
+  color: white;
+  transform: rotate(90deg);
+}
+.hero-section-main-container .hero-section-left-side .hero-section-search-container .categories-container {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-top: 10px;
+}
+@media (max-width: 900px) {
+  .hero-section-main-container .hero-section-left-side .hero-section-search-container .categories-container {
+    flex-wrap: wrap;
+  }
+}
+.hero-section-main-container .hero-section-left-side .hero-section-search-container .categories-container .single-category {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  cursor: pointer;
+}
+.hero-section-main-container .hero-section-left-side .hero-section-search-container .categories-container .single-category .dot {
+  height: 13px;
+  width: 13px;
+  border-radius: 50%;
+  border: 2px solid rgb(204, 204, 204);
+  background-color: rgb(204, 204, 204);
+  cursor: pointer;
+}
+.hero-section-main-container .hero-section-left-side .hero-section-search-container .categories-container .single-category h6 {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+}
+.hero-section-main-container .hero-section-left-side .hero-section-search-container .categories-container .single-category .selected {
+  background-color: green;
+}
+.hero-section-main-container .hero-section-right-side {
+  position: absolute;
+  width: 55vw;
+  height: 60vh;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+@media (max-width: 900px) {
+  .hero-section-main-container .hero-section-right-side {
+    width: auto;
+    height: 40vh;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+.hero-section-main-container .hero-section-right-side img {
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+}/*# sourceMappingURL=index.css.map */

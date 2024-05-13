@@ -1,0 +1,27 @@
+.login-form .card {
+  box-shadow: 0 4px 8px rgb(71, 72, 72);
+}
+.login-form .card .card-body {
+  margin-top: 20px;
+}
+.login-form .card .card-body h6 {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  color: rgb(71, 72, 72);
+  margin-left: 23rem;
+  font-size: 1.1rem;
+}
+.login-form .card .card-body button {
+  color: rgb(243, 220, 242);
+  font-size: 1.7rem;
+  background-color: rgb(182, 106, 168);
+  width: 50%;
+  margin: 0 auto;
+  display: block;
+  margin-top: 2rem;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}/*# sourceMappingURL=login-form.css.map */

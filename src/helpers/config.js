@@ -24,9 +24,10 @@ export const config = {
 
   api: {
      baseUrl: "http://localhost:8082",
+    
+    },
+     
 
-    //baseUrl: "https://66278205b625bf088c0897dc.mockapi.io/",
-  },
 
   selling: {
     title: "Let’s Find The Right ",
@@ -45,12 +46,15 @@ export const config = {
   },
 
   userRightsOnRoutes: [
-    { urlRegex: /\/admin\/dashboard$/, rights: ["ADMIN"] },
+    { urlRegex: /\/admin\/dashboard$/, rights: ["ADMIN","CUSTOMER"] },
     { urlRegex: /\/admin\/advert-types$/, rights: ["ADMIN"] },
     { urlRegex: /\/admin\/advert-types\/new$/, rights: ["ADMIN"] },
+    { urlRegex: /\/admin\/users$/, rights: ["ADMIN","CUSTOMER"] },
     { urlRegex: /\/dashboard\/manager$/, rights: ["ADMIN"] },
     { urlRegex: /\/dashboard\/manager\/new$/, rights: ["ADMIN"] },
     { urlRegex: /\/dashboard\/manager\/[0-9]+$/, rights: ["ADMIN"] },
+    { urlRegex: /\/admin\/contact-messages$/, rights: ["ADMIN"] },
+    { urlRegex: /\/change-password$/, rights: ["ADMIN","CUSTOMER"] },
     {
       urlRegex: /\/dashboard\/assistant-manager$/,
       rights: ["ADMIN", "MANAGER"],

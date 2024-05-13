@@ -1,0 +1,57 @@
+.about-container {
+  padding: 20px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.about-container .about-wrapper {
+  padding: 40px;
+}
+.about-container .about-wrapper .about-left-side {
+  padding: 0;
+}
+.about-container .about-wrapper .about-left-side img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+.about-container .about-wrapper .about-right-side {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.about-container .about-wrapper .about-right-side p {
+  text-align: justify;
+}
+.about-container .about-wrapper .about-right-side .text {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+}
+.about-container .about-wrapper .about-right-side .text .icons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.about-container .about-wrapper .about-right-side .text .icons .circle {
+  background-color: rgb(244, 171, 220);
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  font-size: 48px;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.about-container .about-wrapper .about-right-side .text .icons .circle.home {
+  color: rgb(71, 72, 72);
+}
+.about-container .about-wrapper .about-right-side .text .icons .circle.tree {
+  color: rgb(71, 72, 72);
+}/*# sourceMappingURL=about.css.map */

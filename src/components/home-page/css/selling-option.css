@@ -1,0 +1,81 @@
+.selling-option-container {
+  max-width: 95%;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: rgb(243, 220, 242);
+  font-size: 15px;
+}
+.selling-option-container .selling-option-left-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px;
+  color: rgb(71, 72, 72);
+}
+.selling-option-container .selling-option-left-side .left-side-description {
+  margin-bottom: 20px;
+  margin-left: 5rem;
+  font-size: 5rem;
+}
+.selling-option-container .selling-option-left-side .selling-option {
+  display: flex;
+  gap: 10px;
+  margin: 0.8rem;
+  margin-left: 4rem;
+}
+.selling-option-container .selling-option-left-side .selling-option .circle {
+  background-color: rgb(182, 106, 168);
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  font-size: 48px;
+  flex-shrink: 0;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  text-align: center;
+}
+.selling-option-container .selling-option-left-side .selling-option-right-side {
+  padding: 0%;
+}
+@media screen and (max-width: 1061px) {
+  .selling-option-container .selling-option-left-side {
+    padding: 16px;
+  }
+  .selling-option-container .selling-option-left-side .selling-option-left-side {
+    font-size: 24px;
+  }
+  .selling-option-container .selling-option-left-side .selling-option-right-side {
+    padding-right: 0% !important;
+  }
+  .selling-option-container .selling-option-left-side .selling-option-right-side .selling-option-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px 8px 0 0;
+  }
+  .selling-option-container .selling-option-left-side .selling-option .option-text .circle {
+    width: 50px;
+    height: 50px;
+    font-size: 36px;
+  }
+  .selling-option-container .selling-option-left-side .selling-option .option-text h5 {
+    font-size: 16px;
+  }
+  .selling-option-container .selling-option-left-side .selling-option .option-text span {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 740px) {
+  .selling-option-container .selling-option-left-side {
+    padding: 16px;
+  }
+  .selling-option-container .selling-option-left-side .selling-option-right-side {
+    padding-right: 0% !important;
+    margin-bottom: 0% !important;
+  }
+  .selling-option-container .selling-option-left-side .selling-option-right-side .selling-option-img {
+    max-width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}/*# sourceMappingURL=selling-option.css.map */

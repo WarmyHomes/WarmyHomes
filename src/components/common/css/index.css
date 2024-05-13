@@ -1,0 +1,69 @@
+.custom-table-main-container {
+  width: 100%;
+  padding-block: 20px;
+}
+.custom-table-main-container h5 {
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+.custom-table-main-container .custom-table-wrapper {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.custom-table-main-container .custom-table-wrapper .custom-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.custom-table-main-container .custom-table-wrapper .custom-table th,
+.custom-table-main-container .custom-table-wrapper .custom-table td {
+  padding: 8px;
+  text-align: left;
+}
+.custom-table-main-container .custom-table-wrapper .custom-table thead {
+  height: 60px;
+}
+.custom-table-main-container .custom-table-wrapper .custom-table thead th {
+  font-size: 16px;
+  font-weight: 500;
+}
+.custom-table-main-container .custom-table-wrapper .custom-table tbody tr {
+  margin-bottom: 10px;
+  height: 40px;
+  background-color: rgb(238, 238, 238);
+}/*# sourceMappingURL=index.css.map */}
+}
+.property-card-main-container .property-column-container .left {
+  width: 160px;
+  height: 130px;
+}
+.property-card-main-container .property-column-container .left img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 20px;
+}
+@media (max-width: 900px) {
+  .property-card-main-container .property-column-container .right {
+    text-align: center;
+  }
+}
+.property-card-main-container .property-column-container .right p,
+.property-card-main-container .property-column-container .right h5 {
+  margin-bottom: 5px;
+}/*# sourceMappingURL=index.css.map */ard-main-container .property-column-container .left img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 20px;
+}
+@media (max-width: 900px) {
+  .property-card-main-container .property-column-container .right {
+    text-align: center;
+  }
+}
+.property-card-main-container .property-column-container .right p,
+.property-card-main-container .property-column-container .right h5 {
+  margin-bottom: 5px;
+}/*# sourceMappingURL=index.css.map */
