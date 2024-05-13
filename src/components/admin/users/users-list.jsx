@@ -9,7 +9,7 @@ import "./users-list.scss";
 const UsersList = ({ data }) => {
   const { content, totalPages, number, size } = data;
 
-  console.log("USERDATA", size);
+  //console.log("USERDATA", size);
 
   const handleToolbar = (row) => {
     return <UsersToolbar row={row} />;

@@ -6,7 +6,7 @@ const API_URL = config.api.baseUrl;
 
 
 export const register = async (payload) => {
-	console.log("payload",payload)
+	//console.log("payload",payload)
 	return fetch(`${API_URL}/register`, {
 		method: "post",
 		headers: await getAuthHeader(),
@@ -15,7 +15,7 @@ export const register = async (payload) => {
 
       };
 	  export const updateUser = async (payload,session) => {
-		console.log("PAY:>>>>>>>>",payload)
+		//console.log("PAY:>>>>>>>>",payload)
 		return fetch(`${API_URL}/users/auth`, {
 			method: "put",
 			headers: await getAuthHeader(),
@@ -37,20 +37,23 @@ export const register = async (payload) => {
 				body: JSON.stringify(payload)
 			});
 			 };
+
+
+
 		export const changePassword = async (payload) => {
 
 			return fetch(`${API_URL}/users/auth`, {
 				method: "post",
 				headers: await getAuthHeader(),
 				body: JSON.stringify(payload)
-				});
+			});
 
-				 };
+		 };
 
 
 		export const deleteUser = async (id) => {
 
-			console.log("İd>>>>>>",id)
+		//	console.log("İd>>>>>>",id)
 
 			return fetch(`${API_URL}/users/${id}/admin`, {
 				method: "delete",
@@ -59,11 +62,11 @@ export const register = async (payload) => {
 		});
 	 };
 
-					 export const getAllUsers = async (payload) => {
-						return fetch(`${API_URL}/users/admin`, {
-							method: "get",
-							headers: await getAuthHeader(),
-							body: JSON.stringify(payload)
-						});
+		 export const getAllUsers = async (payload) => {
+				return fetch(`${API_URL}/users/admin`, {
+				method: "get",
+				headers: await getAuthHeader(),
+				body: JSON.stringify(payload)
+			});
 					
-						  };
+		};

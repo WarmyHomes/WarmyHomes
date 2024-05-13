@@ -8,7 +8,7 @@ import InputMask from "react-input-mask-next";
 import { initialResponse, isInvalid } from "@/helpers/form-validation";
 
 const ProfileForm = ({session}) => {
-	console.log("Session>>>>>>>>>",session)
+	//console.log("Session>>>>>>>>>",session)
 	const [state, dispatch] = useFormState(
 		updateUserAction,
 		initialResponse
