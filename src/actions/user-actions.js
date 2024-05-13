@@ -159,12 +159,13 @@ export const deleteUserAction = async (id) => {
 	if (!id) throw new Error("id is missing");
 
 	const res = await deleteUser(id);
+	
 	const data = await res.json();
 
 	if (!res.ok) {
 		throw new Error(data.message);
 	}
 
-	revalidatePath("/dashboard/advert-types");
-	redirect(`/dashboard/advert-types?msg=${encodeURI("advert-types was deleted")}`);
+	revalidatePath("/admin/users");
+	redirect(`/admin/users?msg=${encodeURI("advert-types was deleted")}`);
 };
