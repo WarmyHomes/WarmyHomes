@@ -34,7 +34,7 @@ const ContactMessagePage = () => {
 
   const numRecords = 10; // Number of records you want to generate
   const content = generateContent(numRecords);
-
+  console.log("DATA", data);
   return (
     <div className="contact-messages-list-page-container">
       <div className="list-filters-main-container">
