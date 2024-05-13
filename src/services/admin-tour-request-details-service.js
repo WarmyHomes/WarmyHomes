@@ -18,14 +18,10 @@ export const deleteTourRequestWithId = async(id) => {
   });
 };
 
-export const getAllTourRequestWithPage = async(
-  page = 0,
-	size = 20,
-	sort = "tour_date",
-	type = "asc"
-) => {
-    const qs = `page=${page}&size=${size}&sort=${sort}&type=${type}`;
-    return fetch(`${API_URL}/tour-requests/admin${qs}`, {
+export const getAllTourRequestWithPage = async(payload) => {
+    return fetch(`${API_URL}/tour-requests/admin`, {
+      method: "get",
       headers: await getAuthHeader(),
+      body: JSON.stringify(payload)
     });
 }

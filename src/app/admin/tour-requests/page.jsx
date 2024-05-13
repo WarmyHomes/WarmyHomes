@@ -8,14 +8,18 @@ import React from 'react'
 const page = async({searchParams}) => {
   const { page } = searchParams;
 
-	const res = await getAllAdminsByPage(page);
+	const res = await getAllTourRequestWithPage(page);
+
 	const data = await res.json();
+  console.log("Data>>>>>>>> ",data);
+   
 	if (!res.ok) throw new Error(data.message);
-  console.log("data: ",data);
+
+  
   return (
     <>
       <Spacer height={5}></Spacer>
-      <AdminAllTourRequest data={data}></AdminAllTourRequest>
+      <AdminAllTourRequest data={data}/>
     </>
     
   )
