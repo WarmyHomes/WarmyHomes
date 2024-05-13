@@ -37,20 +37,27 @@ export const register = async (payload) => {
 				body: JSON.stringify(payload)
 			});
 			 };
-			 export const changePassword = async (payload) => {
-				return fetch(`${API_URL}/users/auth`, {
-					method: "post",
-					headers: await getAuthHeader(),
-					body: JSON.stringify(payload)
+		export const changePassword = async (payload) => {
+
+			return fetch(`${API_URL}/users/auth`, {
+				method: "post",
+				headers: await getAuthHeader(),
+				body: JSON.stringify(payload)
 				});
+
 				 };
-				 export const deleteUser = async (payload) => {
-					return fetch(`${API_URL}/users/${id}/admin`, {
-						method: "delete",
-						headers: await getAuthHeader(),
-						body: JSON.stringify(payload)
-					});
-					 };
+
+
+		export const deleteUser = async (id) => {
+
+			console.log("İd>>>>>>",id)
+
+			return fetch(`${API_URL}/users/${id}/admin`, {
+				method: "delete",
+				headers: await getAuthHeader(),
+				
+		});
+	 };
 
 					 export const getAllUsers = async (payload) => {
 						return fetch(`${API_URL}/users/admin`, {
