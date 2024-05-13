@@ -23,7 +23,7 @@ const config = {
   callbacks: {
     // Middleware'in kapsama alanına giren sayfalara yapılan isteklerden hemen önce çalışır
     authorized({ auth, request: { nextUrl } }) {
-      console.log("aUTH", auth); // Auth bilgisini konsola yazdırır
+  
       const isLoggedIn = !!auth?.user; // Kullanıcının oturum açmış olup olmadığını kontrol eder
       const isOnLoginPage = nextUrl.pathname.startsWith("/login"); // Giriş sayfasında olup olmadığını kontrol eder
       const isOnDashboardPage = nextUrl.pathname.startsWith("/admin/dashboard"); // Yönetici paneli sayfasında olup olmadığını kontrol eder
