@@ -8,12 +8,12 @@ import InputMask from "react-input-mask-next";
 import { initialResponse, isInvalid } from "@/helpers/form-validation";
 
 const ProfileForm = ({session}) => {
-	console.log("session",session.user)
+	console.log("Session>>>>>>>>>",session)
 	const [state, dispatch] = useFormState(
 		updateUserAction,
 		initialResponse
 	);
-
+	console.log("State>>>>>>>>>",state)
 	return (
 		<div className="container profile-form">
 			<div className="row justify-content-center ">
@@ -28,7 +28,7 @@ const ProfileForm = ({session}) => {
 									<input
 										type="text"
 										className={`form-control ${isInvalid(
-											state.errors?.name
+											state?.errors?.first_name
 										)}`}
                                         id="first_name"
                                         name="first_name"
@@ -36,7 +36,9 @@ const ProfileForm = ({session}) => {
 										defaultValue={session.user.first_name}
                                     />
                                     <label htmlFor="first_name">First Name</label>
-		
+									<div className="invalid-feedback">
+										{state?.errors?.first_name}
+									</div>
                                 </div>
                                 <div
 									className={`form-floating mb-3 `}
@@ -44,7 +46,7 @@ const ProfileForm = ({session}) => {
 									<input
 										type="text"
 										className={`form-control ${isInvalid(
-											state.errors?.last_name
+											state?.errors?.last_name
 										)}`}
 										id="last_name"
 										name="last_name"
@@ -79,12 +81,12 @@ const ProfileForm = ({session}) => {
 								>
 									<InputMask
 										className={`form-control ${isInvalid(
-											state.errors?.phone
+											state?.errors?.phone
 										)}`}
 										id="phone"
 										name="phone"
 										placeholder="Phone"
-										mask="999-999-9999"
+										mask="9999999999"
 										defaultValue={session.user.phone}
 									/>
 									<label htmlFor="phone">	

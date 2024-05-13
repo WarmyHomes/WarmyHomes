@@ -11,6 +11,8 @@ import InputMask from "react-input-mask-next";
 const RegisterForm = () => {
 	const [state, dispatch] = useFormState(createRegisterAction, initialResponse);
 
+    console.log("State>>>>>>>>>",state)
+    
 	return (
 		<div className="container register-form">
 			<div className="row justify-content-center ">

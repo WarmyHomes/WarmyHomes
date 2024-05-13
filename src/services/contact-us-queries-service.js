@@ -17,7 +17,7 @@ export const createNewContactUsQuery = async (payload) => {
 
 export const getAllMessagesByPage = async (
 	page = 0,
-	size = 20,
+	size = 10,
 	sort = "email",
 	type = "desc"
 ) => {

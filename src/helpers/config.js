@@ -23,7 +23,7 @@ export const config = {
   },
 
   api: {
-     baseUrl: "http://localhost:8080",
+     baseUrl: "http://localhost:8082",
     
     },
      
@@ -49,7 +49,7 @@ export const config = {
     { urlRegex: /\/admin\/dashboard$/, rights: ["ADMIN","CUSTOMER"] },
     { urlRegex: /\/admin\/advert-types$/, rights: ["ADMIN"] },
     { urlRegex: /\/admin\/advert-types\/new$/, rights: ["ADMIN"] },
-    { urlRegex: /\/admin\/users$/, rights: ["ADMIN"] },
+    { urlRegex: /\/admin\/users$/, rights: ["ADMIN","CUSTOMER"] },
     { urlRegex: /\/dashboard\/manager$/, rights: ["ADMIN"] },
     { urlRegex: /\/dashboard\/manager\/new$/, rights: ["ADMIN"] },
     { urlRegex: /\/dashboard\/manager\/[0-9]+$/, rights: ["ADMIN"] },
