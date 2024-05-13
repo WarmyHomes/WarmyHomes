@@ -1,5 +1,5 @@
 import AdvertTypeEdit from '@/components/admin/advert-types/advert-type-edit';
-import { getAdvertTypeById } from '@/services/advertType-servise';
+ '@/services/advertType-servise';import { getAdvertTypeById } from
 import React from 'react'
 
 const page = async ({ params }) => {

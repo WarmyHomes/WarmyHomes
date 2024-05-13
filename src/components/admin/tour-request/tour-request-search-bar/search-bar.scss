@@ -1,0 +1,40 @@
+@import "../../../../styles/variables";
+
+
+.search-input-container {
+    padding: 10px;
+    width: 95%;
+    background-color: rgb(238, 238, 238);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    input {
+      height: 40px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      padding-inline: 10px;
+      width: 100%;
+      background: transparent;
+    }
+
+    .search-icon-container {
+      width: 45px;
+      height: 40px;
+      background-color: $color4;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      .icon {
+        height: 70%;
+        width: 70%;
+        color: white;
+        transform: rotate(90deg);
+      }
+    }
+}
+
