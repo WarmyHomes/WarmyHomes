@@ -43,7 +43,7 @@ export const createAdvertTypeAction = async (prevState, formData) => {
 	redirect(`/admin/advert-types?msg=${encodeURI("advert-types was created")}`);
 };
 
-export const updateAdvertTypeAction = async (prevState, formData) => {
+export const updateUserAction = async (prevState, formData) => {
 	try {
 		const fields = convertFormDataToJson(formData);
 
