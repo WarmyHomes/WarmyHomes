@@ -14,7 +14,7 @@ export const register = async (payload) => {
 	});
 
       };
-	  export const updateUser = async (payload,session) => {
+	  export const updateUser = async (payload) => {
 		//console.log("PAY:>>>>>>>>",payload)
 		return fetch(`${API_URL}/users/auth`, {
 			method: "put",
@@ -69,4 +69,24 @@ export const register = async (payload) => {
 				body: JSON.stringify(payload)
 			});
 					
+		};
+
+		export const getUserById = async (id) => {
+
+			return fetch(`${API_URL}/users/${id}/admin`, {
+				method: "get",
+				headers: await getAuthHeader(),
+				
+			});
+		};
+
+
+		
+		export const updateUserById = async (payload) => {
+
+			return fetch(`${API_URL}/users/${payload.userId}/admin`, {
+			   method: "put",
+			  headers: await getAuthHeader(),
+			  body: JSON.stringify(payload)
+		 });
 		};

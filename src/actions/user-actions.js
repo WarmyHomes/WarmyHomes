@@ -5,7 +5,7 @@ import {
 	getYupErrors,
 	response,
 } from "@/helpers/form-validation";
-import { changePassword, deleteUser, forgotPassword, register, resetPassword, updateUser } from "@/services/user-service";
+import { changePassword, deleteUser, forgotPassword, register, resetPassword, updateUser, updateUserById } from "@/services/user-service";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import * as Yup from "yup";
@@ -31,6 +31,8 @@ const FormSchema = Yup.object({
 
 export const createRegisterAction = async (prevState, formData) => {
 
+
+	console.log("AdminCreat:>>>>>>>",formData)
  
 	try {
 		const fields = convertFormDataToJson(formData);
@@ -53,8 +55,8 @@ export const createRegisterAction = async (prevState, formData) => {
 		throw err;
 	}
 
-	revalidatePath("/login");
-	redirect(`/login?msg=${encodeURI("User was created")}`);
+	revalidatePath("/admin/users");
+	redirect(`/admin/users?msg=${encodeURI("User was created")}`);
 	
 };
 
@@ -169,4 +171,29 @@ export const deleteUserAction = async (id) => {
 
 	revalidatePath("/admin/users");
 	redirect(`/admin/users?msg=${encodeURI("advert-types was deleted")}`);
+};
+
+
+export const updateUserByIdAction = async (prevState, formData) => {
+	try {
+		const fields = convertFormDataToJson(formData);
+
+		FormSchema.validateSync(fields, { abortEarly: false });
+
+		const res = await updateUserById(fields);
+		const data = await res.json();
+
+		if (!res.ok) {
+			return response(false, data?.message, data?.validations);
+		}
+	} catch (err) {
+		if (err instanceof Yup.ValidationError) {
+			return getYupErrors(err.inner);
+		}
+
+		throw err;
+	}
+
+	revalidatePath("/admin/advert-types");
+	redirect(`/admin/advert-types?msg=${encodeURI("advert-types was updated")}`);
 };
