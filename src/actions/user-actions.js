@@ -110,6 +110,7 @@ export const forgotPasswordAction = async (prevState, formData) => {
 };
 	
 export const resetPasswordAction = async (prevState, formData) => {
+	console.log("RESET",formData)
 	try {
 		const fields = convertFormDataToJson(formData);
 
@@ -130,7 +131,7 @@ export const resetPasswordAction = async (prevState, formData) => {
 	}
 
 	revalidatePath("/profile");
-	redirect(`/reset-password?msg=${encodeURI("Password was updated")}`);
+	redirect(`/?msg=${encodeURI("Password was updated")}`);
 };
 
 export const changePasswordAction = async (prevState, formData) => {
