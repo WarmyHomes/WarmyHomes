@@ -53,7 +53,7 @@ export const register = async (payload) => {
 
 		export const deleteUser = async (id) => {
 
-		//	console.log("İd>>>>>>",id)
+			console.log("İd>>>>>>",id)
 
 			return fetch(`${API_URL}/users/${id}/admin`, {
 				method: "delete",

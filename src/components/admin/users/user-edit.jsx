@@ -1,16 +1,21 @@
 "use client";
 
-import { createRegisterAction } from "@/actions/user-actions";
+import { createRegisterAction, deleteUserAction } from "@/actions/user-actions";
 import { useFormState } from "react-dom";
 import "./profile-form.scss";
 import { initialResponse, isInvalid } from "@/helpers/form-validation";
 import InputMask from "react-input-mask-next";
 import SubmitButton from "@/components/common/submit-button/submit-button";
-
+import DeleteButton from "@/components/common/delete-button/delete-button";
 const UserEdit = (data) => {
 	const [state, dispatch] = useFormState(
         createRegisterAction, 
         initialResponse);
+
+        const handleDelete = async () => {
+            await deleteUserAction(data.data.object.id);
+            // Silme işlemi sonrası bir yönlendirme veya bildirim ekleyebilirsiniz
+        }
 
         console.log("User data:>>>>",data)
     
@@ -114,7 +119,10 @@ const UserEdit = (data) => {
                                 </label>
                                 
                             </div>
-                          
+
+                            <button type="button" onClick={handleDelete} className="btn btn-danger">
+                                    Delete
+                                </button>
                             <SubmitButton title="Update" />
                         </form>
                     </div>
