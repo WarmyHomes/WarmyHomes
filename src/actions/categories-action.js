@@ -18,53 +18,50 @@ const FormSchema = Yup.object({
 
 export const createCategoriesAction = async (prevState, formData) => {
 
-	console.log("FormData: ", formData)
 
+	
 	try {
-		const fields = convertFormDataToJson(formData);
+		// Form verilerini JSON formatına dönüştürme
+		const title = formData.get('title');
+		const icon = formData.get('icon');
+		const seq = formData.get('seq');
+		const isActive = formData.get('is_active');
+		const categoryPropertyKeys = JSON.parse(formData.get('category_property_keys'));
 
+		const fields = {
+			title,
+			icon,
+			seq,
+			is_active: isActive,
+			category_property_keys: categoryPropertyKeys
+		};
+
+		// Verilerin Yup şemasına uygunluğunu doğrulama
 		FormSchema.validateSync(fields, { abortEarly: false });
 
+		// Kategorileri oluşturma isteği
 		const res = await createCategories(fields);
+
+		// Sunucu yanıtını alıp JSON'a dönüştürme
 		const data = await res.json();
 
+		// Başarısız bir yanıt alındığında
 		if (!res.ok) {
 			return response(false, data?.message, data?.validations);
 		}
 	} catch (err) {
+		// Yup doğrulama hatası alındığında
 		if (err instanceof Yup.ValidationError) {
 			return getYupErrors(err.inner);
 		}
 
+		// Diğer hataları atma
 		throw err;
 	}
 
+	// Başarılı bir şekilde oluşturulduğunda, yönlendirme yapma
 	revalidatePath("/admin/categories");
 	redirect(`/admin/categories?msg=${encodeURI("categories was created")}`);
-};
-
-export const updateAdvertTypeAction = async (prevState, formData) => {
-	try {
-		const fields = convertFormDataToJson(formData);
-
-		FormSchema.validateSync(fields, { abortEarly: false });
-
-		const res = await updateAdvertType(fields);
-		const data = await res.json();
-
-		if (!res.ok) {
-			return response(false, data?.message, data?.validations);
-		}
-	} catch (err) {
-		if (err instanceof Yup.ValidationError) {
-			return getYupErrors(err.inner);
-		}
-
-		throw err;
-	}
-
-	revalidatePath("/admin/advert-types");
-	redirect(`/admin/advert-types?msg=${encodeURI("advert-types was updated")}`);
 };
 
 export const deleteCategoriesAction = async (id) => {

@@ -6,127 +6,155 @@ import SubmitButton from "@/components/common/form-fields/submit-button";
 import { initialResponse, isInvalid } from "@/helpers/form-validation";
 import { useFormState } from "react-dom";
 import { createCategoriesAction } from '@/actions/categories-action';
+import './categories-new.scss';
 
 const CategoriesNew = () => {
 
-
+    
     const [state, dispatch] = useFormState(
         createCategoriesAction, // Form gönderme işlemlerini yapan eylem (action)
-          initialResponse // Form durumunun başlangıç değeri
-      );
-  
-      return (
-          <div className="container">
-              <div className="card">
-                  <div className="card-body">
-                      <div className="card-title">Title</div>
-  
-                      {/* Hata mesajı varsa göster */}
-                      {state?.message ? (
-                          <div className="alert alert-danger">
-                              {state.message}
-                          </div>
-                      ) : null}
-  
-                      <form action={dispatch} noValidate> {/* Form gönderildiğinde dispatch fonksiyonunu çağırır */}
-                          <input type="hidden" name="userId"  /> {/* Kullanıcı kimliğini gizli bir şekilde gönderir */}
-                          <div className="row row-cols-1 row-cols-md-2 row-cols-xl-1">
-                              <div className="col">
-                                  <div className="form-floating mb-3">
-                                      <input
-                                          type="text"
-                                          className={`form-control ${isInvalid(
-                                              state.errors?.name
-                                          )}`}
-                                          id="title"
-                                          name="title"
-                                          placeholder="title"
-                                         
-                                      />
-                                      <label htmlFor="title">Title</label>
-                                      <div className="invalid-feedback">
-                                          {state.errors?.name}
-                                      </div>
-                                  </div>
-                              </div>
-                              
+        initialResponse // Form durumunun başlangıç değeri
+    );
 
-                          
-                              <div className="col">
-                                  <div className="form-floating mb-3">
-                                      <input
-                                          type="text"
-                                          className={`form-control ${isInvalid(
-                                              state.errors?.name
-                                          )}`}
-                                          id="icon"
-                                          name="icon"
-                                          placeholder="icon"
-                                         
-                                      />
-                                      <label htmlFor="icon">İcon</label>
-                                      <div className="invalid-feedback">
-                                          {state.errors?.name}
-                                      </div>
-                                  </div>
-                              </div>
-                              
-                              
-                              <div className="col">
-                                  <div className="form-floating mb-3">
-                                      <input
-                                          type="text"
-                                          className={`form-control ${isInvalid(
-                                              state.errors?.name
-                                          )}`}
-                                          id="seq"
-                                          name="seq"
-                                          placeholder="seq"
-                                         
-                                      />
-                                      <label htmlFor="seq">Seq</label>
-                                      <div className="invalid-feedback">
-                                          {state.errors?.name}
-                                      </div>
-                                  </div>
-                              </div>
+    const [title, setTitle] = useState('');
+    const [icon, setIcon] = useState('');
+    const [seq, setSeq] = useState('');
+    const [isActive, setIsActive] = useState(true);
+    const [newProperty, setNewProperty] = useState('');
+    const [properties, setProperties] = useState(['Bedroom', 'Bathroom']);
 
+    const handleAddProperty = () => {
+        if (newProperty.trim() !== '') {
+            setProperties([...properties, newProperty]);
+            setNewProperty('');
+        }
+    };
 
-                              <div className="col">
-                                  <div className="form-floating mb-3">
-                                      <input
-                                          type="text"
-                                          className={`form-control ${isInvalid(
-                                              state.errors?.name
-                                          )}`}
-                                          id="is_active"
-                                          name="is_active"
-                                          placeholder="is_active"
-                                         
-                                      />
-                                      <label htmlFor="is_active">Seq</label>
-                                      <div className="invalid-feedback">
-                                          {state.errors?.name}
-                                      </div>
-                                  </div>
-                              </div>
-                              
-                              
-                              </div>
+    const handleDeleteProperty = (property) => {
+        setProperties(properties.filter(p => p !== property));
+    };
 
-                  
-  
-                          <div className="d-flex align-items-center justify-content-center gap-3">
-                            
-                              <SubmitButton  id="button" title="Create" />
-                          </div>
-                      </form>
-  
-                  </div>
-              </div>
-          </div>
-      );
-  };
-  
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('icon', icon);
+        formData.append('seq', seq);
+        formData.append('is_active', isActive);
+        formData.append('category_property_keys', JSON.stringify(properties.map(property => ({ name: property }))));
+
+        dispatch(formData);
+    };
+
+    return (
+        <div className="container">
+            <div className="card">
+                <div className="card-body">
+                    <div className="card-title">New Category</div>
+
+                    {state?.message ? (
+                        <div className="alert alert-danger">
+                            {state.message}
+                        </div>
+                    ) : null}
+
+                    <form onSubmit={handleSubmit} noValidate>
+                        <input type="hidden" name="userId" />
+
+                        <div className="form-floating mb-3">
+                            <input
+                                type="text"
+                                className={`form-control ${isInvalid(state.errors?.title)}`}
+                                id="title"
+                                name="title"
+                                placeholder="Title"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                            />
+                            <label htmlFor="title">Title</label>
+                            <div className="invalid-feedback">
+                                {state.errors?.title}
+                            </div>
+                        </div>
+
+                        <div className="form-floating mb-3">
+                            <input
+                                type="text"
+                                className={`form-control ${isInvalid(state.errors?.icon)}`}
+                                id="icon"
+                                name="icon"
+                                placeholder="Icon"
+                                value={icon}
+                                onChange={(e) => setIcon(e.target.value)}
+                            />
+                            <label htmlFor="icon">Icon</label>
+                            <div className="invalid-feedback">
+                                {state.errors?.icon}
+                            </div>
+                        </div>
+
+                        <div className="form-floating mb-3">
+                            <input
+                                type="number"
+                                className={`form-control ${isInvalid(state.errors?.seq)}`}
+                                id="seq"
+                                name="seq"
+                                placeholder="Sequence"
+                                value={seq}
+                                onChange={(e) => setSeq(e.target.value)}
+                            />
+                            <label htmlFor="seq">Sequence</label>
+                            <div className="invalid-feedback">
+                                {state.errors?.seq}
+                            </div>
+                        </div>
+
+                        <div className="form-floating mb-3">
+                            <div className="status-toggle">
+                                <label className="switch">
+                                    <input
+                                        type="checkbox"
+                                        id="is_active"
+                                        name="is_active"
+                                        checked={isActive}
+                                        onChange={(e) => setIsActive(e.target.checked)}
+                                    />
+                                    <span className="slider"></span>
+                                </label>
+                                <label htmlFor="is_active">Active</label>
+                            </div>
+                        </div>
+
+                        <div className="form-floating mb-3 properties">
+                            <label>Properties</label>
+                            <div className="property-input">
+                                <input
+                                    type="text"
+                                    value={newProperty}
+                                    onChange={(e) => setNewProperty(e.target.value)}
+                                />
+                                <button type="button" onClick={handleAddProperty}>+</button>
+                            </div>
+                            <ul>
+                                {properties.map((property, index) => (
+                                    <li key={index}>
+                                        {property}
+                                        <button type="button" onClick={() => handleDeleteProperty(property)}>🗑️</button>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        <div className="d-flex align-items-center justify-content-center gap-3">
+                            <CancelButton id="button-cancel" title="Cancel" />
+                            <SubmitButton id="button-submit" title="Create" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 export default CategoriesNew;

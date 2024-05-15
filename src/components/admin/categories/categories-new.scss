@@ -1,0 +1,108 @@
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.card {
+    .card-body {
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .form-floating {
+            margin-bottom: 20px;
+
+            input[type="text"], input[type="number"] {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            .status-toggle {
+                display: flex;
+                align-items: center;
+
+                input[type="checkbox"] {
+                    margin-right: 10px;
+                }
+            }
+
+            .properties {
+                .property-input {
+                    display: flex;
+
+                    input {
+                        flex: 1;
+                        padding: 10px;
+                        border: 1px solid #ccc;
+                        border-radius: 4px 0 0 4px;
+                    }
+
+                    button {
+                        padding: 10px 20px;
+                        border: none;
+                        background-color: #6200ea;
+                        color: #fff;
+                        border-radius: 0 4px 4px 0;
+                        cursor: pointer;
+                        font-size: 16px;
+                    }
+                }
+
+                ul {
+                    list-style: none;
+                    padding: 0;
+                    margin-top: 10px;
+
+                    li {
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 10px;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                        margin-bottom: 5px;
+
+                        button {
+                            border: none;
+                            background: none;
+                            cursor: pointer;
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .d-flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 20px;
+
+            .btn {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                font-size: 16px;
+                cursor: pointer;
+
+                &-delete {
+                    background-color: #888;
+                    color: #fff;
+                }
+
+                &-save {
+                    background-color: #9c27b0;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
