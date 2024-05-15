@@ -26,7 +26,7 @@ const CategorisToolbar = ({ row }) => {
 
   return (
     <div className="table-actions-container">
-      <Link href={`/admin/users/edit/${id}`}>
+      <Link href={`/admin/categories/${id}`}>
         <TfiPencil className="action-icon-color" />
       </Link>
       <AiOutlineDelete onClick={handleDelete} className="action-icon-color" />

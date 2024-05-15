@@ -6,7 +6,7 @@ import "./profile-form.scss";
 import { initialResponse, isInvalid } from "@/helpers/form-validation";
 import InputMask from "react-input-mask-next";
 import SubmitButton from "@/components/common/submit-button/submit-button";
-import DeleteButton from "@/components/common/delete-button/delete-button";
+
 const UserEdit = (data) => {
 	const [state, dispatch] = useFormState(
         createRegisterAction, 

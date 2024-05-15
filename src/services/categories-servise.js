@@ -37,3 +37,13 @@ export const createCategories = async (payload) => {
 		body: JSON.stringify(payload)
 	});
 };
+
+
+export const getCategoriesById = async (id) => {
+
+	return fetch(`${API_URL}/categories/${id}`, {
+		method: "get",
+		headers: await getAuthHeader(),
+		
+	});
+};
