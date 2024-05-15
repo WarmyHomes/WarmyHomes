@@ -37,6 +37,9 @@ const UserMenu = ({ show, toggle }) => {
               <Link href={"/tour-requests"}>Tour Requests</Link>
             </li>
             <li>
+              <Link href={"/reset-password"}>Reset Password</Link>
+            </li>
+            <li>
               <Link href={"/logout"}>Logout</Link>
             </li>
           </ul>

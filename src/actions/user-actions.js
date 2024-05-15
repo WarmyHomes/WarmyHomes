@@ -114,11 +114,11 @@ export const resetPasswordAction = async (prevState, formData) => {
 	try {
 		const fields = convertFormDataToJson(formData);
 
-		FormSchema.validateSync(fields, { abortEarly: false });
+		//FormSchema.validateSync(fields, { abortEarly: false });
 
 		const res = await resetPassword(fields);
-		const data = await res.json();
-		console.log("RESET",data)
+		const data = await res;
+		console.log("RESEttttT",data)
 		if (!res.ok) {
 			return response(false, data?.message, data?.validations);
 		}
