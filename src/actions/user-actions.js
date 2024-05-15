@@ -56,7 +56,7 @@ export const createRegisterAction = async (prevState, formData) => {
 	}
 
 	revalidatePath("/admin/users");
-	redirect(`/admin/users?msg=${encodeURI("User was created")}`);
+	redirect(`/login?msg=${encodeURI("User was created")}`);
 	
 };
 
@@ -114,11 +114,11 @@ export const resetPasswordAction = async (prevState, formData) => {
 	try {
 		const fields = convertFormDataToJson(formData);
 
-		FormSchema.validateSync(fields, { abortEarly: false });
+		//FormSchema.validateSync(fields, { abortEarly: false });
 
 		const res = await resetPassword(fields);
-		const data = await res.json();
-
+		const data = await res;
+		console.log("RESEttttT",data)
 		if (!res.ok) {
 			return response(false, data?.message, data?.validations);
 		}

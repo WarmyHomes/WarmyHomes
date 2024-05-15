@@ -31,6 +31,7 @@ export const register = async (payload) => {
 		 };
 
 		 export const resetPassword = async (payload) => {
+			console.log("PAYlod>>>>>",payload)
 			return fetch(`${API_URL}/reset-password`, {
 				method: "post",
 				headers: await getAuthHeader(),
