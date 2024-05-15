@@ -1,4 +1,4 @@
-import CategoriesList from "@/components/admin/categories/CategoriesList";
+import CategoriesList from "@/components/admin/categories/Categories-list";
 import { getAllAdminsCategories } from "@/services/categories-servise";
 import React from "react";
 
