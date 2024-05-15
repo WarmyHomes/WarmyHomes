@@ -56,7 +56,7 @@ export const createRegisterAction = async (prevState, formData) => {
 	}
 
 	revalidatePath("/admin/users");
-	redirect(`/admin/users?msg=${encodeURI("User was created")}`);
+	redirect(`/login?msg=${encodeURI("User was created")}`);
 	
 };
 
@@ -118,7 +118,7 @@ export const resetPasswordAction = async (prevState, formData) => {
 
 		const res = await resetPassword(fields);
 		const data = await res.json();
-
+		console.log("RESET",data)
 		if (!res.ok) {
 			return response(false, data?.message, data?.validations);
 		}
