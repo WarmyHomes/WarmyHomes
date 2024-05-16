@@ -14,7 +14,7 @@ export const getTourRequestWithId = async (id) => {
 
 export const deleteTourRequestWithId = async (id) => {
   try{
-    const response = await fetch(`${API_URL}/tour-requests/${id}`,{
+    const response = await fetch(`${API_URL}/tour-request/${id}`,{
       method: "DELETE",
       headers: await getAuthHeader(),
     });
@@ -37,10 +37,14 @@ export const updateTourRequest = async( payload ) => {
   });
 }; 
 
-export const getAllTourRequestWithPage = async(payload) => {
-    return fetch(`${API_URL}/tour-requests/admin`, {
-      method: "get",
+export const getAllTourRequestWithPage = async(
+  page = 0,
+	size = 20,
+	sort = "tour_date",
+	type = "asc"
+) => {
+    const qs = `?page=${page}&size=${size}&sort=${sort}&type=${type}`; // Sorgu dizisini oluşturun
+    return fetch(`${API_URL}/tour-requests/admin${qs}`, {
       headers: await getAuthHeader(),
-      body: JSON.stringify(payload)
     });
 }
