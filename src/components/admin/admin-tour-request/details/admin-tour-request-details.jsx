@@ -4,41 +4,19 @@ import { initialResponse } from "@/helpers/form-validation";
 import { swalConfirm } from "@/helpers/swal";
 import React, { useState } from "react";
 import { Card, Button, Form } from "react-bootstrap";
-import { useRouter } from 'next/router';
-
+import "./style.scss";
 const AdminTourRequestDetails = () => {
-  const router = useRouter();
-  const { id } = router.query;
-
-  const [state, dispatch] = useState(initialResponse); 
-
-  const handleDelete = async () => {
-    const isConfirmed = await swalConfirm("Are you sure you want to delete this tour request?");
-
-    if (isConfirmed && id) {
-      const response = await deleteTourRequestAction(id);
-      dispatch(response);
-
-      if (response.success) {
-        router.push("/admin/tour-requests");
-      }
-    }
-  };
-
-  if (!id) {
-    return <div>Loading...</div>;
-  }
-
   return (
-    <Card className="mb-3 mt-3">
+    <Card className="mb-3 mt-3 main-container">
       <div className="row g-0">
-        <div className="col-md-4 position-relative">
+        <div className="col-md-4 position-relative image-container">
           <Card.Img
             variant="top"
             src="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
             alt="image"
+            className="image"
           />
-          <h3 className="position-absolute top-0 start-0 bg-purple text-white p-2 m-0">Pending</h3>
+          <div className="position-absolute top-0 start-0 bg-purple text-white p-2 m-0 status">Pending</div>
         </div>
         <div className="col-md-8">
           <Card.Body>
@@ -63,7 +41,7 @@ const AdminTourRequestDetails = () => {
             </div>
             <div className="row mt-3">
               <div className="col text-center">
-                <Button variant="danger" className="mt-3" onClick={handleDelete}>
+                <Button variant="danger" className="mt-3">
                   Delete
                 </Button>
               </div>
@@ -72,7 +50,7 @@ const AdminTourRequestDetails = () => {
         </div>
       </div>
     </Card>
-  );
-};
+  )
+}
 
 export default AdminTourRequestDetails;

@@ -19,7 +19,9 @@ export const deleteTourRequestAction = async (id) => {
     if(!id) throw new Error("Id Is Missing");
 
     const res = await deleteTourRequestWithId(id);
+    console.log("action res : ", res);
     const data = await res.json();
+    console.log("action data : ",data);
     if(!res.ok){
         throw new Error(data.message);
     }
