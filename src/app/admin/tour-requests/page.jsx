@@ -4,7 +4,6 @@ import { getAllTourRequestWithPage } from '@/services/admin-tour-request-details
 
 import React from 'react'
 
-<<<<<<< HEAD
 const page = async({ searchParams}) => {
   const {page} = searchParams;
   const res = await getAllTourRequestWithPage(page);
@@ -14,23 +13,6 @@ const page = async({ searchParams}) => {
   return (
     <>
       <AdminTourRequests data={data}/>
-=======
-const page = async({searchParams}) => {
-  const { page } = searchParams;
-
-	const res = await getAllTourRequestWithPage(page);
-
-	const data = await res.json();
-  console.log("Data>>>>>>>> ",data);
-   
-	if (!res.ok) throw new Error(data.message);
-
-  
-  return (
-    <>
-      <Spacer height={5}></Spacer>
-      <AdminAllTourRequest data={data}/>
->>>>>>> main
     </>
     
   )
