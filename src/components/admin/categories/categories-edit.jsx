@@ -8,9 +8,9 @@ import { useFormState } from "react-dom";
 import { createCategoriesAction } from '@/actions/categories-action';
 import './categories-new.scss';
 
-const CategoriesNew = () => {
+const CategoriesEdit = ({ data }) => {
 
-    
+    console.log("CategoryDaa>>>>>>>",data)
     const [state, dispatch] = useFormState(
         createCategoriesAction, // Form gönderme işlemlerini yapan eylem (action)
         initialResponse // Form durumunun başlangıç değeri
@@ -69,6 +69,7 @@ const CategoriesNew = () => {
                                 id="title"
                                 name="title"
                                 placeholder="Title"
+                                defaultValue={data.title}
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
                             />
@@ -85,6 +86,7 @@ const CategoriesNew = () => {
                                 id="icon"
                                 name="icon"
                                 placeholder="Icon"
+                                defaultValue={data.icon}
                                 value={icon}
                                 onChange={(e) => setIcon(e.target.value)}
                             />
@@ -101,6 +103,7 @@ const CategoriesNew = () => {
                                 id="seq"
                                 name="seq"
                                 placeholder="Sequence"
+                                defaultValue={data.seq}
                                 value={seq}
                                 onChange={(e) => setSeq(e.target.value)}
                             />
@@ -117,6 +120,7 @@ const CategoriesNew = () => {
                                         type="checkbox"
                                         id="is_active"
                                         name="is_active"
+                                        defaultValue={data.isActive}
                                         checked={isActive}
                                         onChange={(e) => setIsActive(e.target.checked)}
                                     />
@@ -132,6 +136,7 @@ const CategoriesNew = () => {
                                 <input
                                     type="text"
                                     value={newProperty}
+                                    defaultValue={data.category_property_keys}
                                     onChange={(e) => setNewProperty(e.target.value)}
                                 />
                                 <button type="button" onClick={handleAddProperty}>+</button>
@@ -157,4 +162,4 @@ const CategoriesNew = () => {
     );
 };
 
-export default CategoriesNew;
+export default CategoriesEdit

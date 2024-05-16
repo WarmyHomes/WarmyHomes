@@ -1,11 +1,15 @@
-import AdvertTypeEdit from '@/components/admin/advert-types/advert-type-edit';
-import { getAdvertTypeById } from '@/services/advertType-servise';
+
+import UserEdit from '@/components/admin/users/user-edit';
+import { getUserById } from '@/services/user-service';
 import React from 'react'
 
 const page = async ({ params }) => {
 	
-	const res = await getAdvertTypeById(params.id);
+	const res = await getUserById(params.id);
 	const data = await res.json();
+
+	
+
 	if (!res.ok) {
 		throw new Error(data.message);
 	}
@@ -13,7 +17,7 @@ const page = async ({ params }) => {
 
   return (
     <div>
-		<AdvertTypeEdit data={data}/>
+		<UserEdit data={data}/>
 	</div>
   )
 }

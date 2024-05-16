@@ -14,7 +14,7 @@ const page = async ({ searchParams }) => {
   if (!res.ok) throw new Error(data.message);
   return (
     <>
-      <div className="contact-messages-list-page-container">
+      <div className="advert-types-list-page-container">
         <AdvertTypeList data={data} />
       </div>
     </>

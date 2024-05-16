@@ -3,7 +3,7 @@ import { resetPasswordAction } from "@/actions/user-actions";
 import "./reset-password.scss";
 import { useFormState } from "react-dom";
 import SubmitButton from "../common/form-fields/submit-button";
-import { initialResponse} from "@/helpers/form-validation";
+import { initialResponse, isInvalid} from "@/helpers/form-validation";
 const ResetPasswordForm= () => {
 
 	const [state, dispatch] = useFormState(
@@ -17,20 +17,22 @@ const ResetPasswordForm= () => {
 				<div className="col-md-8 col-lg-6">
 					<div className="card">
 						<div className="card-body">
-							<form>
-								<div
+							<form action={dispatch} noValidate>
+							<div
 									className={`form-floating mb-3 `}
 								>
 									<input
 										type="password"
-										className="form-control"
-										id="resetcode"
-										name="resetcode"
+										className={`form-control ${isInvalid(
+											state?.errors?.reset_password_codee
+										)}`}
+										id="reset_password_codee"
+										name="reset_password_codee"
 										
 										
 									/>
-									<label htmlFor="resetcode">
-                                    Reset Code
+									<label htmlFor="reset_password_codee">
+                                   Reset Code 
 									</label>
 									
 								</div>
@@ -39,13 +41,15 @@ const ResetPasswordForm= () => {
 								>
 									<input
 										type="password"
-										className="form-control"
-										id="newpassword"
-										name="newpassword"
+										className={`form-control ${isInvalid(
+											state?.errors?.password_hash
+										)}`}
+										id="password_hash"
+										name="password_hash"
 										
 										
 									/>
-									<label htmlFor="newpassword">
+									<label htmlFor="password_hash">
                                     New Password
 									</label>
 									
@@ -57,12 +61,14 @@ const ResetPasswordForm= () => {
 								>
 									<input
 										type="password"
-										className="form-control"
-										id="retrynewpassword"
-										name="retrynewpassword"
+										className={`form-control ${isInvalid(
+											state?.errors?.retry_password_hash
+										)}`}
+										id="retry_password_hash"
+										name="retry_password_hash"
 										
 									/>
-									<label htmlFor="phone">	
+									<label htmlFor="retry_password_hash">	
                                     Retry New Password
 									</label>
 									

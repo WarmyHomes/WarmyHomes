@@ -28,9 +28,22 @@ export const deleteCategories = async (id) => {
 };
 
 export const createCategories = async (payload) => {
+
+	console.log("Payload>>>>>>",payload)
+
 	return fetch(`${API_URL}/categories`, {
 		method: "post",
 		headers: await getAuthHeader(),
 		body: JSON.stringify(payload)
+	});
+};
+
+
+export const getCategoriesById = async (id) => {
+
+	return fetch(`${API_URL}/categories/${id}`, {
+		method: "get",
+		headers: await getAuthHeader(),
+		
 	});
 };
