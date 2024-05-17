@@ -18,6 +18,7 @@ const CategoriesEdit = ( { data } ) => {
         initialResponse
     );
 
+    const [id, setId] = useState(data.id);
     const [title, setTitle] = useState(data.title);
     const [icon, setIcon] = useState(data.icon);
     const [seq, setSeq] = useState(data.seq);
@@ -40,7 +41,7 @@ const CategoriesEdit = ( { data } ) => {
         e.preventDefault();
 
         const formData = new FormData();
-        formData.append('id', data.id);
+        formData.append('id', id);
         formData.append('title', title);
         formData.append('icon', icon);
         formData.append('seq', seq);
