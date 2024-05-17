@@ -24,7 +24,7 @@ const AdvertTypeEdit = ({ data }) => {
         <div className="container">
             <div className="card">
                 <div className="card-body">
-                    <div className="card-title">Edit</div>
+                    <div className="card-title">Title</div>
 
                     {state?.message ? (
                         <div className="alert alert-danger">
@@ -47,7 +47,7 @@ const AdvertTypeEdit = ({ data }) => {
                                         placeholder="title"
                                         defaultValue={data.title}
                                     />
-                                    <label htmlFor="title">First Name</label>
+                                    <label htmlFor="title">Title</label>
                                     <div className="invalid-feedback">
                                         {state.errors?.name}
                                     </div>

@@ -1,4 +1,5 @@
 import AdvertTypeEdit from '@/components/admin/advert-types/advert-type-edit';
+import CategoriesEdit from '@/components/admin/categories/categories-edit';
 
  import { getAdvertTypeById } from  '@/services/advertType-servise';
 import { getCategoriesById } from '@/services/categories-servise';
@@ -15,11 +16,11 @@ const page = async ({ params }) => {
 		throw new Error(data.message);
 	}
 
-	console.log("CAT Data>>><<<", data)
+	//console.log("CAT Data>>><<<", data)
 
   return (
     <div>
-		<AdvertTypeEdit data={data}/>
+		< CategoriesEdit data={data}/>
 	</div>
   )
 }

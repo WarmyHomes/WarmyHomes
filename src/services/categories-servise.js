@@ -29,7 +29,7 @@ export const deleteCategories = async (id) => {
 
 export const createCategories = async (payload) => {
 
-	console.log("Payload>>>>>>",payload)
+	
 
 	return fetch(`${API_URL}/categories`, {
 		method: "post",
@@ -45,5 +45,16 @@ export const getCategoriesById = async (id) => {
 		method: "get",
 		headers: await getAuthHeader(),
 		
+	});
+};
+
+export const updateCategories = async (payload) => {
+
+	//console.log("Payload>>>>>>",payload.id)
+
+	return fetch(`${API_URL}/categories/${payload.id}`, {
+		method: "post",
+		headers: await getAuthHeader(),
+		body: JSON.stringify(payload)
 	});
 };
