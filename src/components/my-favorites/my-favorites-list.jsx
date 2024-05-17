@@ -2,18 +2,18 @@
 import DataTable, { Column } from "@/components/common/form-fields/data-table";
 import React from "react";
 import { RiSearch2Line } from "react-icons/ri";
-import TourRequestsToolBar from "./tour-request-toolbar";
-import "./admin-tour-request-list.scss";
 
-const AdminTourRequests = ({ data }) => {
+import MyFavoritesToolbar from "./my-favorites-toolbar";
+
+const MyFavorites = ({ data }) => {
 
   const {content, totalPages, number, size} = data;
 
 
-  console.log("tour-data:",size);
+  console.log("myFavori>>>>>>:",data);
 
   const handleToolbar = (row) => {
-    return <TourRequestsToolBar row={row} />
+    return <MyFavoritesToolbar row={row} />
   }
 
   
@@ -50,4 +50,4 @@ const AdminTourRequests = ({ data }) => {
   );
 };
 
-export default AdminTourRequests;
+export default MyFavorites;

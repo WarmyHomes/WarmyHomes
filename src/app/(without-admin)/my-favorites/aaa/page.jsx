@@ -3,7 +3,7 @@ import "./page.scss";
 import PageHeader from "@/components/common/page-header";
 import PropertyCard from "@/components/common/property-card";
 
-const MyFavorites = () => {
+const MyFavoritesss = () => {
   const properties = [
     {
       img: "/images/highlight.png",
