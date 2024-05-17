@@ -5,23 +5,25 @@ import CancelButton from "@/components/common/form-fields/cancel-button";
 import SubmitButton from "@/components/common/form-fields/submit-button";
 import { initialResponse, isInvalid } from "@/helpers/form-validation";
 import { useFormState } from "react-dom";
-import { createCategoriesAction } from '@/actions/categories-action';
+
 import './categories-new.scss';
+import { updateCategoriesAction } from '@/actions/categories-action';
 
-const CategoriesEdit = ({ data }) => {
+const CategoriesEdit = ( { data } ) => {
 
-    console.log("CategoryDaa>>>>>>>",data)
+    console.log("CategoryDaa>>>>>>>", data);
+
     const [state, dispatch] = useFormState(
-        createCategoriesAction, // Form gönderme işlemlerini yapan eylem (action)
-        initialResponse // Form durumunun başlangıç değeri
+        updateCategoriesAction,
+        initialResponse
     );
 
-    const [title, setTitle] = useState('');
-    const [icon, setIcon] = useState('');
-    const [seq, setSeq] = useState('');
-    const [isActive, setIsActive] = useState(true);
+    const [title, setTitle] = useState(data.title);
+    const [icon, setIcon] = useState(data.icon);
+    const [seq, setSeq] = useState(data.seq);
+    const [isActive, setIsActive] = useState(data.isActive);
     const [newProperty, setNewProperty] = useState('');
-    const [properties, setProperties] = useState(['Bedroom', 'Bathroom']);
+    const [properties, setProperties] = useState(data.category_property_keys.map(item => item.name));
 
     const handleAddProperty = () => {
         if (newProperty.trim() !== '') {
@@ -38,6 +40,7 @@ const CategoriesEdit = ({ data }) => {
         e.preventDefault();
 
         const formData = new FormData();
+        formData.append('id', data.id);
         formData.append('title', title);
         formData.append('icon', icon);
         formData.append('seq', seq);
@@ -51,7 +54,7 @@ const CategoriesEdit = ({ data }) => {
         <div className="container">
             <div className="card">
                 <div className="card-body">
-                    <div className="card-title">New Category</div>
+                    <div className="card-title">Edit Category</div>
 
                     {state?.message ? (
                         <div className="alert alert-danger">
@@ -69,7 +72,7 @@ const CategoriesEdit = ({ data }) => {
                                 id="title"
                                 name="title"
                                 placeholder="Title"
-                                defaultValue={data.title}
+
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
                             />
@@ -86,7 +89,7 @@ const CategoriesEdit = ({ data }) => {
                                 id="icon"
                                 name="icon"
                                 placeholder="Icon"
-                                defaultValue={data.icon}
+
                                 value={icon}
                                 onChange={(e) => setIcon(e.target.value)}
                             />
@@ -103,7 +106,7 @@ const CategoriesEdit = ({ data }) => {
                                 id="seq"
                                 name="seq"
                                 placeholder="Sequence"
-                                defaultValue={data.seq}
+
                                 value={seq}
                                 onChange={(e) => setSeq(e.target.value)}
                             />
@@ -120,7 +123,7 @@ const CategoriesEdit = ({ data }) => {
                                         type="checkbox"
                                         id="is_active"
                                         name="is_active"
-                                        defaultValue={data.isActive}
+                                        
                                         checked={isActive}
                                         onChange={(e) => setIsActive(e.target.checked)}
                                     />
@@ -136,7 +139,7 @@ const CategoriesEdit = ({ data }) => {
                                 <input
                                     type="text"
                                     value={newProperty}
-                                    defaultValue={data.category_property_keys}
+
                                     onChange={(e) => setNewProperty(e.target.value)}
                                 />
                                 <button type="button" onClick={handleAddProperty}>+</button>
@@ -153,7 +156,7 @@ const CategoriesEdit = ({ data }) => {
 
                         <div className="d-flex align-items-center justify-content-center gap-3">
                             <CancelButton id="button-cancel" title="Cancel" />
-                            <SubmitButton id="button-submit" title="Create" />
+                            <SubmitButton id="button-submit" title="Update" />
                         </div>
                     </form>
                 </div>
@@ -162,4 +165,4 @@ const CategoriesEdit = ({ data }) => {
     );
 };
 
-export default CategoriesEdit
+export default CategoriesEdit;

@@ -6,7 +6,7 @@ import {
 	response,
 } from "@/helpers/form-validation";
 import { getGenderValues } from "@/helpers/misc";
-import { createCategories, deleteCategories } from "@/services/categories-servise";
+import { createCategories, deleteCategories, updateCategories } from "@/services/categories-servise";
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -76,4 +76,54 @@ export const deleteCategoriesAction = async (id) => {
 
 	revalidatePath("/admin/categories");
 	redirect(`/admin/categories?msg=${encodeURI("categories was deleted ")}`);
+};
+
+
+
+export const updateCategoriesAction = async (prevState, formData) => {
+
+//console.log("FormData>>>>>>>>>",formData)
+	
+	try {
+		// Form verilerini JSON formatına dönüştürme
+		const title = formData.get('title');
+		const icon = formData.get('icon');
+		const seq = formData.get('seq');
+		const isActive = formData.get('is_active');
+		const categoryPropertyKeys = JSON.parse(formData.get('category_property_keys'));
+
+		const fields = {
+			title,
+			icon,
+			seq,
+			is_active: isActive,
+			category_property_keys: categoryPropertyKeys
+		};
+
+		// Verilerin Yup şemasına uygunluğunu doğrulama
+		FormSchema.validateSync(fields, { abortEarly: false });
+
+		// Kategorileri oluşturma isteği
+		const res = await updateCategories(fields);
+
+		// Sunucu yanıtını alıp JSON'a dönüştürme
+		const data = await res.json();
+
+		// Başarısız bir yanıt alındığında
+		if (!res.ok) {
+			return response(false, data?.message, data?.validations);
+		}
+	} catch (err) {
+		// Yup doğrulama hatası alındığında
+		if (err instanceof Yup.ValidationError) {
+			return getYupErrors(err.inner);
+		}
+
+		// Diğer hataları atma
+		throw err;
+	}
+
+	// Başarılı bir şekilde oluşturulduğunda, yönlendirme yapma
+	revalidatePath("/admin/categories");
+	redirect(`/admin/categories?msg=${encodeURI("categories was created")}`);
 };

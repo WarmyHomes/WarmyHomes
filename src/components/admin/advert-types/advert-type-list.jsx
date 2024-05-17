@@ -28,7 +28,7 @@ const AdvertTypeList = ({ data }) => {
       </div>
 
       <DataTable title={``} dataSource={data} dataKey="id" pagination={false}>
-        <Column index={true} title="#" />
+       
         <Column title="Title" field="title" />
         <Column title="Actions" template={handleToolbar} />
       </DataTable>
