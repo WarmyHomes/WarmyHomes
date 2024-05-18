@@ -1,11 +1,24 @@
+"use client";
 import React from "react";
 import "./message-details.scss";
-import SubmitButton from "@/components/common/form-fields/submit-button";
-
-import CancelButton from "@/components/common/form-fields/cancel-button";
+import { swalAlert, swalConfirm } from "@/helpers/swal";
+import { deleteContactMessageAction } from "@/actions/contact-us-queries-actions";
+import Link from "next/link";
 
 const MessageDetail = ({ data }) => {
-  const { first_name, email, message } = data;
+  const { id, first_name, email, message } = data;
+
+  const handleDelete = async () => {
+    const res = await swalConfirm("Are you sure to delete");
+    if (!res.isConfirmed) return;
+
+    try {
+      const res = await deleteContactMessageAction(id);
+    } catch (err) {
+      console.log(err);
+      swalAlert(err.message, "error");
+    }
+  };
 
   return (
     <div className="message-detail-page-container">
@@ -23,8 +36,11 @@ const MessageDetail = ({ data }) => {
           <p>{message}</p>
         </div>
         <div className="action-buttons-container">
-          <button>Return</button>
-          <button>Delete</button>
+        
+        <Link href={`/admin/contact-messages`}>
+          <button>Return</button></Link>
+          <Link href={`/admin/contact-messages/${id}`}>
+          <button onClick={handleDelete}>Delete</button></Link>
         </div>
       </div>
     </div>
