@@ -4,17 +4,10 @@ import { convertFormDataToJson } from "@/helpers/form-validation";
 
 const API_URL = config.api.baseUrl;
 
-export const getTourRequestWithId = async (id) => {
-  const header = await getAuthHeader();
-  return fetch (`${API_URL}/tour-request/${id}/auth`,{
-    method:"GET",
-    headers: header,
-  });
-};
 
 export const deleteTourRequestWithId = async (id) => {
   try{
-    const response = await fetch(`${API_URL}/tour-request/${id}`,{
+    const response = await fetch(`${API_URL}/tour-requests/${id}`,{
       method: "DELETE",
       headers: await getAuthHeader(),
     });
@@ -29,22 +22,34 @@ export const deleteTourRequestWithId = async (id) => {
   }
 };
 
-export const updateTourRequest = async( payload ) => {
-  return fetch (`${API_URL}/tour-requests/${payload.id}/auth`,{
-    method: "PUT",
-    headers: await getAuthHeader(),
-    body: JSON.stringify(payload)
-  });
-}; 
-
 export const getAllTourRequestWithPage = async(
   page = 0,
 	size = 20,
 	sort = "tour_date",
 	type = "asc"
 ) => {
-    const qs = `?page=${page}&size=${size}&sort=${sort}&type=${type}`; // Sorgu dizisini oluşturun
+    const qs = `?page=${page}&size=${size}&sort=${sort}&type=${type}`; 
     return fetch(`${API_URL}/tour-requests/admin${qs}`, {
       headers: await getAuthHeader(),
     });
 }
+
+export const getTourRequestDetailsForAdmin = async (id) => {
+  try {
+    const response = await fetch(`${API_URL}/tour-requests/${id}/admin`, {
+      method: "GET",
+      headers: await getAuthHeader(),
+    });
+
+    if (!response.ok) {
+      throw new Error('Error occurred while fetching tour details.');
+    }
+
+    return response; 
+  } catch (err) {
+    console.error("API ERROR", err);
+    throw new Error('An error occurred while fetching tour details. Please try again later.');
+  }
+};
+
+

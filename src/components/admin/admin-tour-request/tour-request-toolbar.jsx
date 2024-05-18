@@ -1,8 +1,7 @@
 "use client"
-import { deleteTourRequestAction } from '@/actions/admin-tour-request-details-action';
+import { deleteTourRequestAction, getTourRequestDetailsForAdminAction } from '@/actions/admin-tour-request-details-action';
 import { swalAlert, swalConfirm } from '@/helpers/swal';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React from 'react'
 import { AiOutlineDelete } from 'react-icons/ai';
 import { TfiPencil } from 'react-icons/tfi';
@@ -10,7 +9,6 @@ import { TfiPencil } from 'react-icons/tfi';
 const TourRequestsToolBar = ({ row }) => {
     const {id} = row;
     
-
     const handleDelete = async () => {
         const res = await swalConfirm("Are you sure to delete");
         if (!res.isConfirmed) return;
@@ -25,8 +23,9 @@ const TourRequestsToolBar = ({ row }) => {
 
   return (
     <div className="table-actions-container">
-        <Link href={`admin/tour-requests/${id}`}>
-            <TfiPencil className='action-icon-color'/>
+        <Link href={`/admin/tour-requests/${id}`}>
+            <TfiPencil 
+             className='action-icon-color'/>
         </Link>
         <AiOutlineDelete onClick={handleDelete} className='action-icon-color'/>
     </div>
