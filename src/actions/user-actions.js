@@ -92,7 +92,7 @@ export const forgotPasswordAction = async (prevState, formData) => {
 		FormSchema.validateSync(fields, { abortEarly: false });
 
 		const res = await forgotPassword(fields);
-		const data = await res.json();
+		const data = await res;
 
 		if (!res.ok) {
 			return response(false, data?.message, data?.validations);
@@ -106,7 +106,7 @@ export const forgotPasswordAction = async (prevState, formData) => {
 	}
 
 	revalidatePath("/reset-password");
-	redirect(`/forgot-password?msg=${encodeURI("User was updated")}`);
+	redirect(`/?msg=${encodeURI("User was updated")}`);
 };
 	
 export const resetPasswordAction = async (prevState, formData) => {

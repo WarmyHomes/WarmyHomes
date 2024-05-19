@@ -25,16 +25,54 @@ const ChangePasswordForm= () => {
 									<input
 										type="password"
 										className={`form-control ${isInvalid(
+											state?.errors?.reset_password_codee
+										)}`}
+										id="reset_password_codee"
+										name="reset_password_codee"
+										
+										
+									/>
+									<label htmlFor="reset_password_codee">
+									Current Password
+
+									</label>
+									
+								</div>
+
+								<div
+									className={`form-floating mb-3 `}
+								>
+									<input
+										type="password"
+										className={`form-control ${isInvalid(
 											state?.errors?.password_hash
 										)}`}
-										
 										id="password_hash"
 										name="password_hash"
 										
 										
 									/>
 									<label htmlFor="password_hash">
-                                    Current Password
+                                    New Password
+									</label>
+									
+								</div>
+
+								<div
+									className={`form-floating mb-3 `}
+								>
+									<input
+										type="password"
+										className={`form-control ${isInvalid(
+											state?.errors?.retry_password_hash
+										)}`}
+										id="retry_password_hash"
+										name="retry_password_hash"
+										
+										
+									/>
+									<label htmlFor="retry_password_hash">
+									Retry New Password
 									</label>
 									
 								</div>
