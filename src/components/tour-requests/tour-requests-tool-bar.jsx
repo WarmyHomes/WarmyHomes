@@ -1,5 +1,6 @@
 "use client"
 
+import { deleteUsersTourRequestAction } from '@/actions/tour-requests-action';
 import { swalAlert, swalConfirm } from '@/helpers/swal';
 import Link from 'next/link';
 import React from 'react'
@@ -14,7 +15,7 @@ const UserTourRequestToolBar = ({ row }) => {
         if (!res.isConfirmed) return;
     
         try {
-          const res = await deleteTourRequestAction(id);
+          const res = await deleteUsersTourRequestAction(id);
         } catch (err) {
           console.log(err);
           swalAlert(err.message, "error");

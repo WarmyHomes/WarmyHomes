@@ -8,7 +8,7 @@ import {
 } from "@/helpers/form-validation";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/dist/server/api-utils";
-import { deleteUsersTourRequest, getUsersTourRequestDetails } from "@/services/tour-requests-service";
+import { deleteUsersTourRequest, getTourRequestDetailsForUser, getUsersTourRequestDetails } from "@/services/tour-requests-service";
 
 export const deleteUsersTourRequestAction = async (id) => {
 	if(!id) throw new Error("Id is missing");
@@ -23,13 +23,13 @@ export const deleteUsersTourRequestAction = async (id) => {
 	redirect(`/tour-request?msg${encodeURI("Tour Request Deleted Successfully.")}`);
 };
 
-export const getUsersTourRequestDetailsAction = async(id)=>{
-	if(!id) throw new Error("Id is missing");
-	const res = await getUsersTourRequestDetails(id);
-	const data= res.json();
-	if(!res.ok){
-		throw new Error(data.message);
-	}
-} 
+export const getTourRequestDetailsForUserAction = async (id) =>{
+	if(!id) throw new Error("Id Is Missing.");
+    const res = await getTourRequestDetailsForUser(id);
+    const data = await res.json();
+    if(!res.ok){
+        throw new Error(data.message);
+    }
+}
 
 

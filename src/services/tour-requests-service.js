@@ -17,23 +17,13 @@ export const getUsersAllTourRequests = async (
 };
 
 export const deleteUsersTourRequest = async (id) =>{
-  try{
-    const response = await fetch(`${API_URL}/tour-requests/${id}`,{
-      method: "DELETE",
-      headers: await getAuthHeader(),
-    });
-    if(!response.ok){
-      const errorData = await response.json();
-      throw new Error(errorData.message|| 'Error occurred');
-    }
-    return response.json();
-  }catch(error){
-    console.error("API Error", error);
-    throw new Error(error.message|| 'Error occurred while deleting the tour request');
-  }
-}
+  return fetch(`${API_URL}/tour-requests/${id}/auth`,{
+    method: "DELETE",
+    headers : await getAuthHeader(),
+  }); 
+};
 
-export const getUsersTourRequestDetails = async (id) =>{
+export const getTourRequestDetailsForUser = async (id) => {
   try {
     const response = await fetch(`${API_URL}/tour-requests/${id}/auth`, {
       method: "GET",
@@ -49,6 +39,7 @@ export const getUsersTourRequestDetails = async (id) =>{
     console.error("API ERROR", err);
     throw new Error('An error occurred while fetching tour details. Please try again later.');
   }
-}
+};
+
   
 

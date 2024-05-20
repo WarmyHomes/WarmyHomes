@@ -7,7 +7,7 @@ const API_URL = config.api.baseUrl;
 
 export const deleteTourRequestWithId = async (id) => {
   try{
-    const response = await fetch(`${API_URL}/tour-requests/${id}`,{
+    const response = await fetch(`${API_URL}/tour-requests/${id}/admin`,{
       method: "DELETE",
       headers: await getAuthHeader(),
     });
