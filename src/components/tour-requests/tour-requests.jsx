@@ -3,9 +3,6 @@ import DataTable, { Column } from "@/components/common/form-fields/data-table";
 import React from "react";
 import UserTourRequestToolBar from "./tour-requests-tool-bar";
 
-
-
-
 const TourRequests = ({ data }) => {
   const {content, totalPages, number, size} = data;
   const handleToolbar = (row) => {
