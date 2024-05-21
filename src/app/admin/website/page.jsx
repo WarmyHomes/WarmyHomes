@@ -5,7 +5,7 @@ const Page = () => {
     <div>
       <p>Click the link below to go to the home page:</p>
       <Link href="/">
-        <a>Go to Home</a>
+        <button>Go to Home</button>
       </Link>
     </div>
   )
