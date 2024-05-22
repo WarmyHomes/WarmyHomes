@@ -11,8 +11,8 @@ import { redirect } from "next/navigation";
 import * as Yup from "yup";
 
 const FormSchema = Yup.object({
-	firstname: Yup.string().required("Required"),
-	lastname: Yup.string().required("Required"),
+	first_name: Yup.string().required("Required"),
+	last_name: Yup.string().required("Required"),
 	email:Yup.string().email("Invalid email").required("Required"),
 	phone: Yup.string()
 		.matches(/\d{3}-\d{3}-\d{4}/, "Invalid phone number")
@@ -60,6 +60,7 @@ export const createRegisterAction = async (prevState, formData) => {
 	
 };
 
+// F-06
 export const updateUserAction = async (prevState, formData) => {
 	//console.log("DATA",formData)
 	try {
@@ -175,26 +176,37 @@ export const deleteUserAction = async (id) => {
 };
 
 
+// F-11
 export const updateUserByIdAction = async (prevState, formData) => {
 	try {
-		const fields = convertFormDataToJson(formData);
-
-		FormSchema.validateSync(fields, { abortEarly: false });
-
-		const res = await updateUserById(fields);
-		const data = await res.json();
-
-		if (!res.ok) {
-			return response(false, data?.message, data?.validations);
-		}
+	  const fields = convertFormDataToJson(formData);
+  
+	 
+	 //  FormSchema.validateSync(fields, { abortEarly: false });
+  
+	  const res = await updateUserById(fields);
+	  const data = await res.json();
+  
+	  if (!res.ok) {
+		return response(false, data?.message, data?.validations);
+	  }
+  
+	
+	  return response(true, "User was updated successfully");
 	} catch (err) {
-		if (err instanceof Yup.ValidationError) {
-			return getYupErrors(err.inner);
-		}
+	  if (err instanceof Yup.ValidationError) {
+		return getYupErrors(err.inner);
+	  }
+  
 
-		throw err;
+	  console.error("Update user error:", err);
+	  return response(false, "An error occurred while updating the user");
+	} finally {
+
+	  revalidatePath("/admin/users");
+	  redirect(`/admin/users?msg=${encodeURI("User was updated")}`);
 	}
+	
+  };
 
-	revalidatePath("/admin/advert-types");
-	redirect(`/admin/advert-types?msg=${encodeURI("advert-types was updated")}`);
-};
+

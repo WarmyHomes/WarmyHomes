@@ -25,7 +25,7 @@ export const createContactUsQueryAction = async (prevState, formData) => {
 	  required.forEach((key) => form.append(key, formData.get(key)));
   
 	  const fields = convertFormDataToJson(form);
-	  console.log(fields, "fileds");
+	  
   
 	  FormSchema.validateSync(fields, { abortEarly: false });
   

@@ -22,22 +22,27 @@ export const register = async (payload) => {
 			body: JSON.stringify(payload)
 		});
 	};
+
+
 	export const forgotPassword = async (payload) => {
 		return fetch(`${API_URL}/forgot-password`, {
 			method: "post",
 			headers: await getAuthHeader(),
 			body: JSON.stringify(payload)
 		});
-		 };
+	};
 
-		 export const resetPassword = async (payload) => {
-			console.log("PAYlod>>>>>",payload)
-			return fetch(`${API_URL}/reset-password`, {
-				method: "post",
-				headers: await getAuthHeader(),
-				body: JSON.stringify(payload)
-			});
-			 };
+
+	export const resetPassword = async (payload) => {
+		console.log("PAYlod>>>>>",payload)
+
+		return fetch(`${API_URL}/reset-password`, {
+			method: "post",
+			headers: await getAuthHeader(),
+			body: JSON.stringify(payload)
+
+		});
+	};
 
 
 
@@ -82,10 +87,11 @@ export const register = async (payload) => {
 		};
 
 
-		
+		// F-11
 		export const updateUserById = async (payload) => {
 
-			return fetch(`${API_URL}/users/${payload.userId}/admin`, {
+			//console.log("user Servise DATA<<<>>>>>>>",payload)
+			return fetch(`${API_URL}/users/${payload.id}/admin`, {
 			   method: "put",
 			  headers: await getAuthHeader(),
 			  body: JSON.stringify(payload)
