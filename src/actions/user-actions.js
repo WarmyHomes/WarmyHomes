@@ -14,19 +14,8 @@ const FormSchema = Yup.object({
 	first_name: Yup.string().required("Required"),
 	last_name: Yup.string().required("Required"),
 	email:Yup.string().email("Invalid email").required("Required"),
-	phone: Yup.string()
-		.matches(/\d{3}-\d{3}-\d{4}/, "Invalid phone number")
-		.required("Required"),
-	password: Yup.string()
-		.min(8, "Must be at least 8 chars")
-		.matches(/[a-z]+/, "At least one lowercase")
-		.matches(/[A-Z]+/, "At least one uppercase")
-		.matches(/\d+/, "At least one number")
-		.required("Required"),
-	confirmPassword: Yup.string().oneOf(
-		[Yup.ref("password")],
-		"Password fields don't match"
-	),
+
+
 });
 
 export const createRegisterAction = async (prevState, formData) => {
@@ -178,35 +167,32 @@ export const deleteUserAction = async (id) => {
 
 // F-11
 export const updateUserByIdAction = async (prevState, formData) => {
+
+
+	console.log("AdminCreat:>>>>>>>",formData)
+ 
 	try {
-	  const fields = convertFormDataToJson(formData);
-  
-	 
-	 //  FormSchema.validateSync(fields, { abortEarly: false });
-  
-	  const res = await updateUserById(fields);
-	  const data = await res.json();
-  
-	  if (!res.ok) {
-		return response(false, data?.message, data?.validations);
-	  }
-  
+		const fields = convertFormDataToJson(formData);
+
+		
+   FormSchema.validateSync(fields, { abortEarly: false });
 	
-	  return response(true, "User was updated successfully");
+
+		const res = await updateUserById(fields);
+		const data = await res.json();
+
+		if (!res.ok) {
+			return response(false, data?.message, data?.validations);
+		}
 	} catch (err) {
-	  if (err instanceof Yup.ValidationError) {
-		return getYupErrors(err.inner);
-	  }
-  
+		if (err instanceof Yup.ValidationError) {
+			return getYupErrors(err.inner);
+		}
 
-	  console.error("Update user error:", err);
-	  return response(false, "An error occurred while updating the user");
-	} finally {
-
-	  revalidatePath("/admin/users");
-	  redirect(`/admin/users?msg=${encodeURI("User was updated")}`);
+		throw err;
 	}
+
+	revalidatePath("/admin/users");
+	redirect(`/admin/users`);
 	
-  };
-
-
+};
