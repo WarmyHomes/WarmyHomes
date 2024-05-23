@@ -26,33 +26,24 @@ const UserEdit = ({ data }) => {
     const formData = new FormData(e.target);
     const formErrors = {};
 
-    const requiredFields = ['first_name', 'last_name', 'email', 'phone', 'role'];
-    requiredFields.forEach((field) => {
-      if (!formData.get(field)) {
-        formErrors[field] = 'This field is required';
-      }
-    });
+   // const requiredFields = ['first_name', 'last_name', 'email', 'phone', 'role'];
+  //  requiredFields.forEach((field) => {
+  //    if (!formData.get(field)) {
+  //      formErrors[field] = 'This field is required';
+  //    }
+  //  });
 
-    if (Object.keys(formErrors).length > 0) {
-      setFormErrors(formErrors);
-      return;
-    }
+  //  if (Object.keys(formErrors).length > 0) {
+  //    setFormErrors(formErrors);
+  //    return;
+  //  }
 
     formData.append("id", data.id); // ID'yi form verilerine ekliyoruz
     dispatch(formData);
   };
 
-  useEffect(() => {
-    if (state?.message) {
-      if (state?.success) {
-        formRef?.current?.reset(); // Form başarılı ise formu sıfırlıyoruz
-        swalAlert(state?.message, "success"); // Başarılı mesajını gösteriyoruz
-      } else {
-        swalAlert(state?.message, "error"); // Hata mesajını gösteriyoruz
-      }
-    }
-  }, [state?.message, state?.success]);
 
+  
   return (
     <div className="container profile-form">
       <div className="row justify-content-center">
