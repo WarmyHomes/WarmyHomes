@@ -1,14 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
-import "./page.scss";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { CgTag } from "react-icons/cg";
 import { FaRegClock } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa6";
 import GoogleMapComponent from "@/components/common/misc/service-components/GoogleMapComponent";
 
-const AdvertsDetailsPage = () => {
+const AdvertsDetailsComponent = async ({
+  data: {
+    images: [],
+  },
+}) => {
   const images = [
     "/images/about.png",
     "/images/highlight.png",
@@ -21,7 +24,6 @@ const AdvertsDetailsPage = () => {
   const onImageClick = (el) => {
     setActive(el);
   };
-
   return (
     <div className="adverts-details-page-container">
       <div className="advert-detail-page-header">
@@ -167,4 +169,4 @@ const AdvertsDetailsPage = () => {
   );
 };
 
-export default AdvertsDetailsPage;
+export default AdvertsDetailsComponent;

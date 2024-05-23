@@ -3,6 +3,19 @@ import { getAuthHeader } from "@/helpers/auth";
 
 const API_URL = config.api.baseUrl;
 
+//* A05
+export const getMyAdverts = async (
+  page = 0,
+  size = 20,
+  sort = "category_id",
+  type = "asc"
+) => {
+  const qs = `?page=${page}&size=${size}&sort=${sort}&type=${type}`;
+  return fetch(`${API_URL}/adverts/auth${qs}`, {
+    headers: await getAuthHeader(),
+  });
+};
+
 //* T01
 export const getAllAdvertType = async () => {
   return fetch(`${API_URL}/advert-types`, {
@@ -42,12 +55,20 @@ export const getCategories = async (
   });
 };
 //* C07
-export const getPropertyKey= async(id) =>{
+export const getPropertyKey = async (id) => {
   return fetch(`${API_URL}/categories/${id}/properties`, {
     headers: await getAuthHeader(),
   });
-}
+};
+
+//* A08
+export const getAdvertById = async (id) => {
+  return fetch(`${API_URL}/adverts/${id}/auth`, {
+    headers: await getAuthHeader(),
+  });
+};
 //* A10
+
 export const createNewAdvert = async (formData) => {
   try {
     const response = await fetch(`${API_URL}/adverts`, {

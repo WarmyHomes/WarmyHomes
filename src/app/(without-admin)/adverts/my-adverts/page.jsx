@@ -1,9 +1,10 @@
-import React from "react";
+
 import "./page.scss";
 import PageHeader from "@/components/common/page-header";
-import MyAdvertCard from "@/components/common/property-card copy";
+import { getMyAdverts } from "@/services/create-advert-service";
+import MyAdvertsListing from "@/components/advert/my-advert-listing";
 
-const MyAdverts = () => {
+const MyAdverts = async ({ searchParams }) => {
   const properties = [
     {
       img: "/images/highlight.png",
@@ -39,23 +40,18 @@ const MyAdverts = () => {
       views: 125,
     },
   ];
+
+  const { page } = searchParams;
+
+  const res = await getMyAdverts(page);
+
+  const data = await res.json();
+  console.log("DATA", data);
+  if (!res.ok) throw new Error(data.message);
   return (
     <div className="my-favorites-page-container">
       <PageHeader title={"My Adverts"} />
-      <div className="all-properties-main-container">
-        <div className="properties-header">
-          <h5 className="property-header">Property</h5>
-          <h5>Date Published</h5>
-          <h5>Status</h5>
-          <h5>View/Like/Tour</h5>
-          <h5>Action</h5>
-        </div>
-        <div className="all-properties-listing">
-          {properties.map((el, index) => (
-            <MyAdvertCard data={el} key={index} />
-          ))}
-        </div>
-      </div>
+      <MyAdvertsListing data={data} />
     </div>
   );
 };
