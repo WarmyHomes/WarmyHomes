@@ -1,4 +1,5 @@
 import React from "react";
+import MyAdvertCard from "../common/property-card copy";
 
 const MyAdvertsListing = ({ data }) => {
   return (

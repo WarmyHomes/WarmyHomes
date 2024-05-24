@@ -11,31 +11,31 @@ const MyAdvertCard = ({ data }) => {
     <div className="property-card-main-container">
       <div className="property-column-container">
         <div className="left">
-          <img src={data.img} />
+          <img src={data.images[0]} />
         </div>
         <div className="right">
-          <h5>{data.name}</h5>
-          <p>{data.address}</p>
+          <h5>{data?.title}</h5>
+          <p>{`${data?.location} ${data?.cityName}, ${data?.countryName}`}</p>
           <p>${data.price}</p>
         </div>
       </div>
-      <div className="column">{data.publishDate}</div>
+      <div className="column">{new Date(data.createdAt).toLocaleDateString()}</div>
       <div className="column">
-        <p className="status-column">{data.status}</p>
+        <p className="status-column">{data.is_active?'Active':'Pending'}</p>
       </div>
       <div className="column">
         <div className="like-actions">
           <div className="single-interaction-item">
             <IoEyeOutline />
-            <span>{data.views}</span>
+            <span>{data.view_count || 0}</span>
           </div>
           <div className="single-interaction-item">
             <IoIosHeartEmpty />
-            <span>{data.likes}</span>
+            <span>{data.status}</span>
           </div>
           <div className="single-interaction-item">
             <IoLocationOutline />
-            <span>{data.pins}</span>
+            <span>{data.status}</span>
           </div>
         </div>
       </div>
