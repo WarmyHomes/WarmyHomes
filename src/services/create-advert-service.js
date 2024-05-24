@@ -90,3 +90,27 @@ export const createNewAdvert = async (formData) => {
     throw error;
   }
 };
+
+
+//* S05
+export const createNewTourRequest = async (formData) => {
+  try {
+    const response = await fetch(`${API_URL}/tour-requests`, {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!response.ok) {
+      throw new error(`Network response was not ok`);
+    }
+    return response.json();
+  } catch (error) {
+    console.error(
+      "There was a porblem with your createNewTourRequest",
+      error
+    );
+    throw error;
+  }
+};
