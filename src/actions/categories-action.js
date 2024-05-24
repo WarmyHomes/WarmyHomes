@@ -18,7 +18,7 @@ const FormSchema = Yup.object({
 
 export const createCategoriesAction = async (prevState, formData) => {
 
-
+		console.log("Category FormData>>>>>>",formData)
 	
 	try {
 		// Form verilerini JSON formatına dönüştürme
@@ -125,5 +125,5 @@ export const updateCategoriesAction = async (prevState, formData) => {
 
 	// Başarılı bir şekilde oluşturulduğunda, yönlendirme yapma
 	revalidatePath("/admin/categories");
-	redirect(`/admin/categories?msg=${encodeURI("categories was created")}`);
+	redirect(`/admin/categories`);
 };
