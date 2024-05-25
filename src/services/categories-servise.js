@@ -50,9 +50,9 @@ export const getCategoriesById = async (id) => {
 
 export const updateCategories = async (payload) => {
 
-	console.log("Payload>>>>>>",payload)
+	console.log("Payload>>>>>>",payload.id)
 
-	return fetch(`${API_URL}/categories/1`, {
+	return fetch(`${API_URL}/categories/${payload.id}`, {
 		method: "put",
 		headers: await getAuthHeader(),
 		body: JSON.stringify(payload)
