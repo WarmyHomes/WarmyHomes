@@ -10,10 +10,11 @@ import "./categories-new.scss";
 
 // Özel hook'un doğru içe aktarımı
 import { useFormState } from "react-dom";
+import { TfiCar, TfiHome } from "react-icons/tfi";
 
 const iconOptions = [
-  { name: "Car", component: <AiFillCar />, value: "AiFillCar" },
-  { name: "Home", component: <AiFillHome />, value: "AiFillHome" },
+  { name: "Car", component: <TfiCar />, value: "AiFillCar" },
+  { name: "Home", component: <TfiHome />, value: "AiFillHome" },
 ];
 
 const CategoriesNew = () => {
