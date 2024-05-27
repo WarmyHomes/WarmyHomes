@@ -114,3 +114,15 @@ export const createNewTourRequest = async (formData) => {
     throw error;
   }
 };
+
+
+
+// A-01
+export const allAdvertsQueryByPage = async () => {
+	return fetch(`${API_URL}/adverts`, {
+		method: "get",
+		headers: await getAuthHeader(),
+	
+	});
+
+      };
