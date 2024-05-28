@@ -1,118 +1,134 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './advert-page.scss';
-import { config } from "@/helpers/config";
-import { getAuthHeader } from "@/helpers/auth";
 
-const SearchForm = ({ onSearch }) => {
+const SearchForm = ({ advertTypeData ,categories}) => {
+  console.log("addddd", advertTypeData)
+
   const [query, setQuery] = useState('');
-  const [propertyStatus, setPropertyStatus] = useState('All');
-  const [propertyType, setPropertyType] = useState('All');
+  const [propertyStatus, setPropertyStatus] = useState('all');
+  const [propertyType, setPropertyType] = useState('all');
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   const [location, setLocation] = useState('');
-  const [propertyStatuses, setPropertyStatuses] = useState([]);
-  const [propertyTypes, setPropertyTypes] = useState([]);
-  const [locations, setLocations] = useState([]);
-  const API_URL = config.api.baseUrl;
 
-  useEffect(() => {
-    const fetchPropertyData = async () => {
-      try {
-        const headers = await getAuthHeader();
-        const response = await fetch(`${API_URL}/advert-types`, {
-          method: "get",
-          headers,
-        });
-        const data = await response.json();
-        console.log("DATA", data);
-        setPropertyType(data);
-      } catch (error) {
-        console.error('Failed to fetch property data', error);
-      }
-    };
-  
-    fetchPropertyData();
-  }, []);
-  
 
-  const handleSearch = () => {
-    onSearch({ query, propertyStatus, propertyType, minPrice, maxPrice, location });
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    // Handle search logic here
   };
 
   return (
-    <div className="search-form">
-      <div>
+    <form className="property-search-form" onSubmit={handleSearch}>
+      <div className="form-group">
+        <label htmlFor="search">Find your home</label>
         <input
           type="text"
+          id="search"
           placeholder="What are you looking for?"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
       </div>
-      <div>
+
+      <div className="form-group">
         <label>Property Status</label>
         <div>
-          <label>
+          <input
+            type="radio"
+            id="status-all"
+            name="status"
+            value="all"
+            checked={propertyStatus === 'all'}
+            onChange={() => setPropertyStatus('all')}
+          />
+          <label htmlFor="status-all">All</label>
+        </div>
+        {advertTypeData.map((status) => (
+          <div key={status.id}>
             <input
               type="radio"
-              value="All"
-              checked={propertyStatus === 'All'}
-              onChange={() => setPropertyStatus('All')}
+              id={`status-${status.id}`}
+              name="status"
+              value={status.title}
+              checked={propertyStatus === status.title}
+              onChange={() => setPropertyStatus(status.title)}
             />
-            All
-          </label>
-          {propertyStatuses.map(status => (
-            <label key={status.id}>
-              <input
-                type="radio"
-                value={status.name}
-                checked={propertyStatus === status.name}
-                onChange={() => setPropertyStatus(status.name)}
-              />
-              {status.name}
-            </label>
-          ))}
-        </div>
+            <label htmlFor={`status-${status.id}`}>{status.title}</label>
+          </div>
+        ))}
       </div>
-      <div>
+
+      <div className="form-group">
         <label>Property Type</label>
-        <select value={propertyType} onChange={(e) => setPropertyType(e.target.value)}>
-          <option value="All">All</option>
-          {propertyTypes.map(type => (
-            <option key={type.id} value={type.name}>{type.name}</option>
-          ))}
-        </select>
+        <div>
+          <input
+            type="radio"
+            id="type-all"
+            name="type"
+            value="all"
+            checked={propertyType === 'all'}
+            onChange={() => setPropertyType('all')}
+          />
+          <label htmlFor="type-all">All</label>
+        </div>
+      
+        {categories.content.map((status) => (
+          <div key={status.id}>
+            <input
+              type="radio"
+              id={`status-${status.id}`}
+              name="status"
+              value={status.title}
+              checked={propertyStatus === status.title}
+              onChange={() => setPropertyStatus(status.content.title)}
+            />
+            <label htmlFor={`status-${status.id}`}>{status.title}</label>
+          </div>
+        ))}   
+      
+    
       </div>
-      <div>
-        <label>Price Range</label>
+
+      <div className="form-group">
+        <label htmlFor="price-min">Price Range</label>
         <div>
           <input
             type="number"
+            id="price-min"
             placeholder="Min"
             value={minPrice}
             onChange={(e) => setMinPrice(e.target.value)}
           />
           <input
             type="number"
+            id="price-max"
             placeholder="Max"
             value={maxPrice}
             onChange={(e) => setMaxPrice(e.target.value)}
           />
         </div>
       </div>
-      <div>
-        <label>Location</label>
-        <select value={location} onChange={(e) => setLocation(e.target.value)}>
+
+      <div className="form-group">
+        <label htmlFor="location">Location</label>
+        <select id="location" value={location} onChange={(e) => setLocation(e.target.value)}>
           <option value="">City</option>
-          {locations.map(loc => (
-            <option key={loc.id} value={loc.name}>{loc.name}</option>
-          ))}
+          <option value="new-york">New York</option>
+          <option value="los-angeles">Los Angeles</option>
+          <option value="chicago">Chicago</option>
+          <option value="houston">Houston</option>
+          <option value="phoenix">Phoenix</option>
+          {/* Add more options as needed */}
         </select>
       </div>
-      <button onClick={handleSearch}>Search</button>
-    </div>
+
+      <button type="submit" className="search-button">
+        Search
+      </button>
+    </form>
   );
 };
 

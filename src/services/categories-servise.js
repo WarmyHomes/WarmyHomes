@@ -13,7 +13,7 @@ export const getAllAdminsCategories = async (
 ) => {
 	const qs = `query=${query}&page=${page}&size=${size}&sort=${sort}&type=${type}`; // searchTerm'i query parametresine ekliyoruz
 
-	console.log("GS:", qs)
+	
 	return fetch(`${API_URL}/categories/admin?${qs}`, {
 		headers: await getAuthHeader(),
 		
@@ -56,5 +56,15 @@ export const updateCategories = async (payload) => {
 		method: "put",
 		headers: await getAuthHeader(),
 		body: JSON.stringify(payload)
+	});
+};
+
+export const getCategories = async () => {
+
+	
+	return fetch(`${API_URL}/categories`, {
+		method: "get",
+		headers: await getAuthHeader(),
+		
 	});
 };

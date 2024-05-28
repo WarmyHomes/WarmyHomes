@@ -21,6 +21,9 @@ const UserMenu = ({ show, toggle }) => {
 
         <nav className="user-menu-nav">
           <ul>
+          <li>
+              <Link href={"/admin"}>Admin Panel</Link>
+            </li>
             <li>
               <Link href={"/profile"}>My Profile</Link>
             </li>
