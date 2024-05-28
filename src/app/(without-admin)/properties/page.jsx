@@ -1,22 +1,35 @@
-import Properties from '@/components/properties/properties'
+import Properties from '@/components/properties/properties';
+import { getAllAdvertType } from '@/services/advertType-servise';
+import { getAllAdminsCategories, getCategories } from '@/services/categories-servise';
 import { allAdvertsQueryByPage } from '@/services/create-advert-service';
-import React from 'react'
+import React from 'react';
 
-const page = async ({ searchParams }) => {
-  const { page } = searchParams;
+const page = async () => {
 
-  const res = await allAdvertsQueryByPage(page);
 
-  const data = await res.json();
+  
+    const res = await allAdvertsQueryByPage();
+    const resa = await getAllAdvertType();
+    const resb = await getCategories();
 
-  //console.log("DATA", data);
+    if (!res.ok) throw new Error(await res.text());
+    if (!resa.ok) throw new Error(await resa.text());
+    if (!resb.ok) throw new Error(await resb.text());
 
-  if (!res.ok) throw new Error(data.message);
-  return (
-    <>
-      <Properties data={data}/>
-    </>
-  )
+    const data = await res.json();
+    const advertTypeData = await resa.json();
+    const categories = await resb.json();
+
+
+    console.log(categories)
+   
+
+    return (
+      <>
+        <Properties data={data} advertTypeData={advertTypeData} categories={categories} />
+      </>
+    );
+
 }
 
-export default page
+export default page;
