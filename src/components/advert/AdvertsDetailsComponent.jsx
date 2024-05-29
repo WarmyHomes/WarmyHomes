@@ -29,7 +29,8 @@ const AdvertsDetailsComponent = ({ data }) => {
     tour_time: "",
     tour_date: "",
   });
-  const [active, setActive] = useState(data.images[0]);
+  const [active, setActive] = useState(data.images?.[0] ||  '' 
+  );
 
   const onImageClick = (el) => {
     setActive(el);
@@ -45,7 +46,6 @@ const AdvertsDetailsComponent = ({ data }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData, "ataa");
     try {
       const result = await createNewTourRequestsAction({
         ...formData,
@@ -59,10 +59,7 @@ const AdvertsDetailsComponent = ({ data }) => {
         alert(result.message); // veya istediğiniz bildirim türünü kullanabilirsiniz
       }
     } catch (error) {
-      console.error(
-        "There was a problem with your createNewAdvertAction:",
-        error
-      );
+       alert("Couldn't save the new request!");
     }
   };
 
@@ -99,14 +96,14 @@ const AdvertsDetailsComponent = ({ data }) => {
           <div className="image-schowcase-container">
             <img src={active} alt="" className="main-image" />
             <div className="images-container">
-              {data.images.map((el) => (
+              {data?.images?.length ? data?.images.map((el) => (
                 <img
                   onClick={() => onImageClick(el)}
                   src={el}
                   alt=""
                   className="main-image"
                 />
-              ))}
+              )):null}
             </div>
           </div>
           <div className="description-container">

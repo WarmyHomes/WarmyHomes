@@ -7,27 +7,31 @@ import { initialResponse, isInvalid } from "@/helpers/form-validation";
 import { useFormState } from "react-dom";
 import { updateCategoriesAction } from "@/actions/categories-action";
 import "./categories-new.scss";
-
-import { TfiCar, TfiHome, TfiBuilding, TfiTree, TfiShop, TfiOffice, TfiHotel, TfiWarehouse, TfiCabin, TfiCity, TfiBank, TfiHospital, TfiSchool, TfiChurch, TfiBed, TfiRestaurant, TfiParking } from "react-icons/tfi";
+import { AiOutlineDelete } from "react-icons/ai";
+import { TfiCar, TfiHome } from "react-icons/tfi";
+import { FaBed, FaBuilding, FaChurch, FaCity, FaHospital, FaHotel, FaParking, FaSchool, FaTree, FaWarehouse } from "react-icons/fa";
+import { BsBank, BsShop } from "react-icons/bs";
+import { HiBuildingOffice } from "react-icons/hi2";
+import { MdOutlineCabin, MdRestaurant } from "react-icons/md";
 // Icon options
 const iconOptions = [
   { name: "Car", component: <TfiCar />, value: "TfiCar" },
   { name: "Home", component: <TfiHome />, value: "TfiHome" },
-  { name: "Building", component: <TfiBuilding />, value: "TfiBuilding" },
-  { name: "Tree", component: <TfiTree />, value: "TfiTree" },
-  { name: "Shop", component: <TfiShop />, value: "TfiShop" },
-  { name: "Office", component: <TfiOffice />, value: "TfiOffice" },
-  { name: "Hotel", component: <TfiHotel />, value: "TfiHotel" },
-  { name: "Warehouse", component: <TfiWarehouse />, value: "TfiWarehouse" },
-  { name: "Cabin", component: <TfiCabin />, value: "TfiCabin" },
-  { name: "City", component: <TfiCity />, value: "TfiCity" },
-  { name: "Bank", component: <TfiBank />, value: "TfiBank" },
-  { name: "Hospital", component: <TfiHospital />, value: "TfiHospital" },
-  { name: "School", component: <TfiSchool />, value: "TfiSchool" },
-  { name: "Church", component: <TfiChurch />, value: "TfiChurch" },
-  { name: "Bed", component: <TfiBed />, value: "TfiBed" },
-  { name: "Restaurant", component: <TfiRestaurant />, value: "TfiRestaurant" },
-  { name: "Parking", component: <TfiParking />, value: "TfiParking" }
+  { name: "Building", component: <FaBuilding />, value: "FaBuilding" },
+  { name: "Tree", component: <FaTree />, value: "FaTree" },
+  { name: "Shop", component: <BsShop />, value: "BsShop" },
+  { name: "Office", component: <HiBuildingOffice />, value: "HiBuildingOffice" },
+  { name: "Hotel", component: <FaHotel />, value: "FaHotel" },
+  { name: "Warehouse", component: <FaWarehouse />, value: "FaWarehouse" },
+  { name: "Cabin", component: <MdOutlineCabin />, value: "MdOutlineCabin" },
+  { name: "City", component: <FaCity />, value: "FaCity" },
+  { name: "Bank", component: <BsBank />, value: "BsBank" },
+  { name: "Hospital", component: <FaHospital />, value: "FaHospital" },
+  { name: "School", component: <FaSchool />, value: "FaSchool" },
+  { name: "Church", component: <FaChurch />, value: "FaChurch" },
+  { name: "Bed", component: <FaBed />, value: "FaBed" },
+  { name: "Restaurant", component: <MdRestaurant />, value: "MdRestaurant" },
+  { name: "Parking", component: <FaParking />, value: "FaParking" },
 ];
 
 const CategoriesEdit = ({ data }) => {
@@ -41,146 +45,148 @@ const CategoriesEdit = ({ data }) => {
   const [icon, setIcon] = useState(data.icon);
   const [seq, setSeq] = useState(data.seq);
   const [isActive, setIsActive] = useState(data.isActive);
-  const [newProperty, setNewProperty] = useState('');
-  const [properties, setProperties] = useState(data.category_property_keys.map(item => item.name));
+  const [newProperty, setNewProperty] = useState("");
+  const [properties, setProperties] = useState(
+    data.category_property_keys.map((item) => item.name)
+  );
 
   const handleAddProperty = () => {
-    if (newProperty.trim() !== '') {
+    if (newProperty.trim() !== "") {
       setProperties([...properties, newProperty]);
-      setNewProperty('');
+      setNewProperty("");
     }
   };
 
   const handleDeleteProperty = (property) => {
-    setProperties(properties.filter(p => p !== property));
+    setProperties(properties.filter((p) => p !== property));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append('id', id);
-    formData.append('title', title);
-    formData.append('icon', icon);
-    formData.append('seq', seq);
-    formData.append('is_active', isActive);
-    formData.append('category_property_keys', JSON.stringify(properties.map(property => ({ name: property }))));
+    formData.append("id", id);
+    formData.append("title", title);
+    formData.append("icon", icon);
+    formData.append("seq", seq);
+    formData.append("is_active", isActive);
+    formData.append(
+      "category_property_keys",
+      JSON.stringify(properties.map((property) => ({ name: property })))
+    );
 
     dispatch(formData);
   };
 
   return (
-    <div className="container">
-      <div className="card">
-        <div className="card-body">
-          <div className="card-title">Edit Category</div>
-
-          {state?.message ? (
-            <div className="alert alert-danger">
-              {state.message}
-            </div>
-          ) : null}
-
-          <form onSubmit={handleSubmit} noValidate>
-            <input type="hidden" name="userId" />
-
-            <div className="form-floating mb-3">
-              <input
-                type="text"
-                className={`form-control ${isInvalid(state.errors?.title)}`}
-                id="title"
-                name="title"
-                placeholder="Title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-              <label htmlFor="title">Title</label>
-              <div className="invalid-feedback">
-                {state.errors?.title}
-              </div>
-            </div>
-
-            <div className="form-floating mb-3">
-              <select
-                className={`form-control ${isInvalid(state.errors?.icon)}`}
-                id="icon"
-                name="icon"
-                value={icon}
-                onChange={(e) => setIcon(e.target.value)}
-              >
-                <option value="">Select Icon</option>
-                {iconOptions.map((option, index) => (
-                  <option key={index} value={option.value}>
-                    {option.name}
-                  </option>
-                ))}
-              </select>
-              <label htmlFor="icon">Icon</label>
-              <div className="invalid-feedback">
-                {state.errors?.icon}
-              </div>
-            </div>
-
-            <div className="form-floating mb-3">
-              <input
-                type="number"
-                className={`form-control ${isInvalid(state.errors?.seq)}`}
-                id="seq"
-                name="seq"
-                placeholder="Sequence"
-                value={seq}
-                onChange={(e) => setSeq(e.target.value)}
-              />
-              <label htmlFor="seq">Sequence</label>
-              <div className="invalid-feedback">
-                {state.errors?.seq}
-              </div>
-            </div>
-
-            <div className="form-floating mb-3">
-              <div className="status-toggle">
-                <label className="switch">
-                  <input
-                    type="checkbox"
-                    id="is_active"
-                    name="is_active"
-                    checked={isActive}
-                    onChange={(e) => setIsActive(e.target.checked)}
-                  />
-                  <span className="slider"></span>
-                </label>
-                <label htmlFor="is_active">Active</label>
-              </div>
-            </div>
-
-            <div className="form-floating mb-3 properties">
-              <label>Properties</label>
-              <div className="property-input">
+    <div className="new-categories-form-container">
+          <form className="new-categories-form" onSubmit={handleSubmit}>
+            <div className="new-categories-form-left">
+              <div className="single-form-item">
+                <label htmlFor="title">Title</label>
                 <input
                   type="text"
-                  value={newProperty}
-                  onChange={(e) => setNewProperty(e.target.value)}
+                  className={`${isInvalid(state.errors?.title)}`}
+                  id="title"
+                  name="title"
+                  placeholder="Title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
                 />
-                <button type="button" onClick={handleAddProperty}>+</button>
+                <div className="invalid-feedback">{state.errors?.title}</div>
               </div>
-              <ul>
-                {properties.map((property, index) => (
-                  <li key={index}>
-                    {property}
-                    <button type="button" onClick={() => handleDeleteProperty(property)}>🗑️</button>
-                  </li>
-                ))}
-              </ul>
+              <div className="side-by-side-inputs">
+                <div className="single-form-item">
+                  <label htmlFor="icon">Icon</label>
+                  <select
+                    id="icon"
+                    name="icon"
+                    value={icon}
+                    onChange={(e) => setIcon(e.target.value)}
+                  >
+                    {iconOptions.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.name}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="icon-preview">
+                    {
+                      iconOptions.find((option) => option.value === icon)?.component || <></>
+                    }
+                  </div>
+                  <div className="invalid-feedback">{state.errors?.icon}</div>
+                </div>
+                <div className="single-form-item">
+                  <label htmlFor="seq">Sequence</label>
+                  <input
+                    type="number"
+                    className={`${isInvalid(state.errors?.seq)}`}
+                    id="seq"
+                    name="seq"
+                    placeholder="Sequence"
+                    value={seq}
+                    onChange={(e) => setSeq(e.target.value)}
+                  />
+                  <div className="invalid-feedback">{state.errors?.seq}</div>
+                </div>
+                <div className="single-form-item">
+                  <label htmlFor="is_active">Status</label>
+                  <div className="status-toggle">
+                    <label className="switch">
+                      <input
+                        type="checkbox"
+                        id="is_active"
+                        name="is_active"
+                        checked={isActive}
+                        onChange={(e) => setIsActive(e.target.checked)}
+                      />
+                      <span className="slider"></span>
+                    </label>
+                    <label htmlFor="is_active">
+                      {isActive ? "Active" : "Inactive"}
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div className="d-flex align-items-center justify-content-center gap-3 mt-5">
+                <CancelButton id="button-cancel" title="Cancel" />
+                <SubmitButton
+                  id="button-submit"
+                  title="Save"
+                  onClick={handleSubmit}
+                />
+              </div>
             </div>
-
-            <div className="d-flex align-items-center justify-content-center gap-3">
-              <CancelButton id="button-cancel" title="Cancel" />
-              <SubmitButton id="button-submit" title="Update" />
+            <div className="new-categories-form-right">
+              <div className="properties-container">
+                <h4>Properties</h4>
+                <div className="property-input">
+                  <input
+                    type="text"
+                    value={newProperty}
+                    onChange={(e) => setNewProperty(e.target.value)}
+                  />
+                  <button type="button" onClick={handleAddProperty}>
+                    +
+                  </button>
+                </div>
+                <ul>
+                  {properties.map((property, index) => (
+                    <li key={index}>
+                      {property}
+                      <AiOutlineDelete
+                        className="delete-icon"
+                        type="button"
+                        onClick={() => handleDeleteProperty(property)}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </form>
         </div>
-      </div>
-    </div>
   );
 };
 
