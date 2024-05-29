@@ -98,12 +98,11 @@ export const createNewTourRequest = async (formData) => {
     const response = await fetch(`${API_URL}/tour-requests`, {
       method: "POST",
       body: JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers:  await getAuthHeader(),
     });
+    console.log(response)
     if (!response.ok) {
-      throw new error(`Network response was not ok`);
+      throw new Error(`Network response was not ok`);
     }
     return response.json();
   } catch (error) {
