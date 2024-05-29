@@ -50,7 +50,7 @@ export const getCategoriesById = async (id) => {
 
 export const updateCategories = async (payload) => {
 
-	console.log("Payload>>>>>>",payload.id)
+	//console.log("Payload>>>>>>",payload.id)
 
 	return fetch(`${API_URL}/categories/${payload.id}`, {
 		method: "put",

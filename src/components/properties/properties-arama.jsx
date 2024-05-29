@@ -1,11 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import './advert-page.scss';
+import './properties-arama.scss';
 
-const SearchForm = ({ advertTypeData ,categories}) => {
-  console.log("addddd", advertTypeData)
-
+const SearchForm = ({ advertTypeData, categories, data, onSearch }) => {
   const [query, setQuery] = useState('');
   const [propertyStatus, setPropertyStatus] = useState('all');
   const [propertyType, setPropertyType] = useState('all');
@@ -13,11 +11,11 @@ const SearchForm = ({ advertTypeData ,categories}) => {
   const [maxPrice, setMaxPrice] = useState('');
   const [location, setLocation] = useState('');
 
-
+  const uniqueCities = [...new Set(data.map(item => item.city_id))];
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // Handle search logic here
+    onSearch({ query, propertyStatus, propertyType, minPrice, maxPrice, location });
   };
 
   return (
@@ -74,22 +72,19 @@ const SearchForm = ({ advertTypeData ,categories}) => {
           />
           <label htmlFor="type-all">All</label>
         </div>
-      
         {categories.content.map((status) => (
           <div key={status.id}>
             <input
               type="radio"
-              id={`status-${status.id}`}
-              name="status"
+              id={`type-${status.id}`}
+              name="type"
               value={status.title}
-              checked={propertyStatus === status.title}
-              onChange={() => setPropertyStatus(status.content.title)}
+              checked={propertyType === status.title}
+              onChange={() => setPropertyType(status.title)}
             />
-            <label htmlFor={`status-${status.id}`}>{status.title}</label>
+            <label htmlFor={`type-${status.id}`}>{status.title}</label>
           </div>
-        ))}   
-      
-    
+        ))}
       </div>
 
       <div className="form-group">
@@ -116,12 +111,9 @@ const SearchForm = ({ advertTypeData ,categories}) => {
         <label htmlFor="location">Location</label>
         <select id="location" value={location} onChange={(e) => setLocation(e.target.value)}>
           <option value="">City</option>
-          <option value="new-york">New York</option>
-          <option value="los-angeles">Los Angeles</option>
-          <option value="chicago">Chicago</option>
-          <option value="houston">Houston</option>
-          <option value="phoenix">Phoenix</option>
-          {/* Add more options as needed */}
+          {uniqueCities.map((city, index) => (
+            <option key={index} value={city}>{city}</option>
+          ))}
         </select>
       </div>
 

@@ -1,6 +1,7 @@
 import Properties from '@/components/properties/properties';
 import { getAllAdvertType } from '@/services/advertType-servise';
-import { getAllAdminsCategories, getCategories } from '@/services/categories-servise';
+import { getCategories } from '@/services/categories-servise';
+
 import { allAdvertsQueryByPage } from '@/services/create-advert-service';
 import React from 'react';
 
@@ -11,6 +12,8 @@ const page = async () => {
     const res = await allAdvertsQueryByPage();
     const resa = await getAllAdvertType();
     const resb = await getCategories();
+   
+  
 
     if (!res.ok) throw new Error(await res.text());
     if (!resa.ok) throw new Error(await resa.text());
@@ -20,8 +23,9 @@ const page = async () => {
     const advertTypeData = await resa.json();
     const categories = await resb.json();
 
+  
+    console.log("Advertss>>>>>>>>>>>",data)
 
-    console.log(categories)
    
 
     return (
