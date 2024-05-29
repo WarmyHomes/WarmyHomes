@@ -16,6 +16,7 @@ export const createNewTourRequestsAction = async (formData) => {
     const result = await createNewTourRequest(formData);
     return result;
   } catch (error) {
+    console.log('error', error)
     console.error('There was a problem with your createNewTourRequestAction:', error);
     throw error;
   }
