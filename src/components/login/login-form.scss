@@ -29,6 +29,14 @@
           padding-top: 10px;
           padding-bottom:10px;
         }
+        .password-toggle-icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        
     }
     }
 }
