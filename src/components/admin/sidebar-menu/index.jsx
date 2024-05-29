@@ -63,15 +63,11 @@ const SidebarMenu = ({ isFullMenu }) => {
         isFullMenu ? "" : "hide-full-menu"
       }`}
     >
-      <a href="/">
-      <a>
-        <img
-          className="sidebar-logo"
-          src="/images/logo/logo-white.png"
-          alt="Warmy Homes Logo"
-        />
-      </a>
-    </a>
+      <img
+        className="sidebar-logo"
+        src="/images/logo/logo-white.png"
+        alt="Warmy Homes Logo"
+      />
 
       <div className="sidebar-menu-container">
         <ul>
