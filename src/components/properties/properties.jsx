@@ -28,12 +28,13 @@ const Properties = ({ data, advertTypeData, categories }) => {
       <div className="properties-grid">  
         {filteredData.length > 0 ? (  
           filteredData.map((property, index) => (  
+        
             <PropertyCard
               key={index}  
               title={property.title}  
               location={property.location}  
               price={property.price}  
-              imageUrl={property.imageUrl}  
+              imageData={property}  
             />
           ))
         ) : (  
