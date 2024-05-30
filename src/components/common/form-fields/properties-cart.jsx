@@ -1,12 +1,14 @@
-"use client";
-
 import React, { useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
-import "./properties-cart.scss"
+import "./properties-cart.scss";
 
-
-const PropertyCard = ({ title, location, price, imageUrl }) => {
+const PropertyCard = ({ title, location, price, imageData }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+
+  // İlk resmin data'sını kontrol et ve al
+  const firstImageData = imageData.images && imageData.images.length > 0 ? imageData.images[0].data : null;
+
+  //console.log("Image Data >>>>>>>", firstImageData);
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
@@ -14,7 +16,19 @@ const PropertyCard = ({ title, location, price, imageUrl }) => {
 
   return (
     <div className="property-card">
-      <img src={imageUrl} alt={title} className="property-image" />
+      <div className="image">
+        {firstImageData ? (
+          <img
+            src={`data:image/jpeg;base64,${firstImageData}`}
+            width={400}
+            height={300}
+            alt={"Property Image"}
+            className="rounded"
+          />
+        ) : (
+          <p>Image not available</p>
+        )}
+      </div>
       <div className="favorite-icon" onClick={toggleFavorite}>
         <FaHeart className={isFavorite ? 'favorite' : ''} />
       </div>

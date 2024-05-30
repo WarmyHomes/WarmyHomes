@@ -24,7 +24,8 @@ const page = async () => {
     const categories = await resb.json();
 
   
-    console.log("Advertss>>>>>>>>>>>",data)
+    //console.log("Advertss>>>>>>>>>>>", JSON.stringify(data, null, 2));
+
 
    
 
