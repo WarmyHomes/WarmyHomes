@@ -1,0 +1,13 @@
+@use "../../../styles/variables" as v;
+
+.discover-properties-container {
+	padding-inline: 40px;
+
+	p {
+		color:v.$color10;
+		
+        height: 100%;
+		//@include m.border-radius(5px);
+       // @include m.flex($jc:center)
+	}
+}

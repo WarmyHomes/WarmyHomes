@@ -6,6 +6,7 @@ import RegisterNow from "@/components/home-page/register-now";
 import SellingOption from "@/components/home-page/selling-option";
 import { config } from "@/helpers/config";
 import HeroSection from "@/components/home-page/hero-section";
+import DiscoverProperties from "@/components/home-page/discover-properties/discover-properties";
 
 export const metadata = {
   title: config.project.slogan,
@@ -21,6 +22,8 @@ export default function Home() {
       <Spacer />
       <RegisterNow />
       <Spacer />
+      <DiscoverProperties/>
+      <Spacer/>
       <SellingOption />
       <Spacer />
       <ContactUs />
