@@ -5,7 +5,7 @@ import { getCategories } from '@/services/categories-servise';
 import { allAdvertsQueryByPage } from '@/services/create-advert-service';
 import React from 'react';
 
-const page = async () => {
+export async function page() {
 
 
   
@@ -23,8 +23,9 @@ const page = async () => {
     const advertTypeData = await resa.json();
     const categories = await resb.json();
 
-  
-    //console.log("Advertss>>>>>>>>>>>", JSON.stringify(data, null, 2));
+
+
+   // console.log("adverttt<<<<<<>>>>>>",advertTypeData)
 
 
    
