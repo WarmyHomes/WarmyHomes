@@ -15,9 +15,8 @@ const RegisterNow = () => {
            <Image
 							src={`/images/highlight.png`}
 							className="register-img "
-              fluid
-              width={350}
-							height={210}
+              width={150}
+							height={200}
 							/>
 </div>
    </div>

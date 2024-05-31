@@ -18,7 +18,7 @@ const FormSchema = Yup.object({
 
 export const createCategoriesAction = async (prevState, formData) => {
 
-
+		console.log("Category FormData>>>>>>",formData)
 	
 	try {
 		// Form verilerini JSON formatına dönüştürme
@@ -82,10 +82,11 @@ export const deleteCategoriesAction = async (id) => {
 
 export const updateCategoriesAction = async (prevState, formData) => {
 
-//console.log("FormData>>>>>>>>>",formData)
+console.log("FormData>>>>>>>>>",formData)
 	
 	try {
 		// Form verilerini JSON formatına dönüştürme
+		const id = formData.get('id');
 		const title = formData.get('title');
 		const icon = formData.get('icon');
 		const seq = formData.get('seq');
@@ -93,6 +94,7 @@ export const updateCategoriesAction = async (prevState, formData) => {
 		const categoryPropertyKeys = JSON.parse(formData.get('category_property_keys'));
 
 		const fields = {
+			id,
 			title,
 			icon,
 			seq,
@@ -125,5 +127,5 @@ export const updateCategoriesAction = async (prevState, formData) => {
 
 	// Başarılı bir şekilde oluşturulduğunda, yönlendirme yapma
 	revalidatePath("/admin/categories");
-	redirect(`/admin/categories?msg=${encodeURI("categories was created")}`);
+	redirect(`/admin/categories`);
 };

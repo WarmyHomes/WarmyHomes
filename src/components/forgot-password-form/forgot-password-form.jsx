@@ -3,8 +3,7 @@ import "./forgot-password-form.scss";
 import { forgotPasswordAction } from "@/actions/user-actions";
 import { useFormState } from "react-dom";
 import SubmitButton from "../common/form-fields/submit-button";
-import { initialResponse} from "@/helpers/form-validation";
-
+import { initialResponse, isInvalid} from "@/helpers/form-validation";
 const ForgotPasswordForm = () => {
 	const [state, dispatch] = useFormState(
 		forgotPasswordAction,
@@ -26,7 +25,9 @@ const ForgotPasswordForm = () => {
 								>
 									<input
 										type="text"
-										className="form-control"
+										className={`form-control ${isInvalid(
+											state?.errors?.email
+										)}`}
 										id="email"
 										name="email"
 										

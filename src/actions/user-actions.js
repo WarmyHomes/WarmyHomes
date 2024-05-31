@@ -11,22 +11,11 @@ import { redirect } from "next/navigation";
 import * as Yup from "yup";
 
 const FormSchema = Yup.object({
-	firstname: Yup.string().required("Required"),
-	lastname: Yup.string().required("Required"),
+	first_name: Yup.string().required("Required"),
+	last_name: Yup.string().required("Required"),
 	email:Yup.string().email("Invalid email").required("Required"),
-	phone: Yup.string()
-		.matches(/\d{3}-\d{3}-\d{4}/, "Invalid phone number")
-		.required("Required"),
-	password: Yup.string()
-		.min(8, "Must be at least 8 chars")
-		.matches(/[a-z]+/, "At least one lowercase")
-		.matches(/[A-Z]+/, "At least one uppercase")
-		.matches(/\d+/, "At least one number")
-		.required("Required"),
-	confirmPassword: Yup.string().oneOf(
-		[Yup.ref("password")],
-		"Password fields don't match"
-	),
+
+
 });
 
 export const createRegisterAction = async (prevState, formData) => {
@@ -60,6 +49,7 @@ export const createRegisterAction = async (prevState, formData) => {
 	
 };
 
+// F-06
 export const updateUserAction = async (prevState, formData) => {
 	//console.log("DATA",formData)
 	try {
@@ -92,7 +82,7 @@ export const forgotPasswordAction = async (prevState, formData) => {
 		FormSchema.validateSync(fields, { abortEarly: false });
 
 		const res = await forgotPassword(fields);
-		const data = await res.json();
+		const data = await res;
 
 		if (!res.ok) {
 			return response(false, data?.message, data?.validations);
@@ -106,7 +96,7 @@ export const forgotPasswordAction = async (prevState, formData) => {
 	}
 
 	revalidatePath("/reset-password");
-	redirect(`/forgot-password?msg=${encodeURI("User was updated")}`);
+	redirect(`/?msg=${encodeURI("User was updated")}`);
 };
 	
 export const resetPasswordAction = async (prevState, formData) => {
@@ -175,11 +165,18 @@ export const deleteUserAction = async (id) => {
 };
 
 
+// F-11
 export const updateUserByIdAction = async (prevState, formData) => {
+
+
+	console.log("AdminCreat:>>>>>>>",formData)
+ 
 	try {
 		const fields = convertFormDataToJson(formData);
 
-		FormSchema.validateSync(fields, { abortEarly: false });
+		
+   FormSchema.validateSync(fields, { abortEarly: false });
+	
 
 		const res = await updateUserById(fields);
 		const data = await res.json();
@@ -195,6 +192,7 @@ export const updateUserByIdAction = async (prevState, formData) => {
 		throw err;
 	}
 
-	revalidatePath("/admin/advert-types");
-	redirect(`/admin/advert-types?msg=${encodeURI("advert-types was updated")}`);
+	revalidatePath("/admin/users");
+	redirect(`/admin/users`);
+	
 };

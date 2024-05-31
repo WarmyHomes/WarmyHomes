@@ -22,23 +22,107 @@ export const config = {
     },
   },
 
-	api: {
-		baseUrl: "https://66278205b625bf088c0897dc.mockapi.io/",
-	},
-	
-	selling: {
-		title:"Let’s Find The Right ",
-		desc:"Selling Option For You",
-	    description:{
-			techTitle:"Tech-Driven Marketing",
-			techDesc:"Real estate is embracing technology with virtual tours, 3D models, and blockchain transactions.",
-			sustainabilityTitle:"Sustainability Matters",
-			sustainabilityDesc:"Green building practices and eco-friendly features are gaining popularity for environmentally conscious buyers.",
-			remoteTitle:"Remote Work Impact",
-			remoteDesc:"Changing work patterns are reshaping housing preferences, favoring suburban and urban mixed- use developments.",
-		},
+  api: {
+     baseUrl: "http://localhost:8080",
     
-	},
+    },
+     
 
 
-   };
+  selling: {
+    title: "Let’s Find The Right ",
+    desc: "Selling Option For You",
+    description: {
+      techTitle: "Tech-Driven Marketing",
+      techDesc:
+        "Real estate is embracing technology with virtual tours, 3D models, and blockchain transactions.",
+      sustainabilityTitle: "Sustainability Matters",
+      sustainabilityDesc:
+        "Green building practices and eco-friendly features are gaining popularity for environmentally conscious buyers.",
+      remoteTitle: "Remote Work Impact",
+      remoteDesc:
+        "Changing work patterns are reshaping housing preferences, favoring suburban and urban mixed- use developments.",
+    },
+  },
+
+  userRightsOnRoutes: [
+    { urlRegex: /\/admin\/dashboard$/, rights: ["ADMIN","CUSTOMER"] },
+    { urlRegex: /\/admin\/advert-types$/, rights: ["ADMIN"] },
+    { urlRegex: /\/admin\/advert-types\/new$/, rights: ["ADMIN"] },
+    { urlRegex: /\/admin\/users$/, rights: ["ADMIN","CUSTOMER"] },
+    { urlRegex: /\/dashboard\/manager$/, rights: ["ADMIN"] },
+    { urlRegex: /\/dashboard\/manager\/new$/, rights: ["ADMIN"] },
+    { urlRegex: /\/dashboard\/manager\/[0-9]+$/, rights: ["ADMIN"] },
+    { urlRegex: /\/admin\/contact-messages$/, rights: ["ADMIN"] },
+    { urlRegex: /\/change-password$/, rights: ["ADMIN","CUSTOMER"] },
+    {
+      urlRegex: /\/dashboard\/assistant-manager$/,
+      rights: ["ADMIN", "MANAGER"],
+    },
+    {
+      urlRegex: /\/dashboard\/assistant-manager\/new$/,
+      rights: ["ADMIN", "MANAGER"],
+    },
+    {
+      urlRegex: /\/dashboard\/assistant-manager\/[0-9]+$/,
+      rights: ["ADMIN", "MANAGER"],
+    },
+    {
+      urlRegex: /\/dashboard\/teacher$/,
+      rights: ["ADMIN", "ASSISTANTMANAGER"],
+    },
+    {
+      urlRegex: /\/dashboard\/teacher\/new$/,
+      rights: ["ADMIN", "ASSISTANTMANAGER"],
+    },
+    {
+      urlRegex: /\/dashboard\/teacher\/[0-9]+$/,
+      rights: ["ADMIN", "ASSISTANTMANAGER"],
+    },
+    { urlRegex: /\/dashboard\/lesson$/, rights: ["ADMIN", "ASSISTANTMANAGER"] },
+    {
+      urlRegex: /\/dashboard\/lesson\/new$/,
+      rights: ["ADMIN", "ASSISTANTMANAGER"],
+    },
+    {
+      urlRegex: /\/dashboard\/education-term$/,
+      rights: ["ADMIN", "ASSISTANTMANAGER"],
+    },
+    {
+      urlRegex: /\/dashboard\/education-term\/new$/,
+      rights: ["ADMIN", "ASSISTANTMANAGER"],
+    },
+    {
+      urlRegex: /\/dashboard\/program$/,
+      rights: ["ADMIN", "ASSISTANTMANAGER"],
+    },
+    {
+      urlRegex: /\/dashboard\/program\/new$/,
+      rights: ["ADMIN", "ASSISTANTMANAGER"],
+    },
+    {
+      urlRegex: /\/dashboard\/student$/,
+      rights: ["ADMIN", "ASSISTANTMANAGER"],
+    },
+    {
+      urlRegex: /\/dashboard\/student\/new$/,
+      rights: ["ADMIN", "ASSISTANTMANAGER"],
+    },
+    {
+      urlRegex: /\/dashboard\/student\/[0-9]+$/,
+      rights: ["ADMIN", "ASSISTANTMANAGER"],
+    },
+    { urlRegex: /\/dashboard\/student-info$/, rights: ["TEACHER"] },
+    { urlRegex: /\/dashboard\/student-info\/new$/, rights: ["TEACHER"] },
+    { urlRegex: /\/dashboard\/student-info\/[0-9]+$/, rights: ["TEACHER"] },
+    { urlRegex: /\/dashboard\/meet$/, rights: ["TEACHER"] },
+    { urlRegex: /\/dashboard\/meet\/new$/, rights: ["TEACHER"] },
+    { urlRegex: /\/dashboard\/meet\/[0-9]+$/, rights: ["TEACHER"] },
+    {
+      urlRegex: /\/dashboard\/contact-message$/,
+      rights: ["ADMIN", "MANAGER", "ASSISTANTMANAGER"],
+    },
+    { urlRegex: /\/dashboard\/choose-lesson$/, rights: ["STUDENT"] },
+    { urlRegex: /\/dashboard\/grades-meets$/, rights: ["STUDENT"] },
+  ],
+};
