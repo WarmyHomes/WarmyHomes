@@ -117,11 +117,28 @@ export const createNewTourRequest = async (formData) => {
 
 
 // A-01
-export const allAdvertsQueryByPage = async () => {
-	return fetch(`${API_URL}/adverts`, {
-		method: "get",
-		headers: await getAuthHeader(),
-	
-	});
 
-      };
+export const allAdvertsQueryByPage = async (params = {}) => {
+
+
+
+  const queryParams = new URLSearchParams({
+    q: params.query || '',
+    category_id: params.category_id || '',
+    advert_type_id: params.advert_type_id || '',
+    price_start: params.price_start || '',
+    price_end: params.price_end || '',
+    city_id: params.city_id || '',
+    page: params.page || 0,
+    size: params.size || 20,
+    sort: params.sort || 'id',
+    type: params.type || 'asc'
+  });
+
+  const response = await fetch(`${API_URL}/adverts?${queryParams.toString()}`, {
+    method: 'GET',
+   
+  });
+
+  return response;
+};
