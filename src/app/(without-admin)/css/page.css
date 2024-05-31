@@ -1,0 +1,30 @@
+.my-favorites-page-container {
+  padding: 40px;
+}
+.my-favorites-page-container .all-properties-main-container {
+  margin-top: 60px;
+}
+.my-favorites-page-container .all-properties-main-container .properties-header {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 60px;
+}
+@media (max-width: 900px) {
+  .my-favorites-page-container .all-properties-main-container .properties-header {
+    display: none;
+    visibility: hidden;
+  }
+}
+.my-favorites-page-container .all-properties-main-container .properties-header h5 {
+  width: 15%;
+  text-align: center;
+}
+.my-favorites-page-container .all-properties-main-container .properties-header .property-header {
+  width: 40%;
+}
+.my-favorites-page-container .all-properties-main-container .all-properties-listing {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-block: 30px;
+}/*# sourceMappingURL=page.css.map */

@@ -5,7 +5,7 @@ import {
 	getYupErrors,
 	response,
 } from "@/helpers/form-validation";
-import { changePassword, forgotPassword, register, resetPassword, updateUser } from "@/services/user-service";
+import { changePassword, deleteUser, forgotPassword, register, resetPassword, updateUser, updateUserById } from "@/services/user-service";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import * as Yup from "yup";
@@ -30,10 +30,16 @@ const FormSchema = Yup.object({
 });
 
 export const createRegisterAction = async (prevState, formData) => {
+
+
+	console.log("AdminCreat:>>>>>>>",formData)
+ 
 	try {
 		const fields = convertFormDataToJson(formData);
 
-		FormSchema.validateSync(fields, { abortEarly: false });
+		
+
+	
 
 		const res = await register(fields);
 		const data = await res.json();
@@ -49,16 +55,17 @@ export const createRegisterAction = async (prevState, formData) => {
 		throw err;
 	}
 
-	revalidatePath("/login");
+	revalidatePath("/admin/users");
 	redirect(`/login?msg=${encodeURI("User was created")}`);
 	
 };
 
 export const updateUserAction = async (prevState, formData) => {
+	//console.log("DATA",formData)
 	try {
 		const fields = convertFormDataToJson(formData);
 
-		FormSchema.validateSync(fields, { abortEarly: false });
+
 
 		const res = await updateUser(fields);
 		const data = await res.json();
@@ -74,8 +81,8 @@ export const updateUserAction = async (prevState, formData) => {
 		throw err;
 	}
 
-	revalidatePath("/profile");
-	redirect(`/profile?msg=${encodeURI("User was updated")}`);
+	revalidatePath("/");
+	redirect(`/?msg=${encodeURI("User was updated")}`);
 };
 
 export const forgotPasswordAction = async (prevState, formData) => {
@@ -103,14 +110,15 @@ export const forgotPasswordAction = async (prevState, formData) => {
 };
 	
 export const resetPasswordAction = async (prevState, formData) => {
+	console.log("RESET",formData)
 	try {
 		const fields = convertFormDataToJson(formData);
 
-		FormSchema.validateSync(fields, { abortEarly: false });
+		//FormSchema.validateSync(fields, { abortEarly: false });
 
 		const res = await resetPassword(fields);
-		const data = await res.json();
-
+		const data = await res;
+		console.log("RESEttttT",data)
 		if (!res.ok) {
 			return response(false, data?.message, data?.validations);
 		}
@@ -123,14 +131,15 @@ export const resetPasswordAction = async (prevState, formData) => {
 	}
 
 	revalidatePath("/profile");
-	redirect(`/reset-password?msg=${encodeURI("Password was updated")}`);
+	redirect(`/?msg=${encodeURI("Password was updated")}`);
 };
 
 export const changePasswordAction = async (prevState, formData) => {
+	console.log("paralo",formData)
 	try {
 		const fields = convertFormDataToJson(formData);
 
-		FormSchema.validateSync(fields, { abortEarly: false });
+	//FormSchema.validateSync(fields, { abortEarly: false });
 
 		const res = await changePassword(fields);
 		const data = await res.json();
@@ -147,5 +156,45 @@ export const changePasswordAction = async (prevState, formData) => {
 	}
 
 	revalidatePath("/profile");
-	redirect(`/users/auth?msg=${encodeURI("Password was updated")}`);
+	redirect(`/?msg=${encodeURI("Password was updated")}`);
+};
+
+export const deleteUserAction = async (id) => {
+	if (!id) throw new Error("id is missing");
+
+	const res = await deleteUser(id);
+	
+	const data = await res.json();
+
+	if (!res.ok) {
+		throw new Error(data.message);
+	}
+
+	revalidatePath("/admin/users");
+	redirect(`/admin/users?msg=${encodeURI("advert-types was deleted")}`);
+};
+
+
+export const updateUserByIdAction = async (prevState, formData) => {
+	try {
+		const fields = convertFormDataToJson(formData);
+
+		FormSchema.validateSync(fields, { abortEarly: false });
+
+		const res = await updateUserById(fields);
+		const data = await res.json();
+
+		if (!res.ok) {
+			return response(false, data?.message, data?.validations);
+		}
+	} catch (err) {
+		if (err instanceof Yup.ValidationError) {
+			return getYupErrors(err.inner);
+		}
+
+		throw err;
+	}
+
+	revalidatePath("/admin/advert-types");
+	redirect(`/admin/advert-types?msg=${encodeURI("advert-types was updated")}`);
 };

@@ -1,0 +1,33 @@
+@import "../../../../styles/variables";
+
+.my-favorites-page-container {
+  padding: 40px;
+
+  .all-properties-main-container {
+    margin-top: 60px;
+    .properties-header {
+      display: flex;
+      justify-content: space-between;
+      padding-inline: 60px;
+
+      @media (max-width: 900px) {
+        display: none;
+        visibility: hidden;
+      }
+
+      h5 {
+        width: 15%;
+        text-align: center;
+      }
+      .property-header {
+        width: 40%;
+      }
+    }
+    .all-properties-listing {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-block: 30px;
+    }
+  }
+}

@@ -4,7 +4,7 @@ import { config } from "@/helpers/config";
 const API_URL = config.api.baseUrl;
 
 
-export const getAllAdvertType = async (payload) => {
+export const getAllAdvertType = async () => {
 	return fetch(`${API_URL}/advert-types`, {
 		method: "get",
 		headers: await getAuthHeader(),
@@ -13,11 +13,12 @@ export const getAllAdvertType = async (payload) => {
 
       };
 
-	  export const getAdvertTypeById = async (payload) => {
+	  export const getAdvertTypeById = async (id) => {
+
 		return fetch(`${API_URL}/advert-types/${id}`, {
-			method: "get",
+		
 			headers: await getAuthHeader(),
-			body: JSON.stringify(payload)
+			
 		});
 	};
 
@@ -41,6 +42,7 @@ export const getAllAdvertType = async (payload) => {
 		  
 
    export const updateAdvertType = async (payload) => {
+
     return fetch(`${API_URL}/advert-types/${payload.userId}`, {
        method: "put",
       headers: await getAuthHeader(),

@@ -1,0 +1,47 @@
+@charset "UTF-8";
+/* Giriş alanı container'ı */
+.input-container {
+  display: flex; /* Öğelerin yan yana görüntülenmesini sağlar */
+  margin-bottom: 20px; /* Container'ın altında boşluk bırakır */
+  margin-top: 20px;
+  height: 20px; /* İhtiyaca göre yüksekliği ayarlayın */
+  align-items: center; /* Öğeleri dikey olarak hizalar */
+}
+
+/* Giriş alanı inputu */
+.input-field {
+  flex: 1;
+  /*Container'ıngerikalanboşluğunukaplar*/
+  padding: 10px;
+  /*İçerikilekenarlıkarasındakiboşluk*/
+  border: 1px solid #ccc;
+  /*Kenarlığınrengivekalınlığı*/
+  border-radius: 5px;
+  /* Kenarlığın köşelerini yuvarlar */
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+/* Arama butonu */
+.search-button {
+  margin-left: 10px; /* Soldan boşluk bırakır */
+  padding: 20px 20px; /* İçeriği yatay ve dikey olarak içeriye itmek için iç boşluk */
+  background-color: #9c27b0; /* Arkaplan rengi */
+  color: white; /* Yazı rengi */
+  border: none; /* Kenarlık yok */
+  border-radius: 50px; /* Butonu yuvarlatır */
+  cursor: pointer; /* İmleci bir el simgesi olarak değiştirir */
+}
+
+/* Yeni ekleme butonu */
+.add-new-button {
+  margin-left: 10px; /* Soldan boşluk bırakır */
+  padding: 10px 20px; /* İçeriği yatay ve dikey olarak içeriye itmek için iç boşluk */
+  background-color: #9c27b0; /* Arkaplan rengi */
+  color: white; /* Yazı rengi */
+  border: none; /* Kenarlık yok */
+  border-radius: 50px; /* Butonu yuvarlatır */
+  cursor: pointer; /* İmleci bir el simgesi olarak değiştirir */
+}/*# sourceMappingURL=categories-list.css.map */

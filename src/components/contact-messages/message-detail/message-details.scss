@@ -1,0 +1,44 @@
+
+
+.message-detail-page-container {
+  padding: 80px 60px;
+
+  @media (max-width: 900px) {
+    padding: 30px 20px;
+  }
+
+  .message-details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    .detail-item-container {
+      display: flex;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: rgb(241, 241, 241);
+      h5 {
+        margin: 0;
+        font-size: 18px;
+      }
+      .item-label {
+        width: 10%;
+        min-width: 140px;
+      }
+    }
+    .action-buttons-container {
+      display: flex;
+      gap: 30px;
+      justify-content: flex-end;
+      align-items: center;
+      button {
+        height: 50px;
+        padding-inline: 40px;
+        background-color: blue;
+        border: none;
+        border-radius: 10px;
+        font-size: 20px;
+        color: white;
+      }
+    }
+  }
+}

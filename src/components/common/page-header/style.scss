@@ -1,6 +1,7 @@
 @use "../../../styles/variables" as v;
 
 .page-header {
+  justify-content: center;
   background-image: linear-gradient(
     90deg,
     rgb(243, 220, 242),
@@ -12,8 +13,10 @@
   display: flex;
   align-items: center;
   padding-inline: 40px;
+  
 
   h1 {
+    
     font-weight: 400;
     color: black;
     margin: 0;

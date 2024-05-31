@@ -5,13 +5,15 @@ import { useFormState } from "react-dom";
 import { updateUserAction } from "@/actions/user-actions";
 import SubmitButton from "../common/form-fields/submit-button";
 import InputMask from "react-input-mask-next";
+import { initialResponse, isInvalid } from "@/helpers/form-validation";
 
-const ProfileForm = () => {
+const ProfileForm = ({session}) => {
+	//console.log("Session>>>>>>>>>",session)
 	const [state, dispatch] = useFormState(
 		updateUserAction,
 		initialResponse
 	);
-
+	console.log("State>>>>>>>>>",state)
 	return (
 		<div className="container profile-form">
 			<div className="row justify-content-center ">
@@ -26,32 +28,32 @@ const ProfileForm = () => {
 									<input
 										type="text"
 										className={`form-control ${isInvalid(
-											state.errors?.firstname
+											state?.errors?.first_name
 										)}`}
-										id="firstname"
-										name="firstname"
-										placeholder="First Name"
-										defaultValue={data.first_name}
-									/>
-									<label htmlFor="firstname">
-                                    First Name
-									</label>
-									
-								</div>
+                                        id="first_name"
+                                        name="first_name"
+                                        placeholder="first_name"
+										defaultValue={session.user.first_name}
+                                    />
+                                    <label htmlFor="first_name">First Name</label>
+									<div className="invalid-feedback">
+										{state?.errors?.first_name}
+									</div>
+                                </div>
                                 <div
 									className={`form-floating mb-3 `}
 								>
 									<input
 										type="text"
 										className={`form-control ${isInvalid(
-											state.errors?.lastname
+											state?.errors?.last_name
 										)}`}
-										id="lastname"
-										name="lastname"
-										placeholder="Last Name"
-										defaultValue={data.last_name}
+										id="last_name"
+										name="last_name"
+										placeholder="last_name"
+										defaultValue={session.user.last_name}
 									/>
-									<label htmlFor="lastname">
+									<label htmlFor="last_name">
                                     Last Name
 									</label>
 									
@@ -64,7 +66,7 @@ const ProfileForm = () => {
 										className="form-control"
 										id="email"
 										name="email"
-										defaultValue={data.email}
+										defaultValue={session.user.email}
 										
 									/>
 									<label htmlFor="email">
@@ -79,13 +81,13 @@ const ProfileForm = () => {
 								>
 									<InputMask
 										className={`form-control ${isInvalid(
-											state.errors?.phone
+											state?.errors?.phone
 										)}`}
 										id="phone"
 										name="phone"
 										placeholder="Phone"
-										mask="999-999-9999"
-										defaultValue={data.phone}
+										mask="9999999999"
+										defaultValue={session.user.phone}
 									/>
 									<label htmlFor="phone">	
                                     Phone

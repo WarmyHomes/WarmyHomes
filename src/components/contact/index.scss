@@ -1,0 +1,96 @@
+
+
+.contact-us-page-main-container {
+  padding: 40px;
+  position: relative;
+
+  .contact-us-form-wrapper-in-page {
+    padding: 30px;
+    border-radius: 30px;
+    border: 1px solid grey;
+    position: absolute;
+    top: 280px;
+    left: 130px;
+    background-color: white;
+    width: 30%;
+
+    @media (max-width: 900px) {
+      margin-top: 40px;
+      position: relative;
+      width: 100%;
+      left: 0;
+      top: 0;
+      min-width: 300px;
+    }
+  }
+
+  .content-right-to-form {
+    width: 280px;
+    text-align: left;
+    margin-inline: auto;
+    margin-top: 40px;
+    padding-left: 40px;
+
+    h2 {
+      font-size: 24px;
+    }
+    p {
+      font-size: 12px;
+    }
+  }
+
+  .visit-our-offices-container {
+    .visit-our-offices-top {
+      text-align: center;
+    }
+    .all-cities-info-container {
+      margin-top: 60px;
+      display: flex;
+      justify-content: space-around;
+
+      @media (max-width: 900px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .single-city-container {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @media (max-width: 900px) {
+          width: 80%;
+        }
+
+        .city-icon-container {
+          height: 130px;
+          width: 130px;
+          background-color: #ccc;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          img {
+            height: 80px;
+            width: auto;
+          }
+        }
+        .info-container {
+          text-align: center;
+          margin-top: 30px;
+
+          p,
+          h5 {
+            margin: 0;
+          }
+
+          h5 {
+            font-size: 26px;
+            margin-bottom: 5px;
+          }
+        }
+      }
+    }
+  }
+}

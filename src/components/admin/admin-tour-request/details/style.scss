@@ -1,0 +1,42 @@
+@use "../../../../styles/variables" as v;
+* {
+  .main-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    
+    .image-container {
+      position: relative;
+
+      .image {
+        position: relative;
+        height: 100%;
+        background-size: cover;
+      }
+
+      .status {
+        position: absolute;
+        top: 20px; 
+        right: 10px; 
+        padding: 5px 10px; 
+        font-size: medium;
+        font-weight: 300;
+        background-color: v.$color4;
+        color: white; 
+        border-radius: 5px;
+      }
+    }
+
+    .form-control{
+       background-color: v.$color6;
+       color: v.$color7;
+    }
+    .btn{
+        position: relative;
+        padding:7px 65px;
+        top: 2%;
+        left: 12%;
+       
+    }
+  }
+}

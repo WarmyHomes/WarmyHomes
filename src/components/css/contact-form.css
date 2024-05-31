@@ -1,0 +1,49 @@
+.contact-us-form-main-container h3 {
+  font-weight: 500;
+  font-size: 20px;
+  margin-bottom: 0px;
+}
+.contact-us-form-main-container .contact-us-form {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+.contact-us-form-main-container .contact-us-form .form-input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.contact-us-form-main-container .contact-us-form .form-input-container label {
+  font-weight: 600;
+  font-size: 14px;
+}
+.contact-us-form-main-container .contact-us-form .form-input-container input,
+.contact-us-form-main-container .contact-us-form .form-input-container textarea {
+  height: 35px;
+  background-color: rgb(238, 238, 238);
+  color: black;
+  border: none;
+  padding-inline: 10px;
+  border-radius: 7px;
+}
+.contact-us-form-main-container .contact-us-form .form-input-container textarea {
+  height: 120px;
+}
+.contact-us-form-main-container .contact-us-form .form-recaptcha-container {
+  margin-block: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.contact-us-form-main-container .contact-us-form .submit-form-button {
+  height: 45px;
+  text-align: center;
+  background-color: rgb(161, 18, 127);
+  border: none;
+  width: 100%;
+  border-radius: 10px;
+  color: white;
+}/*# sourceMappingURL=contact-form.css.map */
