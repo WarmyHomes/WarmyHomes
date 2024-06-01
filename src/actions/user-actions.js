@@ -11,12 +11,22 @@ import { redirect } from "next/navigation";
 import * as Yup from "yup";
 
 const FormSchema = Yup.object({
-	first_name: Yup.string().required("Required"),
-	last_name: Yup.string().required("Required"),
-	email:Yup.string().email("Invalid email").required("Required"),
-
-
-});
+    first_name:Yup.string().required("Required"),
+    last_name:Yup.string().required("Required"),
+    phone: Yup.string()
+		.matches(/\d{4}-\d{3}-\d{3}/, "Invalid phone number")
+		.required("Required"),
+        email: Yup.string().email("Invalid email").required("Required"),
+        password: Yup.string()
+		.min(8, "Must be at least 8 chars")
+		.matches(/[a-z]+/, "At least one lowercase")
+		.matches(/[A-Z]+/, "At least one uppercase")
+		.matches(/\d+/, "At least one number")
+		.required("Required"),
+	confirmPassword: Yup.string().oneOf(
+		[Yup.ref("password")],
+		"Password fields don't match"
+	),});
 
 export const createRegisterAction = async (prevState, formData) => {
 

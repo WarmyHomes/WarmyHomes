@@ -7,10 +7,14 @@ import "./register-form.scss";
 import SubmitButton from "../common/form-fields/submit-button";
 import { initialResponse, isInvalid } from "@/helpers/form-validation";
 import InputMask from "react-input-mask-next";
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const RegisterForm = () => {
     const [state, dispatch] = useFormState(createRegisterAction, initialResponse);
     const [passwordType, setPasswordType] = useState("password");
+
 
     const togglePasswordVisibility = () => {
         setPasswordType((prevType) => (prevType === "password" ? "text" : "password"));
