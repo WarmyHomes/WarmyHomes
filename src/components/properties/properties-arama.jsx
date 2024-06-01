@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './properties-arama.scss';
+import SubmitButton from '../common/submit-button/submit-button';
 
-const SearchForm = ({ advertTypeData, categories, onSearch }) => {
+const SearchForm = ({ advertTypeData, categories, cities, onSearch }) => {
   const [searchParams, setSearchParams] = useState({
     query: '',
     propertyStatus: 'all',
@@ -13,6 +14,29 @@ const SearchForm = ({ advertTypeData, categories, onSearch }) => {
     location: ''
   });
 
+  const [filteredCities, setFilteredCities] = useState([]);
+  const [cityFilter, setCityFilter] = useState('');
+  const selectRef = useRef(null);
+
+  useEffect(() => {
+    if (cityFilter !== '') {
+      const filtered = cities.object.filter(city =>
+        city.name.toLowerCase().includes(cityFilter.toLowerCase())
+      ).slice(0, 10);
+      setFilteredCities(filtered);
+
+      if (filtered.length > 0) {
+        selectRef.current.size = filtered.length > 10 ? 10 : filtered.length;
+        selectRef.current.style.display = 'block';
+      } else {
+        selectRef.current.style.display = 'none';
+      }
+    } else {
+      setFilteredCities([]);
+      selectRef.current.style.display = 'none';
+    }
+  }, [cityFilter, cities.object]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setSearchParams(prevState => ({
@@ -21,11 +45,34 @@ const SearchForm = ({ advertTypeData, categories, onSearch }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Form submit olayının varsayılan davranışını engelle
-    onSearch(searchParams); // Arama işlemini gerçekleştir
+  const handleCityFilterChange = (e) => {
+    setCityFilter(e.target.value);
   };
-  
+
+  const handleCityFilterFocus = () => {
+    const filtered = cities.object.slice(0, 10);
+    setFilteredCities(filtered);
+
+    if (filtered.length > 0) {
+      selectRef.current.size = filtered.length > 10 ? 10 : filtered.length;
+      selectRef.current.style.display = 'block';
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSearch(searchParams);
+  };
+
+  const handleCitySelect = (e) => {
+    const selectedCity = cities.object.find(city => city.id === parseInt(e.target.value));
+    setSearchParams(prevState => ({
+      ...prevState,
+      location: e.target.value
+    }));
+    setCityFilter(selectedCity ? selectedCity.name : '');
+    selectRef.current.style.display = 'none';
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -58,7 +105,7 @@ const SearchForm = ({ advertTypeData, categories, onSearch }) => {
           <option key={category.id} value={category.id}>{category.title}</option>
         ))}
       </select>
-      
+
       <input 
         type="number" 
         name="minPrice" 
@@ -73,14 +120,30 @@ const SearchForm = ({ advertTypeData, categories, onSearch }) => {
         onChange={handleChange} 
         placeholder="Max Price" 
       />
+
       <input 
         type="text" 
+        name="locationFilter" 
+        value={cityFilter} 
+        onChange={handleCityFilterChange} 
+        onFocus={handleCityFilterFocus} 
+        placeholder="Filter Cities..." 
+      />
+
+      <select 
         name="location" 
         value={searchParams.location} 
-        onChange={handleChange} 
-        placeholder="Location" 
-      />
-      <button type="submit">Search</button>
+        onChange={handleCitySelect} 
+        ref={selectRef}
+        size={filteredCities.length > 10 ? 10 : filteredCities.length}
+        style={{ display: 'none' }}
+      >
+        {filteredCities.map((city) => (
+          <option key={city.id} value={city.id}>{city.name}</option>
+        ))}
+      </select>
+
+      <SubmitButton type="submit">Search</SubmitButton>
     </form>
   );
 };
