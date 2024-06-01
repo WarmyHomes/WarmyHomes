@@ -5,10 +5,7 @@ import "./properties-cart.scss";
 const PropertyCard = ({ title, location, price, imageData }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
-  // İlk resmin data'sını kontrol et ve al
   const firstImageData = imageData.images && imageData.images.length > 0 ? imageData.images[0].data : null;
-
-  //console.log("Image Data >>>>>>>", firstImageData);
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
