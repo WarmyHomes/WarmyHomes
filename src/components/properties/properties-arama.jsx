@@ -33,7 +33,9 @@ const SearchForm = ({ advertTypeData, categories, cities, onSearch }) => {
       }
     } else {
       setFilteredCities([]);
-      selectRef.current.style.display = 'none';
+      if (selectRef.current) {
+        selectRef.current.style.display = 'none';
+      }
     }
   }, [cityFilter, cities.object]);
 
@@ -61,7 +63,8 @@ const SearchForm = ({ advertTypeData, categories, cities, onSearch }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch(searchParams);
+    console.log("Form submitted with search params:", searchParams);
+    onSearch({ ...searchParams, filteredCities });
   };
 
   const handleCitySelect = (e) => {

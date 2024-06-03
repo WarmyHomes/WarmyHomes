@@ -121,7 +121,7 @@ export const createNewTourRequest = async (formData) => {
 export const allAdvertsQueryByPage = async (params = {}) => {
 
 
-
+console.log("Paramsss>>>>>>>>>>",params)
   const queryParams = new URLSearchParams({
     q: params.query || '',
     category_id: params.category_id || '',

@@ -7,7 +7,7 @@ import { allAdvertsQueryByPage } from '@/services/create-advert-service';
 import React from 'react';
 
 export async function page() {
-
+ // console.log("aaaaaaaaaaaaaa")
 
   
     const res = await allAdvertsQueryByPage();

@@ -2,17 +2,21 @@
 
 .explore-properties-by-cities-container {
   padding-inline: 40px;
+
   .heading {
     font-size: 26px;
     margin-bottom: 3px;
   }
+
   .tagline {
     font-weight: 500;
     color: $color10;
   }
+
   .properties-cities-cards-container {
     margin-top: 30px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 
     @media (max-width: 560px) {
@@ -20,36 +24,43 @@
     }
 
     .single-property-cities-card {
-      height: 130px;
+      height: 160px; // Height'ı biraz artırdım
       width: fit-content;
-      padding: 30px;
+      padding: 20px; // Padding'i biraz azalttım
       display: flex;
       align-items: center;
       justify-content: center;
+
       @media (max-width: 560px) {
         width: 100%;
         margin-bottom: 20px;
       }
+
       .content-container {
         text-align: center;
         background-color: $color3;
         border-radius: 50%;
-        width: 90px;
-        height: 90px;
+        width: 120px; // Width'i artırdım
+        height: 120px; // Height'i artırdım
         overflow: visible;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        padding: 10px; // Padding ekledim
+
         h5 {
-          font-size: 20px;
-          margin-bottom: 0px;
-          white-space: nowrap;
-        }
-        p {
-          font-size: 17px;
+          font-size: 18px; // Font size'ı biraz küçülttüm
           margin-bottom: 0;
-          white-space: nowrap;
+          white-space: normal; // White-space'i normal yaptım
+          word-wrap: break-word; // Uzun kelimelerin taşmasını önlemek için
+        }
+
+        p {
+          font-size: 15px; // Font size'ı biraz küçülttüm
+          margin-bottom: 0;
+          white-space: normal; // White-space'i normal yaptım
+          word-wrap: break-word; // Uzun kelimelerin taşmasını önlemek için
         }
       }
     }
