@@ -9,8 +9,8 @@ import { allAdvertsQueryByPage } from '@/services/create-advert-service';
 const Properties = ({ data, advertTypeData, categories , cities}) => {
   const [filteredData, setFilteredData] = useState(data || []);
 
-  //console.log("filteredDataee>>>>>>>>>>>>>>",filteredData)
-  //console.log("setFilteredData>>>>>>>>>>>>>>",setFilteredData)
+  console.log("filteredDataee>>>>>>>>>>>>>>",filteredData)
+  console.log("setFilteredData>>>>>>>>>>>>>>",setFilteredData)
 
   const handleSearch = async (searchParams) => {
 
@@ -24,7 +24,7 @@ const Properties = ({ data, advertTypeData, categories , cities}) => {
     queryParams.append('maxPrice', searchParams.maxPrice || '');
     queryParams.append('location', searchParams.location || '');
     
-    console.log("Params>>>>>>>>>>>>>",queryParams)
+   // console.log("Params>>>>>>>>>>>>>",queryParams)
     const res = await allAdvertsQueryByPage(queryParams.toString());
 
     if (!res.ok) throw new Error(await res.text());
@@ -39,7 +39,7 @@ const Properties = ({ data, advertTypeData, categories , cities}) => {
   
   return (
     <div className="home-page">
-      <SearchForm advertTypeData={advertTypeData} categories={categories} cities={cities} onSearch={handleSearch} />
+        {/*     <SearchForm advertTypeData={advertTypeData} categories={categories} cities={cities} onSearch={handleSearch} /> */}
       <div className="properties-grid">
         {filteredData.length > 0 ? (
           filteredData.map((property, index) => (
