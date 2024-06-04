@@ -4,47 +4,52 @@ import React, { useState } from 'react';
 import './properties-arama.scss';
 import PropertyCard from '../common/form-fields/properties-cart';
 import SearchForm from './properties-arama.jsx';
-import { allAdvertsQueryByPage } from '@/services/create-advert-service';
 
-const Properties = ({ data, advertTypeData, categories , cities}) => {
+const Properties = ({ data, categories }) => {
   const [filteredData, setFilteredData] = useState(data || []);
 
-  console.log("filteredDataee>>>>>>>>>>>>>>",filteredData)
-  console.log("setFilteredData>>>>>>>>>>>>>>",setFilteredData)
-
-  const handleSearch = async (searchParams) => {
-
-    console.log("Aa>>>>>>>>>>>>>>",searchParams)
-    const queryParams = new URLSearchParams();
-
-    queryParams.append('query', searchParams.query || 'kira');
-    queryParams.append('propertyStatus', searchParams.propertyStatus || 'all');
-    queryParams.append('propertyType', searchParams.propertyType || 'all');
-    queryParams.append('minPrice', searchParams.minPrice || '');
-    queryParams.append('maxPrice', searchParams.maxPrice || '');
-    queryParams.append('location', searchParams.location || '');
+  const handleSearch = (searchParams) => {
     
-   // console.log("Params>>>>>>>>>>>>>",queryParams)
-    const res = await allAdvertsQueryByPage(queryParams.toString());
+    const {
+      query,
+      propertyStatus,
+      propertyType,
+      minPrice,
+      maxPrice,
+      location
+    } = searchParams;
 
-    if (!res.ok) throw new Error(await res.text());
+    const filtered = data.filter((item) => {
+    
+      console.log(item);
+      const matchesQuery = !query || item.title.toLowerCase().includes(query.toLowerCase());
+      const matchesStatus = !propertyStatus  || item.advert_type_id === propertyStatus;
+      const matchesType = propertyType === 'all' || item.category_id === propertyType;
+      const matchesPrice = (!minPrice || item.price >= parseFloat(minPrice)) && (!maxPrice || item.price <= parseFloat(maxPrice));
+      const matchesLocation = !location || item.city_id === location;
 
-    const filtered = await res.json();
+      return matchesQuery && matchesStatus && matchesType && matchesPrice && matchesLocation;
+    });
 
-    console.log("Filtered data received:", filtered);
+
     setFilteredData(filtered);
   };
-
 
   
   return (
     <div className="home-page">
-        {/*     <SearchForm advertTypeData={advertTypeData} categories={categories} cities={cities} onSearch={handleSearch} /> */}
+      <SearchForm
+      
+        categories={categories}
+        data={data}
+        onSearch={handleSearch}
+      />
       <div className="properties-grid">
         {filteredData.length > 0 ? (
           filteredData.map((property, index) => (
             <PropertyCard
-              key={index}
+            key={property.id}
+              id={property.id}
               title={property.title}
               location={property.location}
               price={property.price}

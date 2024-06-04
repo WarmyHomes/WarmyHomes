@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import "./properties-cart.scss";
 
-const PropertyCard = ({ title, location, price, imageData }) => {
+const PropertyCard = ({ key, id, title, location, price, imageData }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const firstImageData = imageData.images && imageData.images.length > 0 ? imageData.images[0].data : null;
@@ -15,13 +15,13 @@ const PropertyCard = ({ title, location, price, imageData }) => {
     <div className="property-card">
       <div className="image">
         {firstImageData ? (
-          <img
-            src={`data:image/jpeg;base64,${firstImageData}`}
-            width={400}
-            height={300}
-            alt={"Property Image"}
-            className="rounded"
-          />
+          <a href={`/adverts/details/${id}`}>
+            <img
+              src={`data:image/jpeg;base64,${firstImageData}`}
+              alt={"Property Image"}
+              className="rounded"
+            />
+          </a>
         ) : (
           <p>Image not available</p>
         )}
@@ -30,6 +30,7 @@ const PropertyCard = ({ title, location, price, imageData }) => {
         <FaHeart className={isFavorite ? 'favorite' : ''} />
       </div>
       <div className="property-info">
+        <>{key}</>
         <h3>{title}</h3>
         <p>{location}</p>
         <div className="property-footer">

@@ -1,43 +1,20 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import './properties-arama.scss';
 import SubmitButton from '../common/submit-button/submit-button';
 
-const SearchForm = ({ advertTypeData, categories, cities, onSearch }) => {
+const SearchForm = ({ categories, data, onSearch }) => {
   const [searchParams, setSearchParams] = useState({
     query: '',
-    propertyStatus: 'all',
+    propertyStatus: '',
     propertyType: 'all',
     minPrice: '',
     maxPrice: '',
     location: ''
   });
 
-  const [filteredCities, setFilteredCities] = useState([]);
-  const [cityFilter, setCityFilter] = useState('');
   const selectRef = useRef(null);
-
-  useEffect(() => {
-    if (cityFilter !== '') {
-      const filtered = cities.object.filter(city =>
-        city.name.toLowerCase().includes(cityFilter.toLowerCase())
-      ).slice(0, 10);
-      setFilteredCities(filtered);
-
-      if (filtered.length > 0) {
-        selectRef.current.size = filtered.length > 10 ? 10 : filtered.length;
-        selectRef.current.style.display = 'block';
-      } else {
-        selectRef.current.style.display = 'none';
-      }
-    } else {
-      setFilteredCities([]);
-      if (selectRef.current) {
-        selectRef.current.style.display = 'none';
-      }
-    }
-  }, [cityFilter, cities.object]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -47,35 +24,39 @@ const SearchForm = ({ advertTypeData, categories, cities, onSearch }) => {
     }));
   };
 
-  const handleCityFilterChange = (e) => {
-    setCityFilter(e.target.value);
-  };
-
-  const handleCityFilterFocus = () => {
-    const filtered = cities.object.slice(0, 10);
-    setFilteredCities(filtered);
-
-    if (filtered.length > 0) {
-      selectRef.current.size = filtered.length > 10 ? 10 : filtered.length;
-      selectRef.current.style.display = 'block';
-    }
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted with search params:", searchParams);
-    onSearch({ ...searchParams, filteredCities });
+    onSearch(searchParams);
   };
 
   const handleCitySelect = (e) => {
-    const selectedCity = cities.object.find(city => city.id === parseInt(e.target.value));
     setSearchParams(prevState => ({
       ...prevState,
       location: e.target.value
     }));
-    setCityFilter(selectedCity ? selectedCity.name : '');
-    selectRef.current.style.display = 'none';
   };
+
+  const handleAdvertType = (e) => {
+    setSearchParams(prevState => ({
+      ...prevState,
+      propertyStatus: e.target.value
+    }));
+  };
+
+
+  // Benzersiz şehirlerin listesi
+  const uniqueCities = Array.from(new Set(data.map(city => city.city_id)))
+    .map(city_id => {
+      return data.find(city => city.city_id === city_id);
+    });
+
+  // Benzersiz şehirlerin listesi
+  const uniqueAdvertType = Array.from(new Set(data.map(city => city.advert_type_id)))
+    .map(advert_type_id => {
+      return data.find(city => city.advert_type_id === advert_type_id);
+    });
+
+
 
   return (
     <form onSubmit={handleSubmit}>
@@ -87,25 +68,29 @@ const SearchForm = ({ advertTypeData, categories, cities, onSearch }) => {
         placeholder="Search..." 
       />
 
+<select 
+  type="text" 
+  name="propertyStatus" 
+  value={searchParams.propertyStatus} 
+  onChange={handleAdvertType}
+>
+  <option value="">All Status</option>
+  {uniqueAdvertType.map((type) => (
+    <option key={type.advert_type_id} value={type.advert_type_id}>
+      {type.advert_type_id}
+    </option>
+  ))}
+</select>
+   
       <select 
-        name="propertyStatus" 
-        value={searchParams.propertyStatus} 
-        onChange={handleChange}
-      >
-        <option value="all">All Status</option>
-        {advertTypeData.map((type) => (
-          <option key={type.id} value={type.id}>{type.title}</option>
-        ))}
-      </select>
-      
-      <select 
+       type="text" 
         name="propertyType" 
         value={searchParams.propertyType} 
         onChange={handleChange}
       >
         <option value="all">All Types</option>
         {categories.content.map((category) => (
-          <option key={category.id} value={category.id}>{category.title}</option>
+          <option key={category.category_id} value={category.category_id}>{category.title}</option>
         ))}
       </select>
 
@@ -124,25 +109,16 @@ const SearchForm = ({ advertTypeData, categories, cities, onSearch }) => {
         placeholder="Max Price" 
       />
 
-      <input 
-        type="text" 
-        name="locationFilter" 
-        value={cityFilter} 
-        onChange={handleCityFilterChange} 
-        onFocus={handleCityFilterFocus} 
-        placeholder="Filter Cities..." 
-      />
-
       <select 
+        type="text" 
         name="location" 
         value={searchParams.location} 
-        onChange={handleCitySelect} 
+        onChange={handleCitySelect}
         ref={selectRef}
-        size={filteredCities.length > 10 ? 10 : filteredCities.length}
-        style={{ display: 'none' }}
       >
-        {filteredCities.map((city) => (
-          <option key={city.id} value={city.id}>{city.name}</option>
+        <option value="">Select City</option>
+        {uniqueCities.map((city) => (
+          <option key={city.id} value={city.city_id}>{city.city_id}</option>
         ))}
       </select>
 
