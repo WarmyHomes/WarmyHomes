@@ -39,13 +39,13 @@ const UserMenu = ({ show, toggle }) => {
               <Link href={"/change-password"}>Change Password</Link>
             </li>
             <li>
-              <Link href={"/my-properties"}>My Properties</Link>
+              <Link href={"/my-favorites"}>My Properties</Link>
             </li>
             <li>
               <Link href={"/add-property"}>Add property</Link>
             </li>
             <li>
-              <Link href={"/tour-requests"}>Tour Requests</Link>
+              <Link href={"/tour-request"}>Tour Requests</Link>
             </li>
             <li>
               <Link href={"/reset-password"}>Reset Password</Link>

@@ -19,7 +19,7 @@ export const loginAction = async (prevState, formData) =>{
     const fields = convertFormDataToJson(formData);
 
     try {
-        FormSchema.validateSync(fields, { abortEarly: false});
+      //FormSchema.validateSync(fields, { abortEarly: false});
 
         await signIn("credentials", fields);
 
