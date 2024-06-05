@@ -5,17 +5,18 @@ import UserTourRequestToolBar from "./tour-requests-tool-bar";
 
 const TourRequests = ({ data }) => {
   const {content, totalPages, number, size} = data;
+  console.log(data);
   const handleToolbar = (row) => {
     return <UserTourRequestToolBar row={row} />
   }
   return (
     <div className="tour-requests-conitainer mt-3">
       <DataTable title={``} dataSource={data} dataKey="id" pagination={false}>
-        <Column title="property" field = "advert_id"/>
+        <Column title="property" field = "advert.images"/>
         <Column />
         <Column />
-        <Column title="Owner" field = "owner_user"/>
-        <Column title="Guest" field = "guest_user"/>
+        <Column title="Owner" field = "ownerUser.first_name"/>
+        <Column title="Guest" field = "guestUser.first_name"/>
         <Column title="Status" field = "status"/>
         <Column title="Tour Date" field = "tour_date"/>
         <Column title="Tour Time" field = "tour_time"/>
