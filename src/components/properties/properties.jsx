@@ -22,7 +22,17 @@ const Properties = ({ data, categories }) => {
     const filtered = data.filter((item) => {
     
       console.log(item);
-      const matchesQuery = !query || item.title.toLowerCase().includes(query.toLowerCase());
+      const matchesQuery = !query || 
+      item.title.toLowerCase().includes(query.toLowerCase()) || 
+      item.description.toLowerCase().includes(query.toLowerCase()) || 
+      item.price.toString().includes(query) || 
+      item.location.toLowerCase().includes(query.toLowerCase()) || 
+      item.advert_type_id.toLowerCase().includes(query.toLowerCase()) || 
+      item.city_id.toLowerCase().includes(query.toLowerCase())  || 
+      item.district.toLowerCase().includes(query.toLowerCase()) || 
+      item.category_id.toLowerCase().includes(query.toLowerCase());
+
+
       const matchesStatus = !propertyStatus  || item.advert_type_id === propertyStatus;
       const matchesType = propertyType === 'all' || item.category_id === propertyType;
       const matchesPrice = (!minPrice || item.price >= parseFloat(minPrice)) && (!maxPrice || item.price <= parseFloat(maxPrice));
