@@ -9,8 +9,21 @@ export const getAdvertsDependingOnCities = async () => {
 
 	return fetch(`${API_URL}/adverts/cities`, {
 		method: "get",
-		headers: await getAuthHeader(),
+	
 	
 	});
 
       };
+
+
+	  // A-3
+	  export const getAdvertByCategory = async () => {
+
+		return fetch(`${API_URL}/adverts/categories`, {
+			method: "get",
+		
+		
+		});
+	
+		  };
+	
