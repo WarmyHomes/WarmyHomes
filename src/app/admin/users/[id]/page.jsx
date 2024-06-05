@@ -8,7 +8,7 @@ const page = async ({ params }) => {
 	const res = await getUserById(params.id);
 	const data = await res.json();
 
-	
+	//console.log("User Data >>>>",data)
 
 	if (!res.ok) {
 		throw new Error(data.message);
@@ -17,7 +17,7 @@ const page = async ({ params }) => {
 
   return (
     <div>
-		<UserEdit data={data}/>
+		<UserEdit data={data.object}/>
 	</div>
   )
 }

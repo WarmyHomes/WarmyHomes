@@ -1,36 +1,77 @@
 "use client";
 
-import React, { useState } from "react";
-import "./page.scss";
+import React, { useRef, useState } from "react";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { CgTag } from "react-icons/cg";
 import { FaRegClock } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa6";
 import GoogleMapComponent from "@/components/common/misc/service-components/GoogleMapComponent";
+import { createNewTourRequestsAction } from "@/actions/new-advert-action";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
+import { useForm } from "react-hook-form";
 
-const AdvertsDetailsPage = () => {
-  const images = [
-    "/images/about.png",
-    "/images/highlight.png",
-    "/images/selling-option.png",
-    "/images/about.png",
-  ];
+const schema = Yup.object().shape({
+  tour_date: Yup.string().required("Tour date is required"),
+  tour_time: Yup.string().required("Tour time is required"),
+});
 
-  const [active, setActive] = useState(images[0]);
+const AdvertsDetailsComponent = ({ data }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+  const formRef = useRef(null);
+  const [formData, setFormData] = useState({
+    tour_time: "",
+    tour_date: "",
+  });
+  const [active, setActive] = useState(data.images?.[0] ||  '' 
+  );
 
   const onImageClick = (el) => {
     setActive(el);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const result = await createNewTourRequestsAction({
+        ...formData,
+        id: data?.id,
+      });
+      setFormData({tour_date: '', tour_time: ''  })
+      if (result.success) {
+        formRef.current.reset();
+        alert(result.message); // veya istediğiniz bildirim türünü kullanabilirsiniz
+      } else {
+        alert(result.message); // veya istediğiniz bildirim türünü kullanabilirsiniz
+      }
+    } catch (error) {
+       alert("Couldn't save the new request!");
+    }
   };
 
   return (
     <div className="adverts-details-page-container">
       <div className="advert-detail-page-header">
         <div className="advert-detail-header-left">
-          <h2>Luxuries Villa in Central Park</h2>
+          <h2>{data.title}</h2>
           <div className="all-attributes-container">
             <div className="single-item">
               <MdOutlineLocationOn className="item-icon" />
-              <p>Istanbul, Pendik</p>
+              <p>{`${data?.location} ${data?.city_id}, ${data?.country_id}`}</p>
             </div>
             <div className="single-item">
               <CgTag className="item-icon" />
@@ -38,16 +79,16 @@ const AdvertsDetailsPage = () => {
             </div>
             <div className="single-item">
               <FaRegClock className="item-icon" />
-              <p>2 weeks ago</p>
+              <p>{new Date(data.createdAt).toLocaleDateString()}</p>
             </div>
             <div className="single-item">
               <FaRegEye className="item-icon" />
-              <p>1252</p>
+              <p>{data.view_count}</p>
             </div>
           </div>
         </div>
         <div className="advert-detail-header-right">
-          <h1>$1500.00</h1>
+          <h1>${data.price?.toFixed?.(2)}</h1>
         </div>
       </div>
       <div className="advert-detail-page-main">
@@ -55,30 +96,19 @@ const AdvertsDetailsPage = () => {
           <div className="image-schowcase-container">
             <img src={active} alt="" className="main-image" />
             <div className="images-container">
-              {images.map((el) => (
+              {data?.images?.length ? data?.images.map((el) => (
                 <img
                   onClick={() => onImageClick(el)}
                   src={el}
                   alt=""
                   className="main-image"
                 />
-              ))}
+              )):null}
             </div>
           </div>
           <div className="description-container">
             <h5>Description</h5>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum
-            </p>
+            <p>{data.description}</p>
           </div>
           <div className="details-container">
             <h5>Details</h5>
@@ -145,20 +175,24 @@ const AdvertsDetailsPage = () => {
             <h4>Schedule a tour</h4>
             <p>Choose your preferred day</p>
 
-            <form>
+            <form ref={formRef} onSubmit={onSubmit}>
               <input
                 type="date"
                 placeholder="Tour date"
-                name="date"
-                id="date"
+                name="tour_date"
+                id="tour_date"
+                value={formData.tour_date}
+                onChange={handleChange}
               />
               <input
                 type="time"
                 placeholder="Tour time"
-                name="time"
-                id="time"
+                name="tour_time"
+                id="tour_time"
+                value={formData.tour_time}
+                onChange={handleChange}
               />
-              <button>Submit a tour request</button>
+              <button type="submit">Submit a tour request</button>
             </form>
           </div>
         </div>
@@ -167,4 +201,4 @@ const AdvertsDetailsPage = () => {
   );
 };
 
-export default AdvertsDetailsPage;
+export default AdvertsDetailsComponent;

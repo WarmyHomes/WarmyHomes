@@ -1,21 +1,25 @@
 "use server";
 
 import { signIn } from "@/auth";
-import { convertFormDataToJson, response } from "@/helpers/form-validation";
+import { convertFormDataToJson, getYupErrors, response } from "@/helpers/form-validation";
 import { AuthError } from "next-auth";
 import * as Yup from "yup";
-
+ 
 const FormSchema = Yup.object({
-	email: Yup.string().required("Required"),
-	password: Yup.string().required("Required"),
-});
+    email: Yup.string().email("Invalid email").required("Required"),
+    password: Yup.string()
+    // .min(8, "Must be at least 8 chars")
+    // .matches(/[a-z]+/, "At least one lowercase")
+    // .matches(/[A-Z]+/, "At least one uppercase")
+    // .matches(/\d+/, "At least one number")
+    .required("Required"),});
 
 export const loginAction = async (prevState, formData) =>{
 
     const fields = convertFormDataToJson(formData);
 
     try {
-        FormSchema.validateSync(fields, { abortEarly: false});
+      //FormSchema.validateSync(fields, { abortEarly: false});
 
         await signIn("credentials", fields);
 

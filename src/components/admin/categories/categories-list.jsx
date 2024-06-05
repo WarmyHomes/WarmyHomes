@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import DataTable, { Column } from "@/components/common/form-fields/data-table";
 import CategoriesToolbar from "./categories-toolbar";
-import { TfiCheck, TfiFacebook } from "react-icons/tfi";
+import { TfiAlarmClock, TfiBuilding, TfiTree, TfiAndroid, TfiCar, TfiCheck, TfiFacebook, TfiHome } from "react-icons/tfi";
 import "./categories-list.scss";
 import { RiSearch2Line } from "react-icons/ri";
 import Link from "next/link";
@@ -27,8 +27,29 @@ const CategoriesList = ({ data }) => {
   };
 
   const handleCompulsory = (row) => {
-    return row.compulsory ? <TfiCheck /> : <TfiFacebook />;
+    return row.isActive ? <TfiCheck /> : ' - ';
   };
+
+  
+
+
+  const iconMap = {
+    TfiBuilding: TfiBuilding,
+    TfiAndroid: TfiAndroid,
+    TfiCheck: TfiCheck,
+    TfiFacebook: TfiFacebook,
+    TfiCar: TfiCar,
+    TfiHome: TfiHome,
+    TfiTree: TfiTree
+  };
+  const handleIcon = (row) => {
+
+    console.log("Row>>>>>>>>>", row)
+  const IconComponent = iconMap[row.icon] || TfiAlarmClock;
+    return <IconComponent />;
+  };
+
+
 
   return (
     <div className="categories-list-page-container">
@@ -60,7 +81,7 @@ const CategoriesList = ({ data }) => {
         pageNumber={number}
         pageSize={size}
       >
-        <Column title="Icon" field="icon" />
+        <Column title="Icon" template={handleIcon} />
         <Column title="Title" field="title" />
         <Column title="Sequence" field="seq" />
         <Column title="Active" template={handleCompulsory} />

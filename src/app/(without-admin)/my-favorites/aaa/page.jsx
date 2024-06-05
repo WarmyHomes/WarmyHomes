@@ -50,4 +50,4 @@ const MyFavoritesss = () => {
   );
 };
 
-export default MyFavorites;
+export default MyFavoritesss;
