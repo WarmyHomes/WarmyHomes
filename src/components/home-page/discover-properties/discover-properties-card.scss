@@ -1,25 +1,32 @@
 @use "../../../styles/variables" as v;
-
-
-.discover-properties-card {
-	border-radius: 15px;
-	overflow: hidden;
-    cursor: pointer;
+ 
+ .home-page {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between; // Kartlar arasındaki boşluk için
+	padding: 20px; // Sayfanın kenarlarından biraz boşluk bırakmak için
+  }
+  
+  .properties-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px; // Kartlar arasındaki boşluk için
+  }
+  
+  .properties-grid > * {
+	flex: 1 1 calc(33.333% - 20px); // Kartların genişliğini %33.333 yaparak üçlü kolona bölüyoruz ve gap'ı düşüyoruz
+	box-sizing: border-box;
+  }
+  
+  @media (max-width: 1200px) {
+	.properties-grid > * {
+	  flex: 1 1 calc(50% - 20px); // Ekran genişliği 1200px'den küçükse iki kolon yapıyoruz
 	}
-	img {
-		width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+	.properties-grid > * {
+	  flex: 1 1 100%; // Ekran genişliği 768px'den küçükse tek kolon yapıyoruz
 	}
-
-	.card-title {
-		background-color: v.$color1;
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		text-align: center;
-		margin: 0;
-		padding: 10px;
-		
-
-	}
-
+  }
+  

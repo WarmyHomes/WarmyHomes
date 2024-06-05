@@ -1,24 +1,25 @@
-import Image from "next/image";
+'use client';
 import React from "react";
 import "./discover-properties-card.scss";
+import PropertyCard from "@/components/common/form-fields/properties-cart";
 
-const DiscoverPropertiesCard = () => {
-	
-	return (
-		<div className="card discover-properties-card">
-			<Image
-			src={`/images/houses/villa_image.png`}
-				width={200}
-				height={400}
-				
-			/>
-
-			<div className="card-title">
-				<h4>advert gelmeli</h4>
-				<h6>price gelmeli</h6>
-			</div>
-		</div>
-	);
+const DiscoverPropertiesCard = ({ data }) => {
+  return (
+    <div className="home-page">
+      <div className="properties-grid">
+        {data.map(property => (
+          <PropertyCard
+            key={property.id}
+            id={property.id}
+            title={property.title}
+            location={property.location}
+            price={property.price}
+            imageData={property}
+          />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default DiscoverPropertiesCard;
