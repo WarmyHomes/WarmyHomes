@@ -67,6 +67,8 @@ export const getAdvertById = async (id) => {
     headers: await getAuthHeader(),
   });
 };
+
+
 //* A10
 
 export const createNewAdvert = async (formData) => {

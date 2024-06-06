@@ -55,7 +55,7 @@ export default function  UserMenuAuth  ({ session }) {
         )}
         {!isMobile && (
           <button className="add-property-button">
-            <Link href={"/"}>
+            <Link href={"/new-advert"}>
               Add Property <img width={35} height={35} src="/icons/arrow.svg" />
             </Link>
           </button>
