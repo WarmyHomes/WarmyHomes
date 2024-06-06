@@ -20,7 +20,7 @@ const RegisterForm = () => {
         setPasswordType((prevType) => (prevType === "password" ? "text" : "password"));
     };
 
-    console.log("State>>>>>>>>>", state);
+   // console.log("State>>>>>>>>>", state);
 
     return (
         <div className="container register-form">
