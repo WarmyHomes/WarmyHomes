@@ -11,6 +11,7 @@ const AdminTourRequests = ({ data }) => {
 
 
   console.log("tour-data:",size);
+  console.log(data);
 
   const handleToolbar = (row) => {
     return <TourRequestsToolBar row={row} />
@@ -35,11 +36,11 @@ const AdminTourRequests = ({ data }) => {
        dataKey="id" 
        pagination={false}>
         
-        <Column title="property" field = "advert_id"/>
+        <Column title="property" field = "advert.images"/>
         <Column />
         <Column />
-        <Column title="Owner" field = "owner_user"/>
-        <Column title="Guest" field = "guest_user"/>
+        <Column title="Owner" field = "ownerUser.first_name"/>
+        <Column title="Guest" field = "guest_user.first_name"/>
         <Column title="Status" field = "status"/>
         <Column title="Tour Date" field = "tour_date"/>
         <Column title="Tour Time" field = "tour_time"/>
