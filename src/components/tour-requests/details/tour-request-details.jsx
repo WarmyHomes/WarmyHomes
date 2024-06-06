@@ -9,7 +9,8 @@ import { deleteUsersTourRequestAction } from "@/actions/tour-requests-action";
 
 const UsersTourRequestDetails = ({ data }) => {
 
-  const { id, status, tour_date, tour_time, advert_id } = data;
+  const { id, status, tour_date, tour_time, advert, } = data;
+  const {image, price, city, country, district, title, location, advert_id } = advert;
 
   const handleDelete = async () => {
     const res = await swalConfirm("Are you sure to delete");
@@ -29,8 +30,8 @@ const UsersTourRequestDetails = ({ data }) => {
         <div className="col-md-4 position-relative image-container">
           <Card.Img
             variant="top"
-            src="https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg"
-            alt="image"
+            src={image}
+            alt = "image/advert/${advert_id}"
             className="image"
           />
           <div className="position-absolute status">
@@ -40,10 +41,10 @@ const UsersTourRequestDetails = ({ data }) => {
         <div className="col-md-8">
           <Card.Body>
             <div className="d-flex justify-content-between align-items-start">
-              <Card.Title className="mb-0">Equestrian Family Home</Card.Title>
-              <Card.Text className="text-end mb-0">$1400.00</Card.Text>
+              <Card.Title className="mb-0">{title}</Card.Title>
+              <Card.Text className="text-end mb-0">${price}</Card.Text>
             </div>
-            <Card.Text className="text-start">California City, CA, USA</Card.Text>
+            <Card.Text className="text-start">{location}</Card.Text>
             <div className="row">
               <div className="col">
                 <Form.Group controlId="tourDate">

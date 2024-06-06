@@ -5,6 +5,8 @@ import UserTourRequestToolBar from "./tour-requests-tool-bar";
 
 const TourRequests = ({ data }) => {
   const {content, totalPages, number, size} = data;
+ 
+  
   console.log(data);
   const handleToolbar = (row) => {
     return <UserTourRequestToolBar row={row} />
