@@ -21,8 +21,9 @@
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 50px;
     margin: 0;
+    
 
     @media (max-width: 900px) {
       flex-direction: column;
@@ -36,11 +37,22 @@
         font-size: 16px;
         font-weight: 600;
         text-decoration: none;
+        
         @media (max-width: 900px) {
           color: white;
         }
+        
+        
       }
     }
+    li:hover{
+      background-color:plum;
+      border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+}
   }
 }
 
