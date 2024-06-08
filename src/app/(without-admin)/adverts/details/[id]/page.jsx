@@ -6,7 +6,7 @@ const AdvertsDetailsPage = async ({ params }) => {
   const res = await getAdvertById(params.id);
   const data = await res.json();
 
-  console.log(data, "dataa");
+ //console.log(data, "dataa");
 
   return data?.object ? <AdvertsDetailsComponent data={data.object} /> : <div className="p-3 text-center "> No data</div>;
 };
