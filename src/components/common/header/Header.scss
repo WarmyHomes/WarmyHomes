@@ -34,7 +34,7 @@
     li {
       a {
         color: black;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 600;
         text-decoration: none;
         
@@ -47,6 +47,8 @@
     }
     li:hover{
       background-color:plum;
+      font-weight: 10px;
+      font-size: 20px;
       border-radius: 5px;
       -webkit-border-radius: 5px;
       -moz-border-radius: 5px;
@@ -98,6 +100,7 @@
       }
     }
   }
+  
   .add-property-button {
     background-color: transparent;
     cursor: pointer;
@@ -122,7 +125,17 @@
         font-size: 18px;
       }
     }
+    
   }
+  .add-property-button:hover{
+    background-color:plum;
+    padding-block: 5px;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}
 
   .burger-icon-container {
     cursor: pointer;
@@ -138,3 +151,4 @@
     }
   }
 }
+
