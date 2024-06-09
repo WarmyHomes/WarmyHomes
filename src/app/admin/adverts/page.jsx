@@ -4,9 +4,12 @@ import React from "react";
 
 const page = () => {
   return (
+   <>
+    <PageHeader title={"Adverts"} />
     <div className="my-favorites-page-container">
       <AdvertsListing />
     </div>
+    </>
   );
 };
 

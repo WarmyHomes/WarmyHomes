@@ -5,6 +5,7 @@ import { HiOutlineSquare3Stack3D } from "react-icons/hi2";
 import { FaPrint } from "react-icons/fa6";
 import { FaBook } from "react-icons/fa";
 import { FaPrayingHands } from "react-icons/fa";
+import PageHeader from "@/components/common/page-header";
 
 const DashboardPage = () => {
   const cards = [
@@ -36,6 +37,8 @@ const DashboardPage = () => {
   ];
 
   return (
+    <>
+    <PageHeader title={"Dashboard Information"} />
     <div className="admin-dashboard-container">
       <div className="admin-dashboard-cards-container">
         {cards.map((el, index) => (
@@ -52,6 +55,7 @@ const DashboardPage = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 

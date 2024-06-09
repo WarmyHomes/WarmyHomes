@@ -1,3 +1,4 @@
+import PageHeader from "@/components/common/page-header";
 import ContactMessageList from "@/components/contact-messages/contact-message-list";
 import { getAllMessagesByPage } from "@/services/contact-us-queries-service";
 import React from "react";
@@ -14,6 +15,7 @@ const page = async ({ searchParams }) => {
   if (!res.ok) throw new Error(data.message);
   return (
     <>
+    <PageHeader title={"Contact Message"} />
       <ContactMessageList data={data} />
     </>
   );

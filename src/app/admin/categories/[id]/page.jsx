@@ -1,5 +1,6 @@
 import AdvertTypeEdit from '@/components/admin/advert-types/advert-type-edit';
 import CategoriesEdit from '@/components/admin/categories/categories-edit';
+import PageHeader from '@/components/common/page-header';
 
  import { getAdvertTypeById } from  '@/services/advertType-servise';
 import { getCategoriesById } from '@/services/categories-servise';
@@ -19,9 +20,12 @@ const page = async ({ params }) => {
 	//console.log("CAT Data>>><<<", data)
 
   return (
+	<>
+	<PageHeader title={"Category Edit"} />
     <div>
 		< CategoriesEdit data={data}/>
 	</div>
+	</>
   )
 }
 
