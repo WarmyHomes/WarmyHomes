@@ -1,5 +1,6 @@
 
 import UserEdit from '@/components/admin/users/user-edit';
+import PageHeader from '@/components/common/page-header';
 import { getUserById } from '@/services/user-service';
 import React from 'react'
 
@@ -17,6 +18,7 @@ const page = async ({ params }) => {
 
   return (
     <div>
+		<PageHeader title={"User Edit"} />
 		<UserEdit data={data.object}/>
 	</div>
   )

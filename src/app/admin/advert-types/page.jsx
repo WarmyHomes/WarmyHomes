@@ -1,4 +1,5 @@
 import AdvertTypeList from "@/components/admin/advert-types/advert-type-list";
+import PageHeader from "@/components/common/page-header";
 import { getAllAdvertType } from "@/services/advertType-servise";
 import React from "react";
 
@@ -14,6 +15,7 @@ const page = async ({ searchParams }) => {
   if (!res.ok) throw new Error(data.message);
   return (
     <>
+    <PageHeader title={"Advert Type"} />
       <div className="advert-types-list-page-container">
         <AdvertTypeList data={data} />
       </div>
