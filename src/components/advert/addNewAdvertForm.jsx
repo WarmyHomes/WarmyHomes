@@ -147,6 +147,24 @@ const AddNewAdvertForm = ({ advert_type, country, city, districts, categories })
                   </div>
                 </div>
 
+
+                <div className="form-floating mb-3">
+                  <input
+                    type="text"
+                    className={`form-control ${isInvalid(state.errors?.location)}`}
+                    id="location"
+                    name="location"
+                    placeholder="Location"
+                    onChange={(e) => dispatch({ type: "field", fieldName: "location", payload: e.target.value })}
+                  />
+                  <label htmlFor="location">location</label>
+                  <div className="invalid-feedback">
+                    {state.errors?.location}
+                  </div>
+                </div>
+
+
+
                 <div className="form-floating mb-3">
                   <select
                     className={`form-control ${isInvalid(state.errors?.country_id)}`}
