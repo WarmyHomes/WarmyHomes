@@ -135,7 +135,7 @@ export const allAdvertsQueryByPage = async (params = {}) => {
     price_end: params.price_end || '',
     city_id: params.city_id || '',
     page: params.page || 0,
-    size: params.size || 20,
+    size: params.size || 100,
     sort: params.sort || 'id',
     type: params.type || 'asc'
   });

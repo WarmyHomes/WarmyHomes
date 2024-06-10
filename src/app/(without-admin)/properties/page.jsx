@@ -31,7 +31,7 @@ export async function page({ searchParams}) {
 
 
    
-    console.log("adverttt<<<<<<>>>>>>",data)
+   // console.log("adverttt<<<<<<>>>>>>",data)
 
 
    
