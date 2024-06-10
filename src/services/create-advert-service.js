@@ -77,10 +77,11 @@ export const createNewAdvert = async (formData) => {
   try {
     const response = await fetch(`${API_URL}/adverts`, {
       method: "POST",
-      body: JSON.stringify(formData),
+    
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify(formData),
     });
     if (!response.ok) {
       throw new error(`Network response was not ok`);
