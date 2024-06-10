@@ -67,11 +67,34 @@ const AddNewAdvertForm = ({ advert_type, country, city, districts, categories })
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await createNewAdvertAction(state);
-    if (response.errors) {
-      dispatch({ type: "setErrors", payload: response.errors });
+    
+    const formattedState = {
+      title: state.title,
+      description: state.description,
+      price: parseFloat(state.price),
+      location: state.location,
+      is_active: state.is_active === "true",
+      advert_type_id: parseInt(state.advert_type_id),
+      country_id: parseInt(state.country_id),
+      city_id: parseInt(state.city_id),
+      district: parseInt(state.district),
+      category_id: parseInt(state.category_id),
+      category_property_values: selectedCategoryKeys.map(key => ({
+        name: state[`category_key_${key.id}`]
+      }))
+    };
+  
+    try {
+      console.log(formattedState);
+      const response = await createNewAdvertAction(formattedState);
+      if (response.errors) {
+        dispatch({ type: "setErrors", payload: response.errors });
+      }
+    } catch (error) {
+      console.error("Error while creating new advert:", error);
     }
   };
+  
 
   return (
     <div className="container register-form">
@@ -239,9 +262,9 @@ const AddNewAdvertForm = ({ advert_type, country, city, districts, categories })
                       </option>
                     ))}
                   </select>
-                  <label htmlFor="category_id">Category</label>
+                  <label htmlFor="category_property_values">Category</label>
                   <div className="invalid-feedback">
-                    {state.errors?.category_id}
+                    {state.errors?.category_property_values}
                   </div>
                 </div>
 
