@@ -1,0 +1,13 @@
+@use "../../styles/variables" as v;
+.action-icon-color{
+    color: v.$color4;
+    font-size: 2rem;
+    margin-right: 3%;
+    
+    
+}
+
+.action-icon-color:hover{
+    color: v.$color3;
+    cursor: pointer;
+}
