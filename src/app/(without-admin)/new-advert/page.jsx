@@ -39,7 +39,7 @@ const page = async () => {
   return (
     <>
       <PageHeader title={"New Advert"}/>
-    
+      <Spacer height={25}/>
       <AddNewAdvertForm  advert_type={advert_type} country={country} city={city}   districts={districts} categories={categories}/>
       <Spacer height={450}/>
     </>

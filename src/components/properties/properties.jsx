@@ -5,7 +5,7 @@ import './properties-arama.scss';
 import PropertyCard from '../common/form-fields/properties-cart';
 import SearchForm from './properties-arama.jsx';
 
-const Properties = ({ data, categories }) => {
+const Properties = ({ data, categories ,myfavorites }) => {
   const [filteredData, setFilteredData] = useState(data || []);
 
   const handleSearch = (searchParams) => {
@@ -64,6 +64,7 @@ const Properties = ({ data, categories }) => {
               location={property.location}
               price={property.price}
               imageData={property}
+              myfavorites={myfavorites}
             />
           ))
         ) : (

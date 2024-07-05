@@ -3,33 +3,7 @@ import "./page.scss";
 import PageHeader from "@/components/common/page-header";
 import PropertyCard from "@/components/common/property-card";
 
-const MyFavoritesss = () => {
-  const properties = [
-    {
-      img: "/images/highlight.png",
-      name: "Apartamento en la ciudad de México",
-      address: "Ciudad de México, CDMX",
-      price: "1200.00",
-      category: "Villa",
-      type: "For Sale",
-    },
-    {
-      img: "/images/highlight.png",
-      name: "Equestrian Family Home",
-      address: "California City, CA, USA",
-      price: "2200.00",
-      category: "House",
-      type: "For Rent",
-    },
-    {
-      img: "/images/highlight.png",
-      name: "Apartamento en la ciudad de México",
-      address: "Ciudad de México, CDMX",
-      price: "1200.00",
-      category: "Villa",
-      type: "For Sale",
-    },
-  ];
+const MyFavoritesss = ({ data }) => {
   return (
     <div className="my-favorites-page-container">
       <PageHeader title={"My Favorites"} />
@@ -41,9 +15,13 @@ const MyFavoritesss = () => {
           <h5>Action</h5>
         </div>
         <div className="all-properties-listing">
-          {properties.map((el, index) => (
-            <PropertyCard data={el} key={index} />
-          ))}
+          {data && data.length > 0 ? (
+            data.map((el, index) => (
+              <PropertyCard data={el} key={index} />
+            ))
+          ) : (
+            <p>No favorite properties found.</p>
+          )}
         </div>
       </div>
     </div>

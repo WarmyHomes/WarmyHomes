@@ -68,5 +68,19 @@
         }
       }
     }
+
+
+    .favorite-icon {
+      cursor: pointer;
+      font-size: 24px; /* İkona uygun boyut */
+    }
+  
+    .favoris {
+      color: grey;
+    }
+  
+    .favoris.red {
+      color: red;
+    }
   }
   

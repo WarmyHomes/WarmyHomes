@@ -1,14 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import "./properties-cart.scss";
+import { myfvories } from '@/actions/favoris-action';
 
-const PropertyCard = ({ key, id, title, location, price, imageData }) => {
+const PropertyCard = ({ id, title, location, price, imageData, myfavorites }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    if (myfavorites && myfavorites.length > 0) {
+      const isFav = myfavorites.some(favorite => favorite.id === id);
+      setIsFavorite(isFav);
+    }
+  }, [id, myfavorites]);
 
   const firstImageData = imageData.images && imageData.images.length > 0 ? imageData.images[0].data : null;
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
+    favoris(id);
+  };
+
+  const favoris = (id) => {
+    myfvories(id);
   };
 
   return (
@@ -27,10 +40,9 @@ const PropertyCard = ({ key, id, title, location, price, imageData }) => {
         )}
       </div>
       <div className="favorite-icon" onClick={toggleFavorite}>
-        <FaHeart className={isFavorite ? 'favorite' : ''} />
+        <FaHeart className={isFavorite ? 'favoris red' : 'favoris'} />
       </div>
       <div className="property-info">
-        <>{key}</>
         <h3>{title}</h3>
         <p>{location}</p>
         <div className="property-footer">
