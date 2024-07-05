@@ -5,7 +5,7 @@ import {
 	getYupErrors,
 	response,
 } from "@/helpers/form-validation";
-import { getGenderValues } from "@/helpers/misc";
+
 import {
 	createAdvertType,
 	deleteAdvertType,

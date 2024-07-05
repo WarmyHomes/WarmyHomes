@@ -12,3 +12,17 @@ export const getAllMyFavorites = async (payload) => {
 });
         
 };
+
+
+//k-03
+export const addOrRemoveAdvertFromFavorites = async (id) => {
+
+
+    
+			
+    return fetch(`${API_URL}/favorites/${id}/auth`, {
+      method: "post",
+      headers: await getAuthHeader()
+    
+    });
+  };
